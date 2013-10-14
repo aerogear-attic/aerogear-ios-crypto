@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		48608757180BD5AD00BCF735 /* AGCryptoSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 48608756180BD5AD00BCF735 /* AGCryptoSpec.m */; };
 		4860875A180BD5BA00BCF735 /* AGCryptoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 48608759180BD5BA00BCF735 /* AGCryptoBox.m */; };
+		48E65C21180C91D60005E6E0 /* AGRandomGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E65C20180C91D60005E6E0 /* AGRandomGenerator.m */; };
 		6F465B0D1805632D0097BC5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B0C1805632D0097BC5F /* Foundation.framework */; };
 		6F465B121805632D0097BC5F /* AeroGearCrypto.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F465B111805632D0097BC5F /* AeroGearCrypto.h */; };
 		6F465B1B1805632E0097BC5F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B1A1805632E0097BC5F /* XCTest.framework */; };
@@ -48,6 +49,8 @@
 		48608756180BD5AD00BCF735 /* AGCryptoSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCryptoSpec.m; sourceTree = "<group>"; };
 		48608758180BD5BA00BCF735 /* AGCryptoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCryptoBox.h; sourceTree = "<group>"; };
 		48608759180BD5BA00BCF735 /* AGCryptoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCryptoBox.m; sourceTree = "<group>"; };
+		48E65C1F180C91D60005E6E0 /* AGRandomGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGRandomGenerator.h; sourceTree = "<group>"; };
+		48E65C20180C91D60005E6E0 /* AGRandomGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRandomGenerator.m; sourceTree = "<group>"; };
 		6F465B091805632D0097BC5F /* libcrypto-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libcrypto-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F465B0C1805632D0097BC5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6F465B101805632D0097BC5F /* crypto-sdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "crypto-sdk-Prefix.pch"; sourceTree = "<group>"; };
@@ -124,6 +127,8 @@
 				6F465B111805632D0097BC5F /* AeroGearCrypto.h */,
 				48608758180BD5BA00BCF735 /* AGCryptoBox.h */,
 				48608759180BD5BA00BCF735 /* AGCryptoBox.m */,
+				48E65C1F180C91D60005E6E0 /* AGRandomGenerator.h */,
+				48E65C20180C91D60005E6E0 /* AGRandomGenerator.m */,
 				6F465B0F1805632D0097BC5F /* Supporting Files */,
 			);
 			path = "crypto-sdk";
@@ -271,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48E65C21180C91D60005E6E0 /* AGRandomGenerator.m in Sources */,
 				4860875A180BD5BA00BCF735 /* AGCryptoBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

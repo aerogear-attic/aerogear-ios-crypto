@@ -17,23 +17,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CommonCrypto/CommonCryptor.h>
+#import <CommonCrypto/CommonKeyDerivation.h>
 
-//typedef struct {
-//    CCOperation operation;
-//    CCAlgorithm algorithm;
-//} AGCryptoOptions;
-
-@interface AGCryptoBox : NSObject
-//-(id)initWithOptions:(AGCryptoOptions)options withInvertedVector:(NSData*)invertedVector andKey:(NSData*)key error:(NSError**)error;
-//-(NSData*) encryptData:(NSData*)data error:(NSError**)error ;
-
-- (id)initWithKey:(NSString*)key initializationVector:(NSData*)vector;
-
-- (NSData *)encrypt:(NSData *)data;
-- (NSData *)decrypt:(NSData *)data;
-
-@property(nonatomic, strong) NSString* key;
-@property(nonatomic, strong) NSData* initializationVector;
-//@property (nonatomic, readonly) CCCryptorRef cryptor;
-//@property (nonatomic, readonly) NSMutableData* encryptedData;
+@interface AGRandomGenerator : NSObject
+- (NSData *)generateSecret;
+- (NSString *)keyForPIN:(NSString *)PIN salt:(NSData *)salt;
 @end
