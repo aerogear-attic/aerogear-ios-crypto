@@ -93,8 +93,7 @@ describe(@"CryptoBox", ^{
             [[stringToEncrypt should] equal:decryptedString];
         });
         
-        // TODO investiguate why empty
-        it(@"should return empty for encrypted when data to encrypt is less than 16 chars???????", ^{
+        it(@"should return identical encrypted/decrypted data when less than 16 chars", ^{
             NSString* stringToEncrypt = @"0123456789abcde";
             NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
             
@@ -105,11 +104,10 @@ describe(@"CryptoBox", ^{
             [decryptedData shouldNotBeNil];
             NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
             NSLog(@"Decrypted >>> %@", decryptedString);
-            [[@"" should] equal:decryptedString];
+            [[@"0123456789abcde" should] equal:decryptedString];
         });
         
-        // TODO investiguate why truncated
-        it(@"should return truncated at 16 chars for encrypted when data to encrypt is more than 16 chars???????", ^{
+        it(@"should return identical encrypted/decrypted data when data to encrypt is more than 16 chars", ^{
             NSString* stringToEncrypt = @"0123456789abcdef1234";
             NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
             
@@ -120,7 +118,7 @@ describe(@"CryptoBox", ^{
             [decryptedData shouldNotBeNil];
             NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
             NSLog(@"Decrypted >>> %@", decryptedString);
-            [[@"0123456789abcdef" should] equal:decryptedString];
+            [[@"0123456789abcdef1234" should] equal:decryptedString];
         });
         
     });

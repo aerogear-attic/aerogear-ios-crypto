@@ -88,7 +88,7 @@
 }
 
 - (NSData *)encrypt:(NSData *)data {
-    char keyBuffer[kCCKeySizeAES256 * 2 + 10]; // room for terminator (unused)
+    char keyBuffer[kCCKeySizeAES256 * 2 + 1]; // room for terminator (unused)
     bzero(keyBuffer, sizeof(keyBuffer)); // fill with zeros (for padding)
     
     // fetch key data
@@ -114,7 +114,7 @@
     
     CCCryptorStatus result = CCCrypt(kCCEncrypt,
                                      kCCAlgorithmAES128,
-                                     0,
+                                     kCCOptionPKCS7Padding,
                                      keyBuffer,
                                      kCCKeySizeAES256,
                                      self.initializationVector ? [self.initializationVector bytes] : NULL, // initialization vector (optional)
@@ -134,7 +134,7 @@
 }
 
 - (NSData *)decrypt:(NSData *)data {
-    char keyBuffer[kCCKeySizeAES256 * 2 + 10]; // room for terminator (unused)
+    char keyBuffer[kCCKeySizeAES256 * 2 + 1]; // room for terminator (unused)
     bzero(keyBuffer, sizeof(keyBuffer)); // fill with zeros (for padding)
     
     // fetch key data
@@ -160,7 +160,7 @@
     
     CCCryptorStatus result = CCCrypt(kCCDecrypt,
                                      kCCAlgorithmAES128,
-                                     0,
+                                     kCCOptionPKCS7Padding,
                                      keyBuffer,
                                      kCCKeySizeAES256,
                                      self.initializationVector ? [self.initializationVector bytes] : NULL, // initialization vector (optional)
