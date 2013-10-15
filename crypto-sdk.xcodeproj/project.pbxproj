@@ -10,16 +10,20 @@
 		6F465B0D1805632D0097BC5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B0C1805632D0097BC5F /* Foundation.framework */; };
 		6F465B121805632D0097BC5F /* AeroGearCrypto.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F465B111805632D0097BC5F /* AeroGearCrypto.h */; };
 		6F465B331805683D0097BC5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B321805683D0097BC5F /* Security.framework */; };
-		6F5ED5A5180C2A84002F6BDB /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5ED5A4180C2A84002F6BDB /* Test.m */; };
 		6F9BE75A180C0B200045D8AE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9BE759180C0B200045D8AE /* SenTestingKit.framework */; };
 		6F9BE75B180C0B200045D8AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B0C1805632D0097BC5F /* Foundation.framework */; };
 		6F9BE75C180C0B200045D8AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B1D1805632E0097BC5F /* UIKit.framework */; };
 		6F9BE762180C0B200045D8AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F9BE760180C0B200045D8AE /* InfoPlist.strings */; };
+		6FBA76A0180D706700D83DDE /* AGCryptoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA769D180D706700D83DDE /* AGCryptoBox.m */; };
+		6FBA76A1180D706700D83DDE /* AGRandomGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA769F180D706700D83DDE /* AGRandomGenerator.m */; };
+		6FBA76A3180D707500D83DDE /* AGCryptoSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA76A2180D707500D83DDE /* AGCryptoSpec.m */; };
+		6FBA76A4180D711400D83DDE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B321805683D0097BC5F /* Security.framework */; };
+		6FE41133180D758B008A5A51 /* libcrypto-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B091805632D0097BC5F /* libcrypto-sdk.a */; };
 		D96ED974C2DB4A5189FEB9FA /* libPods-crypto-sdkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D48B0BF93A48E9A159E810 /* libPods-crypto-sdkTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6F9BE766180C0B200045D8AE /* PBXContainerItemProxy */ = {
+		6FE41131180D7543008A5A51 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6F465B011805632D0097BC5F /* Project object */;
 			proxyType = 1;
@@ -50,12 +54,17 @@
 		6F465B1A1805632E0097BC5F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6F465B1D1805632E0097BC5F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		6F465B321805683D0097BC5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		6F5ED5A4180C2A84002F6BDB /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		6F9BE758180C0B200045D8AE /* crypto-sdkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "crypto-sdkTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F9BE759180C0B200045D8AE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		6F9BE75F180C0B200045D8AE /* crypto-sdkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "crypto-sdkTests-Info.plist"; sourceTree = "<group>"; };
 		6F9BE761180C0B200045D8AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6F9BE765180C0B200045D8AE /* crypto-sdkTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "crypto-sdkTests-Prefix.pch"; sourceTree = "<group>"; };
+		6FBA769B180D706700D83DDE /* AeroGearCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AeroGearCrypto.h; sourceTree = "<group>"; };
+		6FBA769C180D706700D83DDE /* AGCryptoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCryptoBox.h; sourceTree = "<group>"; };
+		6FBA769D180D706700D83DDE /* AGCryptoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCryptoBox.m; sourceTree = "<group>"; };
+		6FBA769E180D706700D83DDE /* AGRandomGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGRandomGenerator.h; sourceTree = "<group>"; };
+		6FBA769F180D706700D83DDE /* AGRandomGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRandomGenerator.m; sourceTree = "<group>"; };
+		6FBA76A2180D707500D83DDE /* AGCryptoSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCryptoSpec.m; sourceTree = "<group>"; };
 		99D48B0BF93A48E9A159E810 /* libPods-crypto-sdkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-crypto-sdkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -73,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FE41133180D758B008A5A51 /* libcrypto-sdk.a in Frameworks */,
+				6FBA76A4180D711400D83DDE /* Security.framework in Frameworks */,
 				6F9BE75A180C0B200045D8AE /* SenTestingKit.framework in Frameworks */,
 				6F9BE75C180C0B200045D8AE /* UIKit.framework in Frameworks */,
 				6F9BE75B180C0B200045D8AE /* Foundation.framework in Frameworks */,
@@ -119,6 +130,11 @@
 		6F465B0E1805632D0097BC5F /* crypto-sdk */ = {
 			isa = PBXGroup;
 			children = (
+				6FBA769B180D706700D83DDE /* AeroGearCrypto.h */,
+				6FBA769C180D706700D83DDE /* AGCryptoBox.h */,
+				6FBA769D180D706700D83DDE /* AGCryptoBox.m */,
+				6FBA769E180D706700D83DDE /* AGRandomGenerator.h */,
+				6FBA769F180D706700D83DDE /* AGRandomGenerator.m */,
 				6F465B111805632D0097BC5F /* AeroGearCrypto.h */,
 				6F465B0F1805632D0097BC5F /* Supporting Files */,
 			);
@@ -137,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				6F9BE75E180C0B200045D8AE /* Supporting Files */,
-				6F5ED5A4180C2A84002F6BDB /* Test.m */,
+				6FBA76A2180D707500D83DDE /* AGCryptoSpec.m */,
 			);
 			path = "crypto-sdkTests";
 			sourceTree = "<group>";
@@ -185,7 +201,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				6F9BE767180C0B200045D8AE /* PBXTargetDependency */,
+				6FE41132180D7543008A5A51 /* PBXTargetDependency */,
 			);
 			name = "crypto-sdkTests";
 			productName = "crypto-sdkTests";
@@ -202,7 +218,7 @@
 				ORGANIZATIONNAME = AeroGear;
 				TargetAttributes = {
 					6F9BE757180C0B200045D8AE = {
-						TestTargetID = 6F465B081805632D0097BC5F /* crypto-sdk */;
+						TestTargetID = 6F465B081805632D0097BC5F;
 					};
 				};
 			};
@@ -273,6 +289,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FBA76A1180D706700D83DDE /* AGRandomGenerator.m in Sources */,
+				6FBA76A0180D706700D83DDE /* AGCryptoBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,17 +298,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F5ED5A5180C2A84002F6BDB /* Test.m in Sources */,
+				6FBA76A3180D707500D83DDE /* AGCryptoSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6F9BE767180C0B200045D8AE /* PBXTargetDependency */ = {
+		6FE41132180D7543008A5A51 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6F465B081805632D0097BC5F /* crypto-sdk */;
-			targetProxy = 6F9BE766180C0B200045D8AE /* PBXContainerItemProxy */;
+			targetProxy = 6FE41131180D7543008A5A51 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -406,7 +424,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C0677ED7AA143CCBC2E5F5D /* Pods-crypto-sdkTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -429,7 +447,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C0677ED7AA143CCBC2E5F5D /* Pods-crypto-sdkTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
