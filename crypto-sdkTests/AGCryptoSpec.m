@@ -18,75 +18,30 @@
 #import <Kiwi/Kiwi.h>
 #import "AGCryptoBox.h"
 #import "AGRandomGenerator.h"
+#import "AGPBKDF2.h"
 
 SPEC_BEGIN(AGCryptoBoxSpec)
 
-//describe(@"CryptoBox", ^{
-//    context(@"encrypt raw bytes", ^{
-//        __block AGCryptoBox* encryptEngine = nil;
-//        __block AGCryptoBox* decryptEngine = nil;
-//
-//        beforeEach(^{
-//            NSData *invertedVector = [@"ferfgfgfgfgfgffgfg" dataUsingEncoding:NSUTF8StringEncoding];
-//            NSData* encryptionKeyData = [@"myEncryptKey" dataUsingEncoding:NSUTF8StringEncoding];
-//            AGCryptoOptions options = {kCCEncrypt, kCCAlgorithmAES};
-//            AGCryptoOptions decryptOptions = {kCCDecrypt, kCCAlgorithmAES};
-//            
-//            encryptEngine = [[AGCryptoBox alloc] initWithOptions:options withInvertedVector:invertedVector andKey:encryptionKeyData error:nil];
-//            
-//            decryptEngine = [[AGCryptoBox alloc] initWithOptions:decryptOptions withInvertedVector:invertedVector andKey:encryptionKeyData error:nil];
-//        });
-//        
-//        it(@"should return encrypted data", ^{
-//            NSString* stringToEncrypt = @"ReallySecretString";
-//            NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
-//            
-//            NSData* encryptedData = [encryptEngine encryptData:dataToEncrypt error:nil];
-//            
-//            [encryptedData shouldNotBeNil];
-//            [[theValue([encryptedData length]) should] equal:theValue(18)];
-//            
-//        });
-//        
-//        it(@"should return encrypted data and", ^{
-//            NSString* stringToEncrypt = @"ReallySecretString";
-//            NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
-//            
-//            NSData* encryptedData = [encryptEngine encryptData:dataToEncrypt error:nil];
-//            
-//            [encryptedData shouldNotBeNil];
-//            [[theValue([encryptedData length]) should] equal:theValue(18)];
-//            
-//        });
-//    });
-//
-//});
-
 describe(@"CryptoBox", ^{
     context(@"encrypt raw bytes", ^{
-        __block AGCryptoBox* cryptoEngine = nil;
-        __block NSData* invertedVector = nil;
+        __block AGCryptoBox* cryptoBox = nil;
         __block NSData *encryptionSalt = nil;
-        __block NSString* encryptionKey = nil;
-        __block AGRandomGenerator* randomGenerator = nil;
         
         beforeEach(^{
-            randomGenerator = [[AGRandomGenerator alloc] init];
-            invertedVector = [randomGenerator generateSecret];
-            encryptionSalt = [@"12345678" dataUsingEncoding:NSUTF8StringEncoding];
-            encryptionKey = [randomGenerator keyForPIN:@"1234" salt:encryptionSalt];
-            cryptoEngine = [[AGCryptoBox alloc] initWithKey:encryptionKey initializationVector:encryptionSalt];
-
+            AGPBKDF2 *keyGenerator = [[AGPBKDF2 alloc] init];
+            
+            encryptionSalt = [AGRandomGenerator randomBytes:16];
+            cryptoBox = [[AGCryptoBox alloc] initWithKey:[keyGenerator encrypt:@"123456" salt:encryptionSalt]];
         });
         
         it(@"should return identical encrypted/decrypted data when 16 characters", ^{
             NSString* stringToEncrypt = @"0123456789abcdef";
             NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
             
-            NSData* encryptedData = [cryptoEngine encrypt:dataToEncrypt];
+            NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
             
             [encryptedData shouldNotBeNil];
-            NSData* decryptedData = [cryptoEngine decrypt:encryptedData];
+            NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:encryptionSalt];
             [decryptedData shouldNotBeNil];
             NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
             NSLog(@"Decrypted >>> %@", decryptedString);
@@ -97,10 +52,10 @@ describe(@"CryptoBox", ^{
             NSString* stringToEncrypt = @"0123456789abcde";
             NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
             
-            NSData* encryptedData = [cryptoEngine encrypt:dataToEncrypt];
+            NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
             
             [encryptedData shouldNotBeNil];
-            NSData* decryptedData = [cryptoEngine decrypt:encryptedData];
+            NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:encryptionSalt];
             [decryptedData shouldNotBeNil];
             NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
             NSLog(@"Decrypted >>> %@", decryptedString);
@@ -111,10 +66,10 @@ describe(@"CryptoBox", ^{
             NSString* stringToEncrypt = @"0123456789abcdef1234";
             NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
             
-            NSData* encryptedData = [cryptoEngine encrypt:dataToEncrypt];
+            NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
             
             [encryptedData shouldNotBeNil];
-            NSData* decryptedData = [cryptoEngine decrypt:encryptedData];
+            NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:encryptionSalt];
             [decryptedData shouldNotBeNil];
             NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
             NSLog(@"Decrypted >>> %@", decryptedString);
