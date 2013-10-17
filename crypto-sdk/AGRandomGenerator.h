@@ -16,10 +16,10 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <CommonCrypto/CommonCryptor.h>
-#import <CommonCrypto/CommonKeyDerivation.h>
 
 @interface AGRandomGenerator : NSObject
-- (NSData *)generateSecret;
-- (NSString *)keyForPIN:(NSString *)PIN salt:(NSData *)salt;
+
++ (NSData *)randomBytes;
++ (NSData *)randomBytes:(size_t)length;
+
 @end

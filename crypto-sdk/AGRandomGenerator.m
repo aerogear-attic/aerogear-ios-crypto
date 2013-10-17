@@ -17,44 +17,21 @@
 
 #import "AGRandomGenerator.h"
 
+#import <CommonCrypto/CommonCryptor.h>
+#import <CommonCrypto/CommonKeyDerivation.h>
+
 @implementation AGRandomGenerator
 
-- (NSData *)generateSecret {
-	uint8_t *bytes = malloc(kCCKeySizeAES256 * sizeof(uint8_t));
-	memset((void *)bytes, 0x0, kCCKeySizeAES256);
-	OSStatus sanityCheck = SecRandomCopyBytes(kSecRandomDefault, kCCKeySizeAES256, bytes);
-	if (sanityCheck == noErr) {
-		NSData *secret = [[NSData alloc] initWithBytes:(const void *)bytes length:kCCKeySizeAES256];
-		return secret;
-	} else {
-		return nil;
-	}
++ (NSData *)randomBytes {
+    return [self randomBytes:16];
 }
 
-- (NSString *)keyForPIN:(NSString *)PIN salt:(NSData *)salt {
-    // For backwards compatability
-    if (!salt) {
-        return PIN;
-    }
++ (NSData *)randomBytes:(size_t)length {
+    NSMutableData *data = [NSMutableData dataWithLength:length];
     
-    NSData *PINData = [PIN dataUsingEncoding:NSUTF8StringEncoding];
+    int res = SecRandomCopyBytes(kSecRandomDefault, length, [data mutableBytes]);
     
-    // How many rounds to use so that it takes 0.1s ?
-    int rounds = 32894; // Calculated using: CCCalibratePBKDF(kCCPBKDF2, PINData.length, saltData.length, kCCPRFHmacAlgSHA256, 32, 100);
-    
-    // Open CommonKeyDerivation.h for help
-    unsigned char key[32];
-    int result = CCKeyDerivationPBKDF(kCCPBKDF2, PINData.bytes, PINData.length, salt.bytes, salt.length, kCCPRFHmacAlgSHA256, rounds, key, 32);
-    if (result == kCCParamError) {
-        NSLog(@"Error %d deriving key", result);
-        return nil;
-    }
-    
-    NSMutableString *keyString = [[NSMutableString alloc] init];
-    for (int i = 0; i < 32; ++i) {
-        [keyString appendFormat:@"%02x", key[i]];
-    }
-    return keyString;
+    return (res == noErr? data: nil);
 }
 
 @end
