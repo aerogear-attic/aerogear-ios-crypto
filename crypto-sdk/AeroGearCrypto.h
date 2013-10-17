@@ -19,5 +19,8 @@
 #define _AEROGEARCRYPTO_
 
 // imports
+#import "PBKDF2.h"
+#import "AGRandomGenerator.h"
+#import "AGCryptoBox.h"
 
 #endif /* _AEROGEARCRYPTO_ */
