@@ -16,24 +16,12 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <CommonCrypto/CommonCryptor.h>
-
-//typedef struct {
-//    CCOperation operation;
-//    CCAlgorithm algorithm;
-//} AGCryptoOptions;
 
 @interface AGCryptoBox : NSObject
-//-(id)initWithOptions:(AGCryptoOptions)options withInvertedVector:(NSData*)invertedVector andKey:(NSData*)key error:(NSError**)error;
-//-(NSData*) encryptData:(NSData*)data error:(NSError**)error ;
 
-- (id)initWithKey:(NSString*)key initializationVector:(NSData*)vector;
+- (id)initWithKey:(NSData *)key;
 
-- (NSData *)encrypt:(NSData *)data;
-- (NSData *)decrypt:(NSData *)data;
+- (NSData *)encrypt:(NSData *)data IV:(NSData *)IV;
+- (NSData *)decrypt:(NSData *)data IV:(NSData *)IV;
 
-@property(nonatomic, strong) NSString* key;
-@property(nonatomic, strong) NSData* initializationVector;
-//@property (nonatomic, readonly) CCCryptorRef cryptor;
-//@property (nonatomic, readonly) NSMutableData* encryptedData;
 @end
