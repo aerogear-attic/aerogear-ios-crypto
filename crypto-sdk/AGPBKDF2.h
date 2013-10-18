@@ -17,17 +17,56 @@
 
 #import <Foundation/Foundation.h>
 
+// constants used by PBKDF2 algorithm.
 extern const NSInteger AGPBKDF2Iterations;
 extern const NSInteger AGPBKDF2MinimumIterations;
 extern const NSInteger AGPBKDF2DerivedKeyLength;
 extern const NSInteger AGPBKDF2MinimumSaltLength;
 
+/**
+ * Class that derives a key from a text password/passphrase using
+ * the PBKDF2 algorithm provided by CommonCrypto.
+ * (see http://en.wikipedia.org/wiki/PBKDF2)
+ */
 @interface AGPBKDF2 : NSObject
 
+/**
+ * Derive a key from text password/passphrase.
+ *
+ * @param password The password/passphrase to use for key derivation.
+ *
+ * @return an NSData object containing the derived key.
+ */
 - (NSData *)deriveKey:(NSString *)password;
+
+/**
+ * Derive a key from text password/passphrase.
+ *
+ * @param password The password/passphrase to use for key derivation.
+ * @param salt A randomly choosen value used used during key derivation.
+ *
+ * @return an NSData object containing the derived key.
+ */
 - (NSData *)deriveKey:(NSString *)password salt:(NSData *)salt;
+
+/**
+ * Derive a key from text password/passphrase.
+ *
+ * @param password The password/passphrase to use for key derivation.
+ * @param salt A randomly choosen value used used during key derivation.
+ * @param iterations The number of iterations against the cryptographic hash.
+ *
+ * @return an NSData object containing the derived key.
+ */
 - (NSData *)deriveKey:(NSString *)password salt:(NSData *)salt iterations:(NSInteger)iterations;
+
 - (BOOL)validate:(NSString *)password encryptedPassword:(NSData *)encryptedPassword salt:(NSData *)salt;
+
+/**
+ * Returns the salt used for the key derivation
+ *
+ * @return an NSData object containing the salt
+ */
 - (NSData *)salt;
 
 @end

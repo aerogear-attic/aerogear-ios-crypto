@@ -17,9 +17,25 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Utility class for random generation of cryptographically secure random numbers.
+ */
 @interface AGRandomGenerator : NSObject
 
+/**
+ * Generate secure random numbers with default size of 16 bytes.
+ *
+ * @return an NSData object filled with random bytes.
+ */
 + (NSData *)randomBytes;
+
+/**
+ * Generate secure random numbers with length bytes.
+ *
+ * @param key The length of the random bytes to generate.
+ *
+ * @return an NSData object filled with random bytes.
+ */
 + (NSData *)randomBytes:(size_t)length;
 
 @end

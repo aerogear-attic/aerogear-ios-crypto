@@ -17,11 +17,39 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Main class for performing encrypt/decrypt operations. Currently it only supports symmetric
+ * key encryption but asymmetric support is currently in the works.
+ */
 @interface AGCryptoBox : NSObject
 
+/**
+ * Default initializer.
+ *
+ * @param key The encryption key to use for the encryption/decryption.
+ *
+ * @return the AGCryptoBox object.
+ */
 - (id)initWithKey:(NSData *)key;
 
+/**
+ * Encrypts the data object passed in.
+ *
+ * @param data The data object to encrypt.
+ * @param initializationVector A randomly choosen value used during encrypt.
+ *
+ * @return An NSData object that holds the encrypted(cipher) data.
+ */
 - (NSData *)encrypt:(NSData *)data initializationVector:(NSData *)initializationVector;
+
+/**
+ * Decrypts the data object(cipher) passed in.
+ *
+ * @param data The data object(cipher) to decrypt.
+ * @param initializationVector A randomly choosen value used during decrypt.
+ *
+ * @return An NSData object that holds the decrypted data.
+ */
 - (NSData *)decrypt:(NSData *)data initializationVector:(NSData *)initializationVector;
 
 @end

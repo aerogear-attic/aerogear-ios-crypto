@@ -18,12 +18,47 @@
 #import <Foundation/Foundation.h>
 #import <CommonCrypto/CommonCryptor.h>
 
+/**
+ * Class that handles AES symmetric encryption/decruption using the CommonCrypto API.
+ *
+ * Note: Currently the mode of operation used is CBC.
+ * (see http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29)
+ */
 @interface AGSymmetricCryptoEngine : NSObject
 
+/**
+ * Initialize the symmetric crypto engine.
+ *
+ * @param operation Set to 'kCCEncrypt' for encryption, or 'kCCDecrypt' for decryption.
+ * @param key The key to use for encrypt/decrypt.
+ * @param initializationVector A randomly choosen value used during encrypt/decrypt.
+ * @param error An error object containing details of why the initilization failed.
+ *
+ * @return the AGSymmetricCryptoEngine object.
+ */
 - (id)initWithOperation:(CCOperation)operation key:(NSData *)key
                               initializationVector:(NSData *)initializationVector
                                              error:(NSError **)error;
+
+/**
+ * Add new data to encrypt/decrypt. It can be invoked multiple times passing the new data.
+ *
+ * @param data The data object to encrypt/decrypt.
+ * @param error An error object containing details of why the encrypt/decrypt failed.
+ *
+ * @return An NSData object that holds the encrypted/decrypted data.
+ */
 - (NSData *)add:(NSData *)data error:(NSError **)error;
+
+/**
+ * Finilize the encrypt/decrypt process. 
+ *
+ * Note: It SHOULD be called at the end to finalize the encrypt/decrypt process.
+ *
+ * @param error An error object containing details of why the encrypt/decrypt failed.
+ *
+ * @return An NSData object that holds the encrypted/decrypted data.
+ */
 - (NSData *)finish:(NSError **)error;
 
 @end
