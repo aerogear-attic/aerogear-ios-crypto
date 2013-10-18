@@ -17,6 +17,11 @@
 
 #import <Foundation/Foundation.h>
 
+extern const NSInteger AGPBKDF2Iterations;
+extern const NSInteger AGPBKDF2MinimumIterations;
+extern const NSInteger AGPBKDF2DerivedKeyLength;
+extern const NSInteger AGPBKDF2MinimumSaltLength;
+
 @interface AGPBKDF2 : NSObject
 
 - (NSData *)deriveKey:(NSString *)password;

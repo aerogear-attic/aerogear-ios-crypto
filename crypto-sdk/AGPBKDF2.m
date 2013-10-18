@@ -21,10 +21,10 @@
 #import <CommonCrypto/CommonCryptor.h>
 #import <CommonCrypto/CommonKeyDerivation.h>
 
-static const NSInteger kIterations = 20000;
-static const NSInteger kMinimumIterations = 10000;
-static const NSInteger kDerivedKeyLength = 160;
-static const NSInteger kMinimumSaltLength = 16;
+const NSInteger AGPBKDF2Iterations = 20000;
+const NSInteger AGPBKDF2MinimumIterations = 10000;
+const NSInteger AGPBKDF2DerivedKeyLength = 160;
+const NSInteger AGPBKDF2MinimumSaltLength = 16;
 
 @implementation AGPBKDF2 {
     NSData *_salt;
@@ -45,17 +45,17 @@ static const NSInteger kMinimumSaltLength = 16;
 }
 
 - (NSData *)deriveKey:(NSString *)password salt:(NSData *)salt {
-    return [self deriveKey:password salt:salt iterations:kIterations];
+    return [self deriveKey:password salt:salt iterations:AGPBKDF2Iterations];
 }
 
 - (NSData *)deriveKey:(NSString *)password salt:(NSData *)salt iterations:(NSInteger)iterations {
     NSParameterAssert(password != nil);
-    NSParameterAssert(salt != nil && [salt length] >= kMinimumSaltLength);
-    NSParameterAssert(iterations >= kMinimumIterations);
+    NSParameterAssert(salt != nil && [salt length] >= AGPBKDF2MinimumSaltLength);
+    NSParameterAssert(iterations >= AGPBKDF2MinimumIterations);
     
     _salt = salt;
     
-    NSMutableData *key = [NSMutableData dataWithLength:kDerivedKeyLength];
+    NSMutableData *key = [NSMutableData dataWithLength:AGPBKDF2DerivedKeyLength];
     
     int result = CCKeyDerivationPBKDF(kCCPBKDF2,
                                       [password UTF8String],
@@ -65,7 +65,7 @@ static const NSInteger kMinimumSaltLength = 16;
                                       kCCPRFHmacAlgSHA1,
                                       iterations,
                                       [key mutableBytes],
-                                      kDerivedKeyLength);
+                                      AGPBKDF2DerivedKeyLength);
     if (result == kCCParamError) {
         return nil;
     }

@@ -39,14 +39,16 @@ describe(@"AGPBKDB2", ^{
             it(@"should be valid with random salt provided", ^{
                 NSData *salt = [AGRandomGenerator randomBytes];
                 NSData *rawPassword = [pbkdf2 deriveKey:PASSWORD salt:salt];
-                
+
                 [[theValue([pbkdf2 validate:PASSWORD encryptedPassword:rawPassword salt:salt]) should] beYes];
+                [[theValue([rawPassword length]) should] equal:theValue(AGPBKDF2DerivedKeyLength)];
             });
 
             it(@"should be valid with salt generated", ^{
                 NSData *rawPassword = [pbkdf2 deriveKey:PASSWORD];
                 
                 [[theValue([pbkdf2 validate:PASSWORD encryptedPassword:rawPassword salt:[pbkdf2 salt]]) should] beYes];
+                [[theValue([rawPassword length]) should] equal:theValue(AGPBKDF2DerivedKeyLength)];
             });
         });
         
@@ -57,12 +59,14 @@ describe(@"AGPBKDB2", ^{
                 NSData *rawPassword = [pbkdf2 deriveKey:PASSWORD salt:salt];
                 
                 [[theValue([pbkdf2 validate:INVALID_PASSWORD encryptedPassword:rawPassword salt:salt]) should] beNo];
+                [[theValue([rawPassword length]) should] equal:theValue(AGPBKDF2DerivedKeyLength)];
             });
             
             it(@"should be invalid with salt generated", ^{
                 NSData *rawPassword = [pbkdf2 deriveKey:PASSWORD];
                 
                 [[theValue([pbkdf2 validate:INVALID_PASSWORD encryptedPassword:rawPassword salt:[pbkdf2 salt]]) should] beNo];
+                [[theValue([rawPassword length]) should] equal:theValue(AGPBKDF2DerivedKeyLength)];
             });
         });
         
