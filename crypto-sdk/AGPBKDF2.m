@@ -30,16 +30,6 @@ const NSInteger AGPBKDF2MinimumSaltLength = 16;
     NSData *_salt;
 }
 
-- (id)init {
-    self = [super init];
-    
-    if (self) {
-        // initialize
-    }
-    
-    return self;
-}
-
 - (NSData *)deriveKey:(NSString *)password {
     return [self deriveKey:password salt:[AGRandomGenerator randomBytes]];
 }
