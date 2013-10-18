@@ -38,13 +38,13 @@ describe(@"AGPBKDB2", ^{
             
             it(@"should be valid with random salt provided", ^{
                 NSData *salt = [AGRandomGenerator randomBytes];
-                NSData *rawPassword = [pbkdf2 encrypt:PASSWORD salt:salt];
+                NSData *rawPassword = [pbkdf2 deriveKey:PASSWORD salt:salt];
                 
                 [[theValue([pbkdf2 validate:PASSWORD encryptedPassword:rawPassword salt:salt]) should] beYes];
             });
 
             it(@"should be valid with salt generated", ^{
-                NSData *rawPassword = [pbkdf2 encrypt:PASSWORD];
+                NSData *rawPassword = [pbkdf2 deriveKey:PASSWORD];
                 
                 [[theValue([pbkdf2 validate:PASSWORD encryptedPassword:rawPassword salt:[pbkdf2 salt]]) should] beYes];
             });
@@ -54,13 +54,13 @@ describe(@"AGPBKDB2", ^{
             
             it(@"should be invalid with random salt provided", ^{
                 NSData *salt = [AGRandomGenerator randomBytes];
-                NSData *rawPassword = [pbkdf2 encrypt:PASSWORD salt:salt];
+                NSData *rawPassword = [pbkdf2 deriveKey:PASSWORD salt:salt];
                 
                 [[theValue([pbkdf2 validate:INVALID_PASSWORD encryptedPassword:rawPassword salt:salt]) should] beNo];
             });
             
             it(@"should be invalid with salt generated", ^{
-                NSData *rawPassword = [pbkdf2 encrypt:PASSWORD];
+                NSData *rawPassword = [pbkdf2 deriveKey:PASSWORD];
                 
                 [[theValue([pbkdf2 validate:INVALID_PASSWORD encryptedPassword:rawPassword salt:[pbkdf2 salt]]) should] beNo];
             });
@@ -72,7 +72,7 @@ describe(@"AGPBKDB2", ^{
                 NSData *salt = [@"42" dataUsingEncoding:NSUTF8StringEncoding];
 
                 [[theBlock(^{
-                    __unused NSData *rawPassword = [pbkdf2 encrypt:PASSWORD salt:salt];
+                    __unused NSData *rawPassword = [pbkdf2 deriveKey:PASSWORD salt:salt];
                 }) should] raise];
             });
         
@@ -80,7 +80,7 @@ describe(@"AGPBKDB2", ^{
                 NSData *salt = [AGRandomGenerator randomBytes];
                 
                 [[theBlock(^{
-                    __unused NSData *rawPassword = [pbkdf2 encrypt:PASSWORD salt:salt iterations:42];
+                    __unused NSData *rawPassword = [pbkdf2 deriveKey:PASSWORD salt:salt iterations:42];
                 }) should] raise];
             });
         });

@@ -31,7 +31,7 @@ describe(@"CryptoBox", ^{
             AGPBKDF2 *keyGenerator = [[AGPBKDF2 alloc] init];
             
             encryptionSalt = [AGRandomGenerator randomBytes:16];
-            cryptoBox = [[AGCryptoBox alloc] initWithKey:[keyGenerator encrypt:@"123456" salt:encryptionSalt]];
+            cryptoBox = [[AGCryptoBox alloc] initWithKey:[keyGenerator deriveKey:@"123456" salt:encryptionSalt]];
         });
         
         it(@"should return identical encrypted/decrypted data when 16 characters", ^{

@@ -40,15 +40,15 @@ static const NSInteger kMinimumSaltLength = 16;
     return self;
 }
 
-- (NSData *)encrypt:(NSString *)password {
-    return [self encrypt:password salt:[AGRandomGenerator randomBytes]];
+- (NSData *)deriveKey:(NSString *)password {
+    return [self deriveKey:password salt:[AGRandomGenerator randomBytes]];
 }
 
-- (NSData *)encrypt:(NSString *)password salt:(NSData *)salt {
-    return [self encrypt:password salt:salt iterations:kIterations];
+- (NSData *)deriveKey:(NSString *)password salt:(NSData *)salt {
+    return [self deriveKey:password salt:salt iterations:kIterations];
 }
 
-- (NSData *)encrypt:(NSString *)password salt:(NSData *)salt iterations:(NSInteger)iterations {
+- (NSData *)deriveKey:(NSString *)password salt:(NSData *)salt iterations:(NSInteger)iterations {
     NSParameterAssert(password != nil);
     NSParameterAssert(salt != nil && [salt length] >= kMinimumSaltLength);
     NSParameterAssert(iterations >= kMinimumIterations);
@@ -74,7 +74,7 @@ static const NSInteger kMinimumSaltLength = 16;
 }
 
 - (BOOL)validate:(NSString *)password encryptedPassword:(NSData *)encryptedPassword salt:(NSData *)salt {
-    NSData *attempt = [self encrypt:password salt:salt];
+    NSData *attempt = [self deriveKey:password salt:salt];
     
     return [encryptedPassword isEqual:attempt];    
 }

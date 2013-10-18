@@ -19,9 +19,9 @@
 
 @interface AGPBKDF2 : NSObject
 
-- (NSData *)encrypt:(NSString *)password;
-- (NSData *)encrypt:(NSString *)password salt:(NSData *)salt;
-- (NSData *)encrypt:(NSString *)password salt:(NSData *)salt iterations:(NSInteger)iterations;
+- (NSData *)deriveKey:(NSString *)password;
+- (NSData *)deriveKey:(NSString *)password salt:(NSData *)salt;
+- (NSData *)deriveKey:(NSString *)password salt:(NSData *)salt iterations:(NSInteger)iterations;
 - (BOOL)validate:(NSString *)password encryptedPassword:(NSData *)encryptedPassword salt:(NSData *)salt;
 - (NSData *)salt;
 
