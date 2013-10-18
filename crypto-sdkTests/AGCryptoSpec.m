@@ -38,10 +38,10 @@ describe(@"CryptoBox", ^{
             NSString* stringToEncrypt = @"0123456789abcdef";
             NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
             
-            NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
+            NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt initializationVector:encryptionSalt];
             
             [encryptedData shouldNotBeNil];
-            NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:encryptionSalt];
+            NSData* decryptedData = [cryptoBox decrypt:encryptedData initializationVector:encryptionSalt];
             [decryptedData shouldNotBeNil];
             NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
             NSLog(@"Decrypted >>> %@", decryptedString);
@@ -52,10 +52,10 @@ describe(@"CryptoBox", ^{
             NSString* stringToEncrypt = @"0123456789abcde";
             NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
             
-            NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
+            NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt initializationVector:encryptionSalt];
             
             [encryptedData shouldNotBeNil];
-            NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:encryptionSalt];
+            NSData* decryptedData = [cryptoBox decrypt:encryptedData initializationVector:encryptionSalt];
             [decryptedData shouldNotBeNil];
             NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
             NSLog(@"Decrypted >>> %@", decryptedString);
@@ -66,10 +66,10 @@ describe(@"CryptoBox", ^{
             NSString* stringToEncrypt = @"0123456789abcdef1234";
             NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
             
-            NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
+            NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt initializationVector:encryptionSalt];
             
             [encryptedData shouldNotBeNil];
-            NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:encryptionSalt];
+            NSData* decryptedData = [cryptoBox decrypt:encryptedData initializationVector:encryptionSalt];
             [decryptedData shouldNotBeNil];
             NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
             NSLog(@"Decrypted >>> %@", decryptedString);

@@ -21,7 +21,7 @@
 
 - (id)initWithKey:(NSData *)key;
 
-- (NSData *)encrypt:(NSData *)data IV:(NSData *)IV;
-- (NSData *)decrypt:(NSData *)data IV:(NSData *)IV;
+- (NSData *)encrypt:(NSData *)data initializationVector:(NSData *)IV;
+- (NSData *)decrypt:(NSData *)data initializationVector:(NSData *)IV;
 
 @end

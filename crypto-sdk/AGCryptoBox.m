@@ -31,15 +31,15 @@
     return self;
 }
 
-- (NSData *)encrypt:(NSData *)data IV:(NSData *)IV {
+- (NSData *)encrypt:(NSData *)data initializationVector:(NSData *)IV {
     NSParameterAssert(data != nil);
     NSParameterAssert(IV != nil);
 
     NSError *error;
     AGSymmetricCryptoEngine *engine = [[AGSymmetricCryptoEngine alloc] initWithOperation:kCCEncrypt
-                                                                   key:_key
-                                                                    IV:IV
-                                                                 error:&error];
+                                                                                     key:_key
+                                                                    initializationVector:IV
+                                                                                   error:&error];
 
     NSMutableData *cipher = [NSMutableData data];
     
@@ -49,15 +49,15 @@
     return cipher;
 }
 
-- (NSData *)decrypt:(NSData *)data IV:(NSData *)IV {
+- (NSData *)decrypt:(NSData *)data initializationVector:(NSData *)IV {
     NSParameterAssert(data != nil);
     NSParameterAssert(IV != nil);
 
     NSError *error;
     AGSymmetricCryptoEngine *engine = [[AGSymmetricCryptoEngine alloc] initWithOperation:kCCDecrypt
-                                                                   key:_key
-                                                                    IV:IV
-                                                                 error:&error];
+                                                                                     key:_key
+                                                                    initializationVector:IV
+                                                                                   error:&error];
     
     NSMutableData *cipher = [NSMutableData data];
     

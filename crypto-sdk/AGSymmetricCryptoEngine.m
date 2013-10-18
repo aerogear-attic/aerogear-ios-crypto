@@ -24,7 +24,7 @@ NSString *const AGSymmetricCryptoErrorDomain = @"AGCryptoErrorDomain";
     NSMutableData *_buffer;
 }
 
-- (id)initWithOperation:(CCOperation)operation key:(NSData *)key IV:(NSData *)IV error:(NSError **)error {
+- (id)initWithOperation:(CCOperation)operation key:(NSData *)key initializationVector:(NSData *)IV error:(NSError **)error {
     self = [super init];
     
     if (self) {

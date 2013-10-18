@@ -20,7 +20,7 @@
 
 @interface AGSymmetricCryptoEngine : NSObject
 
-- (id)initWithOperation:(CCOperation)operation key:(NSData *)key IV:(NSData *)IV error:(NSError **)error;
+- (id)initWithOperation:(CCOperation)operation key:(NSData *)key initializationVector:(NSData *)IV error:(NSError **)error;
 - (NSData *)add:(NSData *)data error:(NSError **)error;
 - (NSData *)finish:(NSError **)error;
 
