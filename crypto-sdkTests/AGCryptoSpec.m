@@ -45,7 +45,7 @@ describe(@"CryptoBox", ^{
             [decryptedData shouldNotBeNil];
             NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
             NSLog(@"Decrypted >>> %@", decryptedString);
-            [[stringToEncrypt should] equal:decryptedString];
+            [[@"0123456789abcdef" should] equal:decryptedString];
         });
         
         it(@"should return identical encrypted/decrypted data when less than 16 chars", ^{
