@@ -19,7 +19,7 @@
 #define _AEROGEARCRYPTO_
 
 // imports
-#import "PBKDF2.h"
+#import "AGPBKDF2.h"
 #import "AGRandomGenerator.h"
 #import "AGCryptoBox.h"
 
