@@ -25,7 +25,7 @@ NSString *const AGSymmetricCryptoErrorDomain = @"AGCryptoErrorDomain";
 }
 
 - (id)initWithOperation:(CCOperation)operation key:(NSData *)key
-   initializationVector:(NSData *)initializationVector
+                     IV:(NSData *)IV
                   error:(NSError **)error {
     self = [super init];
     
@@ -34,7 +34,7 @@ NSString *const AGSymmetricCryptoErrorDomain = @"AGCryptoErrorDomain";
                                                          kCCModeCBC,
                                                          kCCAlgorithmAES128,
                                                          kCCOptionPKCS7Padding,
-                                                         (const void *) [initializationVector bytes],
+                                                         (const void *) [IV bytes],
                                                          (const void *) [key bytes],
                                                          kCCBlockSizeAES128,
                                                          NULL, // raw tweak material (unused)
