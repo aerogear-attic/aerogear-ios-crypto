@@ -76,8 +76,41 @@ describe(@"CryptoBox", ^{
             [[@"0123456789abcdef1234" should] equal:decryptedString];
         });
         
+        it(@"should fail to decrypt with corrupted IV", ^{
+            NSString* stringToEncrypt = @"0123456789abcdef1234";
+            NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
+            
+            NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
+            // corrupt IV
+            NSMutableData *mutEncryptionSalt = [encryptionSalt mutableCopy];
+            [mutEncryptionSalt replaceBytesInRange:NSMakeRange(1, 1)
+                                         withBytes:[[@" " dataUsingEncoding:NSUTF8StringEncoding] bytes]];
+
+            // try to decrypt
+            NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:mutEncryptionSalt];
+            NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
+
+            // should fail
+            [[@"0123456789abcdef1234" shouldNot] equal:decryptedString];
+        });
+        
+        it(@"should fail to decrypt corrupted ciphertext", ^{
+            NSString* stringToEncrypt = @"0123456789abcdef1234";
+            NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
+            
+            NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
+            // corrupt cipher
+            NSMutableData *mutEncryptedData = [encryptedData mutableCopy];
+            [mutEncryptedData replaceBytesInRange:NSMakeRange(1, 1)
+                                        withBytes:[[@" " dataUsingEncoding:NSUTF8StringEncoding] bytes]];
+            // try to decrypt
+            NSData* decryptedData = [cryptoBox decrypt:mutEncryptedData IV:encryptionSalt];
+            NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
+            
+            // should fail
+            [decryptedString shouldBeNil];
+        });
     });
-    
 });
 SPEC_END
 
