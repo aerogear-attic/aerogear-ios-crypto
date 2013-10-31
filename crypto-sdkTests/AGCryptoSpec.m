@@ -23,7 +23,7 @@
 SPEC_BEGIN(AGCryptoBoxSpec)
 
 describe(@"CryptoBox", ^{
-    context(@"encrypt raw bytes", ^{
+    context(@"when newly created", ^{
         __block AGCryptoBox* cryptoBox = nil;
         __block NSData *encryptionSalt = nil;
         
@@ -34,81 +34,98 @@ describe(@"CryptoBox", ^{
             cryptoBox = [[AGCryptoBox alloc] initWithKey:[keyGenerator deriveKey:@"123456" salt:encryptionSalt]];
         });
         
-        it(@"should return identical encrypted/decrypted data when 16 characters", ^{
-            NSString* stringToEncrypt = @"0123456789abcdef";
-            NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
-            
-            NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
-            
-            [encryptedData shouldNotBeNil];
-            NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:encryptionSalt];
-            [decryptedData shouldNotBeNil];
-            NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
-            NSLog(@"Decrypted >>> %@", decryptedString);
-            [[@"0123456789abcdef" should] equal:decryptedString];
+        it(@"it should not be nil", ^{
+            [[cryptoBox shouldNot] beNil];
         });
         
-        it(@"should return identical encrypted/decrypted data when less than 16 chars", ^{
-            NSString* stringToEncrypt = @"0123456789abcde";
-            NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
+        context(@"should correctly encrypt/decrypt honouring kCCOptionPKCS7Padding" , ^{
+            it(@"should return identical encrypted/decrypted data when 16 characters", ^{
+                NSString* stringToEncrypt = @"0123456789abcdef";
+                NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
+                
+                // encrypt
+                NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
+                [encryptedData shouldNotBeNil];
+                
+                // decrypt
+                NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:encryptionSalt];
+                [decryptedData shouldNotBeNil];
+                
+                // should match
+                NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
+                [[@"0123456789abcdef" should] equal:decryptedString];
+            });
             
-            NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
+            it(@"should return identical encrypted/decrypted data when less than 16 chars", ^{
+                NSString* stringToEncrypt = @"0123456789abcde";
+                NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
+                
+                // encrypt
+                NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
+                [encryptedData shouldNotBeNil];
+                
+                // decrypt
+                NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:encryptionSalt];
+                [decryptedData shouldNotBeNil];
+                
+                // should match
+                NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
+                [[@"0123456789abcde" should] equal:decryptedString];
+            });
             
-            [encryptedData shouldNotBeNil];
-            NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:encryptionSalt];
-            [decryptedData shouldNotBeNil];
-            NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
-            NSLog(@"Decrypted >>> %@", decryptedString);
-            [[@"0123456789abcde" should] equal:decryptedString];
-        });
-        
-        it(@"should return identical encrypted/decrypted data when data to encrypt is more than 16 chars", ^{
-            NSString* stringToEncrypt = @"0123456789abcdef1234";
-            NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
-            
-            NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
-            
-            [encryptedData shouldNotBeNil];
-            NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:encryptionSalt];
-            [decryptedData shouldNotBeNil];
-            NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
-            NSLog(@"Decrypted >>> %@", decryptedString);
-            [[@"0123456789abcdef1234" should] equal:decryptedString];
-        });
-        
-        it(@"should fail to decrypt with corrupted IV", ^{
-            NSString* stringToEncrypt = @"0123456789abcdef1234";
-            NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
-            
-            NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
-            // corrupt IV
-            NSMutableData *mutEncryptionSalt = [encryptionSalt mutableCopy];
-            [mutEncryptionSalt replaceBytesInRange:NSMakeRange(1, 1)
-                                         withBytes:[[@" " dataUsingEncoding:NSUTF8StringEncoding] bytes]];
+            it(@"should return identical encrypted/decrypted data when data to encrypt is more than 16 chars", ^{
+                NSString* stringToEncrypt = @"0123456789abcdef1234";
+                NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
 
-            // try to decrypt
-            NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:mutEncryptionSalt];
-            NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
-
-            // should fail
-            [[@"0123456789abcdef1234" shouldNot] equal:decryptedString];
+                // encrypt
+                NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
+                [encryptedData shouldNotBeNil];
+                
+                // decrypt
+                NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:encryptionSalt];
+                [decryptedData shouldNotBeNil];
+                
+                // should match
+                NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
+                [[@"0123456789abcdef1234" should] equal:decryptedString];
+            });
         });
         
-        it(@"should fail to decrypt corrupted ciphertext", ^{
-            NSString* stringToEncrypt = @"0123456789abcdef1234";
-            NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
+        context(@"should fail with corrupted crypto params", ^{
+            it(@"should fail to decrypt with corrupted IV", ^{
+                NSString* stringToEncrypt = @"0123456789abcdef1234";
+                NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
+                
+                NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
+                // corrupt IV
+                NSMutableData *mutEncryptionSalt = [encryptionSalt mutableCopy];
+                [mutEncryptionSalt replaceBytesInRange:NSMakeRange(1, 1)
+                                             withBytes:[[@" " dataUsingEncoding:NSUTF8StringEncoding] bytes]];
+
+                // try to decrypt
+                NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:mutEncryptionSalt];
+                NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
+
+                // should fail
+                [[@"0123456789abcdef1234" shouldNot] equal:decryptedString];
+            });
             
-            NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
-            // corrupt cipher
-            NSMutableData *mutEncryptedData = [encryptedData mutableCopy];
-            [mutEncryptedData replaceBytesInRange:NSMakeRange(1, 1)
-                                        withBytes:[[@" " dataUsingEncoding:NSUTF8StringEncoding] bytes]];
-            // try to decrypt
-            NSData* decryptedData = [cryptoBox decrypt:mutEncryptedData IV:encryptionSalt];
-            NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
-            
-            // should fail
-            [decryptedString shouldBeNil];
+            it(@"should fail to decrypt with corrupted ciphertext", ^{
+                NSString* stringToEncrypt = @"0123456789abcdef1234";
+                NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
+                
+                NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
+                // corrupt cipher
+                NSMutableData *mutEncryptedData = [encryptedData mutableCopy];
+                [mutEncryptedData replaceBytesInRange:NSMakeRange(1, 1)
+                                            withBytes:[[@" " dataUsingEncoding:NSUTF8StringEncoding] bytes]];
+                // try to decrypt
+                NSData* decryptedData = [cryptoBox decrypt:mutEncryptedData IV:encryptionSalt];
+                NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
+                
+                // should fail
+                [decryptedString shouldBeNil];
+            });
         });
     });
 });
