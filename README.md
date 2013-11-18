@@ -3,7 +3,7 @@
 ## Project Aim
 _"Crypto for Humans"_
 
-The aim of the project is to provide useful and easy to use API interfaces for performing advanced cryptographic techniques in the iOS platform. We base our work on the existing [Security and CommonCrypto](http://tinyurl.com/n6zf3le) services  already provided by the platform, but we strive to provide a more friendlier interface around those services. Anyone who has tried to use those frameworks directly can understand the pain of using them (conversion of CF data types to Obj-C anyone?), let alone using them correctly. We understand that applying good cryptographic techniques is not an easy task and requires deep knowledge of the underlying concepts. But we _strongly_ believe a "friendlier" developer interface can help easy that pain.
+The aim of the project is to provide useful and easy to use API interfaces for performing advanced cryptographic techniques in the iOS platform. We base our work on the existing [Security and CommonCrypto](http://tinyurl.com/n6zf3le) services  already provided by the platform, but we strive to provide a friendlier interface around those services. Anyone who has tried to use those frameworks directly can understand the pain of using them (conversion of CF data types to Obj-C anyone?), let alone using them correctly. We understand that applying good cryptographic techniques is not an easy task and requires deep knowledge of the underlying concepts. But we _strongly_ believe a "friendlier" developer interface can ease the pain.
 
 The project shares the same vision with our sibling AeroGear project [AeroGear-Crypto-Java](https://github.com/aerogear/aerogear-crypto-java). If you are a Java developer, we strongly recommend to look at the project. 
 
