@@ -1,11 +1,15 @@
 language: objective-c
 
-before_script: travis/before_script.sh
-script: travis/script.sh
+before_install:
+    - brew unlink xctool
+    - brew update
+    - brew install xctool
+script:
+    - xctool clean build test ONLY_ACTIVE_ARCH=NO
 
 notifications:
   irc: "irc.freenode.org#aerogear"
-
+  
 branches:
   only:
     - master
