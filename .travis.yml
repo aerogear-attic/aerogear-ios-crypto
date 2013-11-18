@@ -5,7 +5,7 @@ before_install:
     - brew update
     - brew install xctool
 script:
-    - xctool clean build test ONLY_ACTIVE_ARCH=NO
+    - xctool -workspace crypto-sdk.xcworkspace -scheme crypto-sdk
 
 notifications:
   irc: "irc.freenode.org#aerogear"
