@@ -6,6 +6,7 @@ before_install:
     - brew install xctool
 script:
     - xctool -workspace crypto-sdk.xcworkspace -scheme crypto-sdk
+    - pod spec lint AeroGear-Crypto.podspec --verbose
 
 notifications:
   irc: "irc.freenode.org#aerogear"
