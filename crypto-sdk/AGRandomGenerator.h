@@ -32,7 +32,7 @@
 /**
  * Generate secure random numbers with length bytes.
  *
- * @param key The length of the random bytes to generate.
+ * @param length The length of the random bytes to generate.
  *
  * @return an NSData object filled with random bytes.
  */
