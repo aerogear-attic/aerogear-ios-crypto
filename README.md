@@ -1,4 +1,4 @@
-# aerogear-crypto-ios 
+# aerogear-crypto-ios [![Build Status](https://travis-ci.org/aerogear/aerogear-crypto-ios.png)](https://travis-ci.org/aerogear/aerogear-crypto-ios)
 
 ## Project Aim
 _"Crypto for Humans"_
