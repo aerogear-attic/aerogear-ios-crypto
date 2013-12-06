@@ -1,11 +1,12 @@
 language: objective-c
 
 before_install:
-    - brew unlink xctool
+    - gem install cocoapods
     - brew update
-    - brew install xctool
+    - brew uninstall xctool && brew install xctool
+
 script:
-    - xctool -workspace crypto-sdk.xcworkspace -scheme crypto-sdk
+    - xctool -workspace crypto-sdk.xcworkspace -scheme crypto-sdk -sdk iphonesimulator -configuration Debug test
     - pod spec lint AeroGear-Crypto.podspec --verbose
 
 notifications:
@@ -14,3 +15,4 @@ notifications:
 branches:
   only:
     - master
+    
