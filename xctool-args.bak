@@ -1,6 +1,0 @@
-[
-  "-workspace", "crypto-sdk.xcworkspace",
-  "-scheme", "crypto-sdk",
-  "-sdk", "iphonesimulator",
-  "-arch", "i386"
-]
