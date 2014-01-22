@@ -23,6 +23,8 @@
 		6FBA76A3180D707500D83DDE /* AGCryptoSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA76A2180D707500D83DDE /* AGCryptoSpec.m */; };
 		6FBA76A4180D711400D83DDE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B321805683D0097BC5F /* Security.framework */; };
 		6FE41133180D758B008A5A51 /* libcrypto-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B091805632D0097BC5F /* libcrypto-sdk.a */; };
+		81F418035F52E24DE43A35A1 /* AGHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F41A7F744D0EFE8190E12C /* AGHash.m */; };
+		81F41C9948DCE0469BCA535A /* AGHashSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F41AFEA2BEA9251E8A44FA /* AGHashSpec.m */; };
 		D96ED974C2DB4A5189FEB9FA /* libPods-crypto-sdkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D48B0BF93A48E9A159E810 /* libPods-crypto-sdkTests.a */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +77,9 @@
 		6FBA769E180D706700D83DDE /* AGRandomGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGRandomGenerator.h; sourceTree = "<group>"; };
 		6FBA769F180D706700D83DDE /* AGRandomGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRandomGenerator.m; sourceTree = "<group>"; };
 		6FBA76A2180D707500D83DDE /* AGCryptoSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCryptoSpec.m; sourceTree = "<group>"; };
+		81F414CA0E9E7E6FDDDC0AB6 /* AGHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGHash.h; sourceTree = "<group>"; };
+		81F41A7F744D0EFE8190E12C /* AGHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGHash.m; sourceTree = "<group>"; };
+		81F41AFEA2BEA9251E8A44FA /* AGHashSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGHashSpec.m; sourceTree = "<group>"; };
 		99D48B0BF93A48E9A159E810 /* libPods-crypto-sdkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-crypto-sdkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -151,6 +156,8 @@
 				6FBA769F180D706700D83DDE /* AGRandomGenerator.m */,
 				6F465B111805632D0097BC5F /* AeroGearCrypto.h */,
 				6F465B0F1805632D0097BC5F /* Supporting Files */,
+				81F41A7F744D0EFE8190E12C /* AGHash.m */,
+				81F414CA0E9E7E6FDDDC0AB6 /* AGHash.h */,
 			);
 			path = "crypto-sdk";
 			sourceTree = "<group>";
@@ -170,6 +177,7 @@
 				6FBA76A2180D707500D83DDE /* AGCryptoSpec.m */,
 				6F86F953180FEFA5002B087A /* AGPBKDF2Spec.m */,
 				6F86F955181009B5002B087A /* AGRandomGeneratorSpec.m */,
+				81F41AFEA2BEA9251E8A44FA /* AGHashSpec.m */,
 			);
 			path = "crypto-sdkTests";
 			sourceTree = "<group>";
@@ -309,6 +317,7 @@
 				6F6AB2E1180EE581006AD5EC /* AGSymmetricCryptoEngine.m in Sources */,
 				6FBA76A1180D706700D83DDE /* AGRandomGenerator.m in Sources */,
 				6FBA76A0180D706700D83DDE /* AGCryptoBox.m in Sources */,
+				81F418035F52E24DE43A35A1 /* AGHash.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +328,7 @@
 				6FBA76A3180D707500D83DDE /* AGCryptoSpec.m in Sources */,
 				6F86F956181009B5002B087A /* AGRandomGeneratorSpec.m in Sources */,
 				6F86F954180FEFA5002B087A /* AGPBKDF2Spec.m in Sources */,
+				81F41C9948DCE0469BCA535A /* AGHashSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
