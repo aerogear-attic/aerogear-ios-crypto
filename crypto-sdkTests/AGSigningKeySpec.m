@@ -9,7 +9,7 @@ SPEC_BEGIN(AGSigningKeySpec)
         describe(@"AGSigningKey", ^{
             context(@"Keypair creation", ^{
 
-                const unsigned char publicKey[crypto_sign_ed25519_PUBLICKEYBYTES];
+                /*const unsigned char publicKey[crypto_sign_ed25519_PUBLICKEYBYTES];
                 const unsigned char secretKey[crypto_sign_ed25519_SECRETKEYBYTES];
 
                 const unsigned long long bufferLen = crypto_sign_ed25519_SECRETKEYBYTES;
@@ -51,7 +51,7 @@ SPEC_BEGIN(AGSigningKeySpec)
 
                 if( status != 0 ) {
                     NSLog(@"Invalid signature %i", status);
-                }
+                } */
 
             });
         });
