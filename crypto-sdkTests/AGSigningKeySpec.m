@@ -23,19 +23,31 @@
 SPEC_BEGIN(AGSigningKeySpec)
 
         describe(@"AGSigningKey", ^{
-            context(@"Keypair creation", ^{
+            context(@"Signing message", ^{
 
-                AGSigningKey * signingKey = [[AGSigningKey alloc] init];
-                NSLog(@"Public key: %@", [AGUtil hexString:signingKey.publicKey]);
+                NSString const * message = @"My Bonnie lies over the ocean, my Bonnie lies over the sea";
 
-                //Sign the message
-                NSString *m = @"Hello ladies";
+                __block AGSigningKey *signingKey;
+                __block AGVerifyKey *verifyKey;
 
-                NSData *signature = [signingKey sign:m];
 
-                AGVerifyKey * verifyKey = [[AGVerifyKey alloc] initWithKey:signingKey.publicKey];
-                BOOL status = [verifyKey verify:m signature:signature];
-                [[theValue(status) should] equal:theValue(YES)];
+                beforeEach(^{
+                    signingKey = [[AGSigningKey alloc] init];
+                    verifyKey = [[AGVerifyKey alloc] initWithKey:signingKey.publicKey];
+
+                });
+
+                it(@"should properly sign and verify the signature", ^{
+                    NSData * signedMessage = [signingKey sign:message];
+                    BOOL status = [verifyKey verify:message signature:signedMessage];
+                    [[theValue(status) should] equal:theValue(YES)];
+                });
+
+                it(@"should detect bad signature", ^{
+                    NSData *corruptedMessage = [AGUtil prependZeros:64];
+                    BOOL status = [verifyKey verify:message signature:corruptedMessage];
+                    [[theValue(status) should] equal:theValue(NO)];
+                });
             });
         });
 
