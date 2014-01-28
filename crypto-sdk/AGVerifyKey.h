@@ -17,10 +17,23 @@
 
 #import <Foundation/Foundation.h>
 
-
+/**
+ * Verify digital signatures
+ * (see http://ed25519.cr.yp.to)
+ */
 @interface AGVerifyKey : NSObject
 
+/**
+* Initialize with the public key provided
+* @param Public key
+*/
 - (id)initWithKey:(NSData *)key;
+
+/**
+* Verify the integrity of the message with the signature provided
+* @param message to be verified
+* @param signature provided
+*/
 - (BOOL) verify:(NSString *)message signature:(NSData *)signature;
 
 @end

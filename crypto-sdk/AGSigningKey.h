@@ -19,12 +19,19 @@
 #import <libsodium-ios/sodium/crypto_sign_ed25519.h>
 #import <libsodium-ios/sodium/randombytes.h>
 
-
+/**
+ * Create digital signatures
+ * (see http://ed25519.cr.yp.to)
+ */
 @interface AGSigningKey : NSObject
 
 @property(readonly, nonatomic, strong) NSData *secretKey;
 @property(readonly, nonatomic, strong) NSData *publicKey;
 
+/**
+* Digitally sign a message to prevent against tampering and forgery
+* @param message to be signed
+*/
 - (NSData *)sign:(NSString *)message;
 
 @end
