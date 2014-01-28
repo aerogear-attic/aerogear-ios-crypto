@@ -52,7 +52,7 @@
     return data;
 }
 
-+ (BOOL *) isValid:(NSUInteger)status msg:(NSString *)message {
++ (BOOL) isValid:(NSUInteger)status msg:(NSString *)message {
     if (status != 0) {
         NSException* myException = [NSException
                 exceptionWithName:@"RuntimeException"
@@ -60,19 +60,28 @@
                          userInfo:nil];
         @throw myException;
     }
-    return true;
+    return YES;
 }
 
-+ (NSData *) slice:(NSData *)buffer start:(NSUInteger)start end:(NSUInteger *)end {
++ (NSData *) slice:(NSData *)buffer start:(NSUInteger)start end:(NSUInteger)end {
     return [buffer subdataWithRange:NSMakeRange(start, end)];
 }
 
-+ (void) checkLength:(unsigned char *) data size:(NSUInteger *)size {
-    if (data == nil || sizeof(data) != size) {
++ (void) checkLength:(NSData *) data size:(NSUInteger)size {
+    if (data == nil || [data length] != size) {
         [NSException raise:@"RuntimeException"
-                     format:[NSString stringWithString:@"Invalid size %d"],
-                     sizeof(data)];
+                    format:@"Invalid size %ul", [data length]];
     }
+}
+
++ (NSString*) hexString:(NSData *)data {
+	NSMutableString *stringBuffer = [NSMutableString stringWithCapacity:([data length] * 2)];
+	const unsigned char *dataBuffer = [data bytes];
+
+	for (int i = 0; i < [data length]; ++i) {
+        [stringBuffer appendFormat:@"%02X", dataBuffer[i]];
+	}
+	return stringBuffer;
 }
 
 @end

@@ -19,11 +19,7 @@
 #import "AGUtil.h"
 
 
-unsigned char _someKey;
-
-@implementation AGSigningKey {
-
-}
+@implementation AGSigningKey
 
 - (id)init {
     self = [super init];
@@ -34,15 +30,19 @@ unsigned char _someKey;
         unsigned char seed[bufferLen];
 
         randombytes(seed, bufferLen);
+        
+        unsigned char cpublicKey[crypto_sign_ed25519_PUBLICKEYBYTES];
+        unsigned char csecretKey[crypto_sign_ed25519_SECRETKEYBYTES];
 
         //Generate the keypair
-        crypto_sign_ed25519_seed_keypair(publicKey, secretKey, seed);
+        crypto_sign_ed25519_seed_keypair(cpublicKey, csecretKey, seed);
+        
+        _publicKey = [NSData dataWithBytes:cpublicKey length:crypto_sign_ed25519_PUBLICKEYBYTES];
+        _secretKey = [NSData dataWithBytes:csecretKey length:crypto_sign_ed25519_SECRETKEYBYTES];
 
         //Generate the keypair
-        [AGUtil isValid:crypto_sign_ed25519_seed_keypair(publicKey, secretKey, seed)
+        [AGUtil isValid:crypto_sign_ed25519_seed_keypair(cpublicKey, csecretKey, seed)
                     msg:@"Failed to generate a key pair"];
-
-        NSLog(@"Signing Key (Public key): %d", sizeof(publicKey));
 
     }
 
@@ -51,20 +51,17 @@ unsigned char _someKey;
 
 - (NSData *)sign:(NSString *)message {
     unsigned long long bufferLen;
-    unsigned char *msg = (const unsigned char *)[message cStringUsingEncoding:NSUTF8StringEncoding];
+    const unsigned char *msg = (const unsigned char *)[message UTF8String];
     unsigned long long mlen = strlen((const char*) msg);
     NSData *signature = [AGUtil prependZeros:crypto_sign_ed25519_BYTES msg:message];
     unsigned char *bytePtr = (unsigned char *)[signature bytes];
 
     if( crypto_sign_ed25519(bytePtr, &bufferLen, msg,
-            mlen, secretKey) != 0 ) {
+            mlen, (unsigned char *)[_secretKey bytes]) != 0 ) {
         NSLog(@"crypto_sign error");
     }
 
     return [AGUtil slice:signature start:0 end:crypto_sign_ed25519_BYTES];
 }
 
-- (unsigned char)getPublicKey {
-    return publicKey;
-}
 @end

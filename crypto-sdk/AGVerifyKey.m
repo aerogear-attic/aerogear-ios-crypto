@@ -21,10 +21,10 @@
 
 
 @implementation AGVerifyKey {
-    unsigned char _key;
+    NSData *_key;
 }
 
-- (id)init:(unsigned char *)key {
+- (id)initWithKey:(NSData *)key {
     self = [super init];
     if (self) {
         [AGUtil checkLength:key size:crypto_sign_ed25519_PUBLICKEYBYTES];
@@ -34,25 +34,26 @@
     return self;
 }
 
-- (BOOL *) verify:(unsigned char *)message signature:(unsigned char*)signature {
+- (BOOL)verify:(NSString *)message signature:(NSData *)signature {
     [AGUtil checkLength:signature size:crypto_sign_ed25519_BYTES];
 
     NSMutableData *signAndMsg = [NSMutableData data];
-    [signAndMsg appendBytes:signature length:sizeof(signature)];
-    [signAndMsg appendBytes:message length:sizeof(message)];
+    [signAndMsg appendData:signature];
+    [signAndMsg appendData:[message dataUsingEncoding:NSUTF8StringEncoding]];
+    
     unsigned long long bufferLen;
-
 
     NSData *newBuffer = [AGUtil prependZeros:signAndMsg.length];
     unsigned char *bytePtr = (unsigned char *)[newBuffer bytes];
 
-    int status = crypto_sign_ed25519_open(bytePtr, bufferLen,
-            signAndMsg.mutableBytes, signAndMsg.length, _key);
+    int status = crypto_sign_ed25519_open(bytePtr, &bufferLen,
+            signAndMsg.mutableBytes, signAndMsg.length, (unsigned char *)[_key bytes]);
 
     if( status != 0 ) {
         NSLog(@"Invalid signature %i", status);
+        return NO;
     }
 
-    return status;
+    return YES;
 }
 @end

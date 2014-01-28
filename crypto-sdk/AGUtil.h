@@ -21,7 +21,8 @@
 @interface AGUtil : NSObject
 + (NSData *)prependZeros:(NSUInteger)n msg:(NSString *)message;
 + (NSData *)prependZeros:(NSUInteger)n;
-+ (BOOL *) isValid:(NSUInteger)status msg:(NSString *)message;
-+ (NSData *) slice:(NSData *)buffer start:(NSUInteger)start end:(NSUInteger *)end;
-+ (void) checkLength:(unsigned char *) data size:(NSUInteger *)size;
++ (BOOL) isValid:(NSUInteger)status msg:(NSString *)message;
++ (NSData *) slice:(NSData *)buffer start:(NSUInteger)start end:(NSUInteger)end;
++ (void) checkLength:(NSData *) data size:(NSUInteger)size;
++ (NSString*) hexString:(NSData *)data;
 @end

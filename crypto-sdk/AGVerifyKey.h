@@ -20,7 +20,7 @@
 
 @interface AGVerifyKey : NSObject
 
-- (id)init:(unsigned char *)key;
-- (BOOL *) verify:(unsigned char *)message signature:(unsigned char*)signature;
+- (id)initWithKey:(NSData *)key;
+- (BOOL) verify:(NSString *)message signature:(NSData *)signature;
 
 @end

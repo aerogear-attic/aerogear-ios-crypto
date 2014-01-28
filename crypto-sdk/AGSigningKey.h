@@ -20,12 +20,11 @@
 #import <libsodium-ios/sodium/randombytes.h>
 
 
-@interface AGSigningKey : NSObject {
-    const unsigned char secretKey[crypto_sign_ed25519_SECRETKEYBYTES];
-    const unsigned char publicKey[crypto_sign_ed25519_PUBLICKEYBYTES];
-}
+@interface AGSigningKey : NSObject
+
+@property(readonly, nonatomic, strong) NSData *secretKey;
+@property(readonly, nonatomic, strong) NSData *publicKey;
 
 - (NSData *)sign:(NSString *)message;
-- (unsigned char)getPublicKey;
 
 @end
