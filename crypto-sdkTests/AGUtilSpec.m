@@ -31,14 +31,20 @@ describe(@"AGUtil", ^{
             unsigned char data[] = {0, 0, 0, 't', 'e', 's', 't'};
 
             NSData * expected = [NSData dataWithBytes:data length:sizeof(data)];
-            NSData * result = [agUtil prependZeros:3 msg:src];
+            NSData * result = [AGUtil prependZeros:3 msg:src];
 
             BOOL isDataValid = [expected isEqualToData:result];
             [[theValue(isDataValid) should] equal:theValue(YES)];
         });
 
-        it(@"should be valid with random salt provided", ^{
-           //TODO
+        it(@"should prepend zeros correctly", ^{
+            unsigned char data[] = {0, 0, 0};
+
+            NSData * expected = [NSData dataWithBytes:data length:sizeof(data)];
+            NSData * result = [AGUtil prependZeros:3];
+
+            BOOL isDataValid = [expected isEqualToData:result];
+            [[theValue(isDataValid) should] equal:theValue(YES)];
         });
 
     });
