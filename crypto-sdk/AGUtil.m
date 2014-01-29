@@ -84,4 +84,17 @@
 	return stringBuffer;
 }
 
++ (NSData *) hexStringToBytes:(NSString *)hex {
+    NSMutableData *buffer = [NSMutableData data];
+    unsigned int intValue;
+    for (int i = 0; i + 2 <= [hex length]; i += 2) {
+        NSRange range = NSMakeRange(i, 2);
+        NSString * hexString = [hex substringWithRange:range];
+        NSScanner * scanner = [NSScanner scannerWithString:hexString];
+        [scanner scanHexInt:&intValue];
+        [buffer appendBytes:&intValue length:1];
+    }
+    return buffer;
+}
+
 @end

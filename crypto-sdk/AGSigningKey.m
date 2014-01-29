@@ -35,14 +35,11 @@
         unsigned char csecretKey[crypto_sign_ed25519_SECRETKEYBYTES];
 
         //Generate the keypair
-        crypto_sign_ed25519_seed_keypair(cpublicKey, csecretKey, seed);
-        
-        _publicKey = [NSData dataWithBytes:cpublicKey length:crypto_sign_ed25519_PUBLICKEYBYTES];
-        _secretKey = [NSData dataWithBytes:csecretKey length:crypto_sign_ed25519_SECRETKEYBYTES];
-
-        //Generate the keypair
         [AGUtil isValid:crypto_sign_ed25519_seed_keypair(cpublicKey, csecretKey, seed)
                     msg:@"Failed to generate a key pair"];
+
+        _publicKey = [NSData dataWithBytes:cpublicKey length:crypto_sign_ed25519_PUBLICKEYBYTES];
+        _secretKey = [NSData dataWithBytes:csecretKey length:crypto_sign_ed25519_SECRETKEYBYTES];
 
     }
 

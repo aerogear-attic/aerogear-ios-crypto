@@ -24,10 +24,12 @@
 		6FBA76A4180D711400D83DDE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B321805683D0097BC5F /* Security.framework */; };
 		6FE41133180D758B008A5A51 /* libcrypto-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B091805632D0097BC5F /* libcrypto-sdk.a */; };
 		81F4131EAB15C8DCAB5257D9 /* AGVerifyKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F41EB58451C7B968DA8A0E /* AGVerifyKey.m */; };
+		81F4167FC6A5B5B502B269BB /* AGCryptoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F418D391141C7012CB05BE /* AGCryptoBox.m */; };
 		81F416EE363EE463124DAED0 /* AGUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F4128E2498CC40BE06C4E6 /* AGUtil.m */; };
 		81F41777045111D4DD68AFAA /* AGUtilSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F4196A05F04961695B186F /* AGUtilSpec.m */; };
 		81F418035F52E24DE43A35A1 /* AGHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F41A7F744D0EFE8190E12C /* AGHash.m */; };
 		81F418CAE3B234638E44B451 /* AGSigningKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F41452BEBCF78A4797AE4D /* AGSigningKey.m */; };
+		81F418E4FDA1BD265213C473 /* AGCryptoBoxSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F41D6B31555BB3B8602A44 /* AGCryptoBoxSpec.m */; };
 		81F41B36B07AE8E58A492615 /* AGKeyPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F417D0E94141B0E825D06E /* AGKeyPair.m */; };
 		81F41C2DED1BC77221AFD930 /* AGKeyPairSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F41DD492904E22CB9DFB61 /* AGKeyPairSpec.m */; };
 		81F41C9948DCE0469BCA535A /* AGHashSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F41AFEA2BEA9251E8A44FA /* AGHashSpec.m */; };
@@ -91,10 +93,13 @@
 		81F41452BEBCF78A4797AE4D /* AGSigningKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSigningKey.m; sourceTree = "<group>"; };
 		81F414CA0E9E7E6FDDDC0AB6 /* AGHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGHash.h; sourceTree = "<group>"; };
 		81F417D0E94141B0E825D06E /* AGKeyPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGKeyPair.m; sourceTree = "<group>"; };
+		81F418D391141C7012CB05BE /* AGCryptoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCryptoBox.m; sourceTree = "<group>"; };
 		81F4196A05F04961695B186F /* AGUtilSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGUtilSpec.m; sourceTree = "<group>"; };
 		81F41A7F744D0EFE8190E12C /* AGHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGHash.m; sourceTree = "<group>"; };
 		81F41AC0F03D574E3849AC27 /* AGUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGUtil.h; sourceTree = "<group>"; };
 		81F41AFEA2BEA9251E8A44FA /* AGHashSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGHashSpec.m; sourceTree = "<group>"; };
+		81F41B6F7D0F2CA0344C1352 /* AGCryptoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCryptoBox.h; sourceTree = "<group>"; };
+		81F41D6B31555BB3B8602A44 /* AGCryptoBoxSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCryptoBoxSpec.m; sourceTree = "<group>"; };
 		81F41DCD7CF48F4AB6EA8856 /* AGSigningKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSigningKey.h; sourceTree = "<group>"; };
 		81F41DD492904E22CB9DFB61 /* AGKeyPairSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGKeyPairSpec.m; sourceTree = "<group>"; };
 		81F41EB58451C7B968DA8A0E /* AGVerifyKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGVerifyKey.m; sourceTree = "<group>"; };
@@ -190,6 +195,8 @@
 				81F41EB58451C7B968DA8A0E /* AGVerifyKey.m */,
 				81F417D0E94141B0E825D06E /* AGKeyPair.m */,
 				81F41EE42C908C275F179781 /* AGKeyPair.h */,
+				81F418D391141C7012CB05BE /* AGCryptoBox.m */,
+				81F41B6F7D0F2CA0344C1352 /* AGCryptoBox.h */,
 			);
 			path = "crypto-sdk";
 			sourceTree = "<group>";
@@ -213,6 +220,7 @@
 				81F410FED0790997587DFE7D /* AGSigningKeySpec.m */,
 				81F4196A05F04961695B186F /* AGUtilSpec.m */,
 				81F41DD492904E22CB9DFB61 /* AGKeyPairSpec.m */,
+				81F41D6B31555BB3B8602A44 /* AGCryptoBoxSpec.m */,
 			);
 			path = "crypto-sdkTests";
 			sourceTree = "<group>";
@@ -387,6 +395,7 @@
 				81F418035F52E24DE43A35A1 /* AGHash.m in Sources */,
 				81F416EE363EE463124DAED0 /* AGUtil.m in Sources */,
 				81F41B36B07AE8E58A492615 /* AGKeyPair.m in Sources */,
+				81F4167FC6A5B5B502B269BB /* AGCryptoBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +412,7 @@
 				81F418CAE3B234638E44B451 /* AGSigningKey.m in Sources */,
 				81F4131EAB15C8DCAB5257D9 /* AGVerifyKey.m in Sources */,
 				81F41C2DED1BC77221AFD930 /* AGKeyPairSpec.m in Sources */,
+				81F418E4FDA1BD265213C473 /* AGCryptoBoxSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

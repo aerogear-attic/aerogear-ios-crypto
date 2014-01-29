@@ -16,8 +16,6 @@
  */
 
 #import "AGKeyPair.h"
-#include "crypto_box_curve25519xsalsa20poly1305.h"
-
 
 @implementation AGKeyPair {
 
@@ -29,13 +27,13 @@
     if (self) {
 
         unsigned char cpublicKey[crypto_box_curve25519xsalsa20poly1305_PUBLICKEYBYTES];
-        unsigned char csecretKey[crypto_box_curve25519xsalsa20poly1305_SECRETKEYBYTES];
+        unsigned char cprivateKey[crypto_box_curve25519xsalsa20poly1305_SECRETKEYBYTES];
 
         //Generate the keypair
-        crypto_box_curve25519xsalsa20poly1305_keypair(cpublicKey, csecretKey);
+        crypto_box_curve25519xsalsa20poly1305_keypair(cpublicKey, cprivateKey);
 
         _publicKey = [NSData dataWithBytes:cpublicKey length:crypto_box_curve25519xsalsa20poly1305_PUBLICKEYBYTES];
-        _secretKey = [NSData dataWithBytes:csecretKey length:crypto_box_curve25519xsalsa20poly1305_SECRETKEYBYTES];
+        _privateKey = [NSData dataWithBytes:cprivateKey length:crypto_box_curve25519xsalsa20poly1305_SECRETKEYBYTES];
 
     }
 

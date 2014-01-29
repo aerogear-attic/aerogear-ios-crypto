@@ -16,11 +16,11 @@
  */
 
 #import <Foundation/Foundation.h>
-
+#import <libsodium-ios/sodium/crypto_box_curve25519xsalsa20poly1305.h>
 
 @interface AGKeyPair : NSObject
 
-@property(readonly, nonatomic, strong) NSData *secretKey;
+@property(readonly, nonatomic, strong) NSData *privateKey;
 @property(readonly, nonatomic, strong) NSData *publicKey;
 
 @end

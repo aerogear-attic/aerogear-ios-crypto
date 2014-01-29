@@ -30,7 +30,6 @@ describe(@"AGUtil", ^{
 
             NSData * expected = [NSData dataWithBytes:data length:sizeof(data)];
             NSData * result = [AGUtil prependZeros:3 msg:src];
-
             BOOL isDataValid = [expected isEqualToData:result];
             [[theValue(isDataValid) should] equal:theValue(YES)];
         });

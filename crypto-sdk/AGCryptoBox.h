@@ -15,23 +15,16 @@
  * limitations under the License.
  */
 
-#import <Kiwi/Kiwi.h>
-#import "AGKeyPair.h"
+#import <Foundation/Foundation.h>
+#import <libsodium-ios/sodium/crypto_box_curve25519xsalsa20poly1305.h>
 
-SPEC_BEGIN(AGKeyPairSpec)
+@interface AGCryptoBox : NSObject
 
-        describe(@"AGKeyPair", ^{
+@property(readonly, nonatomic, strong) NSData *privateKey;
+@property(readonly, nonatomic, strong) NSData *publicKey;
 
-            __block AGKeyPair *keyPair;
+- (id)initWithKey:(NSData *)publicKey privateKey:(NSData *)privateKey;
+- (NSData *)encrypt:(NSData *)nonce msg:(NSData *)message;
+- (NSData *)decrypt:(NSData *)nonce msg:(NSData *)ciphertext;
 
-            beforeEach(^{
-                keyPair = [[AGKeyPair alloc] init];
-            });
-
-            it(@"should generate a new key pair", ^{
-                [[theValue(keyPair.privateKey.length) should] equal:theValue(crypto_box_curve25519xsalsa20poly1305_SECRETKEYBYTES)];
-                [[theValue(keyPair.publicKey.length) should] equal:theValue(crypto_box_curve25519xsalsa20poly1305_PUBLICKEYBYTES)];
-            });
-        });
-
-SPEC_END
+@end

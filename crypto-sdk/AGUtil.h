@@ -16,6 +16,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <libsodium-ios/sodium/crypto_box_curve25519xsalsa20poly1305.h>
 
 /**
  * Utility class for cryptographic operations
@@ -62,4 +63,9 @@
 * @param data to be converted
 */
 + (NSString*) hexString:(NSData *)data;
+
++ (NSData *) removeZeros:(NSUInteger *) n msg:(NSData *)msg;
+
++ (NSData *)hexStringToBytes:(NSString *)data;
+
 @end
