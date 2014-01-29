@@ -16,22 +16,22 @@
  */
 
 #import <Kiwi/Kiwi.h>
-#import "AGCryptoBox.h"
+#import "AGSecretBox.h"
 #import "AGRandomGenerator.h"
 #import "AGPBKDF2.h"
 
-SPEC_BEGIN(AGCryptoBoxSpec)
+SPEC_BEGIN(AGSecretBoxSpec)
 
-describe(@"CryptoBox", ^{
+describe(@"AGSecretBox", ^{
     context(@"when newly created", ^{
-        __block AGCryptoBox* cryptoBox = nil;
+        __block AGSecretBox * cryptoBox = nil;
         __block NSData *encryptionSalt = nil;
         
         beforeEach(^{
             AGPBKDF2 *keyGenerator = [[AGPBKDF2 alloc] init];
             
             encryptionSalt = [AGRandomGenerator randomBytes:16];
-            cryptoBox = [[AGCryptoBox alloc] initWithKey:[keyGenerator deriveKey:@"123456" salt:encryptionSalt]];
+            cryptoBox = [[AGSecretBox alloc] initWithKey:[keyGenerator deriveKey:@"123456" salt:encryptionSalt]];
         });
         
         it(@"it should not be nil", ^{

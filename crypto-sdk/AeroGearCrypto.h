@@ -21,6 +21,6 @@
 // imports
 #import "AGPBKDF2.h"
 #import "AGRandomGenerator.h"
-#import "AGCryptoBox.h"
+#import "AGSecretBox.h"
 
 #endif /* _AEROGEARCRYPTO_ */

@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-#import "AGCryptoBox.h"
+#import "AGSecretBox.h"
 #import "AGSymmetricCryptoEngine.h"
 
-@implementation AGCryptoBox {
+@implementation AGSecretBox {
     NSData *_key;
 }
 

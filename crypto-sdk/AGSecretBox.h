@@ -21,14 +21,14 @@
  * Main class for performing encrypt/decrypt operations. Currently it only supports symmetric
  * key encryption but asymmetric support is currently in the works.
  */
-@interface AGCryptoBox : NSObject
+@interface AGSecretBox : NSObject
 
 /**
  * Default initializer.
  *
  * @param key The encryption key to use for the encryption/decryption.
  *
- * @return the AGCryptoBox object.
+ * @return the AGSecretBox object.
  */
 - (id)initWithKey:(NSData *)key;
 
