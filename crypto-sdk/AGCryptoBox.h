@@ -18,13 +18,38 @@
 #import <Foundation/Foundation.h>
 #import <libsodium-ios/sodium/crypto_box_curve25519xsalsa20poly1305.h>
 
+
+/**
+ * Provide public key authenticated encryption via curve25519xsalsa20poly1305
+ * (see http://nacl.cr.yp.to/box.html)
+ */
 @interface AGCryptoBox : NSObject
 
 @property(readonly, nonatomic, strong) NSData *privateKey;
 @property(readonly, nonatomic, strong) NSData *publicKey;
 
+
+/**
+ * Crypto box default initialization
+ *
+ * @param publicKey the public encryption key provided
+ * @param privateKey the private encryption key provided
+ *
+ */
 - (id)initWithKey:(NSData *)publicKey privateKey:(NSData *)privateKey;
+
+/**
+ * Encrypts and authenticates the message provided given a nonce
+ * @param nonce the cryptographically secure pseudorandom number
+ * @param message to be encrypted
+ */
 - (NSData *)encrypt:(NSData *)nonce msg:(NSData *)message;
+
+/**
+ * Decrypts the message provided given a nonce
+ * @param nonce the cryptographically secure pseudorandom number
+ * @param ciphertext to be decrypted
+ */
 - (NSData *)decrypt:(NSData *)nonce msg:(NSData *)ciphertext;
 
 @end

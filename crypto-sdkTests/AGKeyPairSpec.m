@@ -22,6 +22,10 @@ SPEC_BEGIN(AGKeyPairSpec)
 
         describe(@"AGKeyPair", ^{
 
+            const int privateKeyLength = crypto_box_curve25519xsalsa20poly1305_SECRETKEYBYTES;
+            const int publicKeyLength = crypto_box_curve25519xsalsa20poly1305_PUBLICKEYBYTES;
+
+
             __block AGKeyPair *keyPair;
 
             beforeEach(^{
@@ -29,8 +33,8 @@ SPEC_BEGIN(AGKeyPairSpec)
             });
 
             it(@"should generate a new key pair", ^{
-                [[theValue(keyPair.privateKey.length) should] equal:theValue(crypto_box_curve25519xsalsa20poly1305_SECRETKEYBYTES)];
-                [[theValue(keyPair.publicKey.length) should] equal:theValue(crypto_box_curve25519xsalsa20poly1305_PUBLICKEYBYTES)];
+                [[theValue(keyPair.privateKey.length) should] equal:theValue(privateKeyLength)];
+                [[theValue(keyPair.publicKey.length) should] equal:theValue(publicKeyLength)];
             });
         });
 
