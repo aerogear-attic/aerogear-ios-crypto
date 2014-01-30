@@ -64,8 +64,10 @@
 */
 + (NSString*) hexString:(NSData *)data;
 
-+ (NSData *) removeZeros:(NSUInteger *) n msg:(NSData *)msg;
-
+/**
+* Convert the provided hex string to bytes
+* @param hex string to be converted
+*/
 + (NSData *)hexStringToBytes:(NSString *)data;
 
 @end
