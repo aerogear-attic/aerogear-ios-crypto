@@ -17,9 +17,6 @@
 
 #import "AGRandomGenerator.h"
 
-#import <CommonCrypto/CommonCryptor.h>
-#import <CommonCrypto/CommonKeyDerivation.h>
-
 @implementation AGRandomGenerator
 
 + (NSData *)randomBytes {

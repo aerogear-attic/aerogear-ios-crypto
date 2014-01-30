@@ -19,7 +19,7 @@
 #import <CommonCrypto/CommonCryptor.h>
 
 /**
- * Class that handles AES symmetric encryption/decruption using the CommonCrypto API.
+ * Class that handles AES symmetric encryption/decryption using the CommonCrypto API.
  *
  * Note: Currently the mode of operation used is CBC.
  * (see http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29)
@@ -31,8 +31,8 @@
  *
  * @param operation Set to 'kCCEncrypt' for encryption, or 'kCCDecrypt' for decryption.
  * @param key The key to use for encrypt/decrypt.
- * @param IV  A randomly choosen value used as the initilization vector.
- * @param error An error object containing details of why the initilization failed.
+ * @param IV  A randomly chosen value used as the initialization vector.
+ * @param error An error object containing details of why the initialization failed.
  *
  * @return the AGSymmetricCryptoEngine object.
  */
@@ -51,7 +51,7 @@
 - (NSData *)add:(NSData *)data error:(NSError **)error;
 
 /**
- * Finilize the encrypt/decrypt process. 
+ * Finalize the encrypt/decrypt process.
  *
  * Note: It SHOULD be called at the end to finalize the encrypt/decrypt process.
  *

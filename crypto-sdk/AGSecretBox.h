@@ -36,7 +36,7 @@
  * Encrypts the data object passed in.
  *
  * @param data The data object to encrypt.
- * @param IV   A randomly choosen value used as the initialization vector during encrypt.
+ * @param IV   A randomly chosen value used as the initialization vector during encrypt.
  *
  * @return An NSData object that holds the encrypted(cipher) data.
  */
@@ -46,7 +46,7 @@
  * Decrypts the data object(cipher) passed in.
  *
  * @param data The data object(cipher) to decrypt.
- * @param IV   A randomly choosen value used as the initialization vector during decrypt.
+ * @param IV   A randomly chosen value used as the initialization vector during decrypt.
  *
  * @return An NSData object that holds the decrypted data.
  */

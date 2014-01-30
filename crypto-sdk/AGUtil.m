@@ -87,6 +87,7 @@
 + (NSData *) hexStringToBytes:(NSString *)hex {
     NSMutableData *buffer = [NSMutableData data];
     unsigned int intValue;
+
     for (int i = 0; i + 2 <= [hex length]; i += 2) {
         NSRange range = NSMakeRange(i, 2);
         NSString * hexString = [hex substringWithRange:range];

@@ -37,7 +37,7 @@
 + (NSData *)prependZeros:(NSUInteger)n;
 
 /**
-* Validate the size of the message, key and digital signature provied
+* Validate the size of the message, key and digital signature provided
 * @param status value returned by the C library. Ex: 1 and -1
 * @param message error message
 */
