@@ -18,63 +18,17 @@
 #import "AGUtil.h"
 
 
-@implementation AGUtil {
+@implementation AGUtil
 
-}
-
-+ (NSData *)prependZeros:(NSUInteger)n msg:(NSString *)message {
-    // allocate n+message.length buffer
-    uint8_t * result = malloc( (n + message.length) * sizeof(uint8_t) );
-
-    // 'zero' the contents
-    memset((void *)result, 0x0, n + message.length);
-
-    // extract c string
-    const char *source = [message UTF8String];
-
-    // copy from 'source' to 'result' starting from (result+n) pos
-    memcpy(result+n, source, message.length);
-
-    NSData *data = [NSData dataWithBytes:result length:n + message.length ];
-
++ (NSMutableData *)prependZeros:(NSUInteger)n msg:(NSData *)message {
+    NSMutableData *data = [NSMutableData dataWithLength:n+message.length];
+    
+    [data replaceBytesInRange:NSMakeRange(n, message.length) withBytes:[message bytes]];
+    
     return data;
 }
 
-+ (NSMutableData *)prependZeros:(NSUInteger)n{
-    // allocate n+message.length buffer
-    uint8_t * result = malloc( n * sizeof(uint8_t) );
-
-    // 'zero' the contents
-    memset((void *)result, 0x0, n);
-
-    NSMutableData *data = [NSMutableData dataWithBytes:result length:n];
-
-    return data;
-}
-
-+ (BOOL) isValid:(NSUInteger)status msg:(NSString *)message {
-    if (status != 0) {
-        NSException* myException = [NSException
-                exceptionWithName:@"RuntimeException"
-                           reason:message
-                         userInfo:nil];
-        @throw myException;
-    }
-    return YES;
-}
-
-+ (NSData *) slice:(NSData *)buffer start:(NSUInteger)start end:(NSUInteger)end {
-    return [buffer subdataWithRange:NSMakeRange(start, end)];
-}
-
-+ (void) checkLength:(NSData *) data size:(NSUInteger)size {
-    if (data == nil || [data length] != size) {
-        [NSException raise:@"RuntimeException"
-                    format:@"Invalid size %ul", [data length]];
-    }
-}
-
-+ (NSString*) hexString:(NSData *)data {
++ (NSString *)hexString:(NSData *)data {
 	NSMutableString *stringBuffer = [NSMutableString stringWithCapacity:([data length] * 2)];
 	const unsigned char *dataBuffer = [data bytes];
 
@@ -84,7 +38,7 @@
 	return stringBuffer;
 }
 
-+ (NSData *) hexStringToBytes:(NSString *)hex {
++ (NSData *)hexStringToBytes:(NSString *)hex {
     NSMutableData *buffer = [NSMutableData data];
     unsigned int intValue;
 

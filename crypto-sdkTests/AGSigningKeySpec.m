@@ -25,16 +25,15 @@ SPEC_BEGIN(AGSigningKeySpec)
         describe(@"AGSigningKey", ^{
             context(@"Signing message", ^{
 
-                NSString const * message = @"My Bonnie lies over the ocean, my Bonnie lies over the sea";
+                NSData * const message = [@"My Bonnie lies over the ocean, my Bonnie lies over the sea"
+                                          dataUsingEncoding:NSUTF8StringEncoding];
 
                 __block AGSigningKey *signingKey;
                 __block AGVerifyKey *verifyKey;
 
-
                 beforeEach(^{
                     signingKey = [[AGSigningKey alloc] init];
                     verifyKey = [[AGVerifyKey alloc] initWithKey:signingKey.publicKey];
-
                 });
 
                 it(@"should properly sign and verify the signature", ^{
@@ -44,8 +43,8 @@ SPEC_BEGIN(AGSigningKeySpec)
                 });
 
                 it(@"should detect bad signature", ^{
-                    NSData *corruptedMessage = [AGUtil prependZeros:64];
-                    BOOL status = [verifyKey verify:message signature:corruptedMessage];
+                    NSMutableData *corruptedSignature = [NSMutableData dataWithLength:64];
+                    BOOL status = [verifyKey verify:message signature:corruptedSignature];
                     [[theValue(status) should] equal:theValue(NO)];
                 });
             });

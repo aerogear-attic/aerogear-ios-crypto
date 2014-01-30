@@ -25,7 +25,6 @@ SPEC_BEGIN(AGKeyPairSpec)
             const int privateKeyLength = crypto_box_curve25519xsalsa20poly1305_SECRETKEYBYTES;
             const int publicKeyLength = crypto_box_curve25519xsalsa20poly1305_PUBLICKEYBYTES;
 
-
             __block AGKeyPair *keyPair;
 
             beforeEach(^{

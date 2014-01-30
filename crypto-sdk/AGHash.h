@@ -39,5 +39,5 @@
  * @return an NSMutableData object containing the message digest
  */
 
-- (NSMutableData *)digest:(NSString *)str;
+- (NSData *)digest:(NSString *)str;
 @end

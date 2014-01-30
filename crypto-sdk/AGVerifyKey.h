@@ -24,16 +24,18 @@
 @interface AGVerifyKey : NSObject
 
 /**
-* Initialize with the public key provided
-* @param Public key
-*/
+ * Initialize with the public key provided
+ *
+ * @param Public key
+ */
 - (id)initWithKey:(NSData *)key;
 
 /**
-* Verify the integrity of the message with the signature provided
-* @param message to be verified
-* @param signature provided
-*/
-- (BOOL) verify:(NSString *)message signature:(NSData *)signature;
+ * Verify the integrity of the message with the signature provided
+ *
+ * @param message to be verified
+ * @param signature provided
+ */
+- (BOOL) verify:(NSData *)message signature:(NSData *)signature;
 
 @end

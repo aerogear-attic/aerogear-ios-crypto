@@ -40,6 +40,7 @@
 
 /**
  * Encrypts and authenticates the message provided given a nonce
+ *
  * @param nonce the cryptographically secure pseudorandom number
  * @param message to be encrypted
  */

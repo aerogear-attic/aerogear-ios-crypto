@@ -25,35 +25,39 @@
 }
 
 - (id)initWithKey:(NSData *)key {
+    NSParameterAssert(key != nil && [key length] == crypto_sign_ed25519_PUBLICKEYBYTES);
+    
     self = [super init];
     if (self) {
-        [AGUtil checkLength:key size:crypto_sign_ed25519_PUBLICKEYBYTES];
         _key = key;
     }
-
+    
     return self;
 }
 
-- (BOOL)verify:(NSString *)message signature:(NSData *)signature {
-    [AGUtil checkLength:signature size:crypto_sign_ed25519_BYTES];
-
+- (BOOL)verify:(NSData *)message signature:(NSData *)signature {
+    NSParameterAssert(message != nil);
+    NSParameterAssert(signature != nil && [signature length] == crypto_sign_ed25519_BYTES);
+    
     NSMutableData *signAndMsg = [NSMutableData data];
     [signAndMsg appendData:signature];
-    [signAndMsg appendData:[message dataUsingEncoding:NSUTF8StringEncoding]];
+    [signAndMsg appendData:message];
     
     unsigned long long bufferLen;
-
-    NSData *newBuffer = [AGUtil prependZeros:signAndMsg.length];
-    unsigned char *bytePtr = (unsigned char *)[newBuffer bytes];
-
-    int status = crypto_sign_ed25519_open(bytePtr, &bufferLen,
-            signAndMsg.mutableBytes, signAndMsg.length, (unsigned char *)[_key bytes]);
-
+    NSMutableData *newBuffer = [[NSMutableData alloc] initWithLength:signAndMsg.length];
+    
+    int status = crypto_sign_ed25519_open([newBuffer mutableBytes],
+                                          &bufferLen,
+                                          [signAndMsg bytes],
+                                          signAndMsg.length,
+                                          [_key bytes]);
+    
     if( status != 0 ) {
         NSLog(@"Invalid signature %i", status);
         return NO;
     }
-
+    
     return YES;
 }
+
 @end

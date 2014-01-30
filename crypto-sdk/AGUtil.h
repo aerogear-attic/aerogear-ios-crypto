@@ -24,49 +24,24 @@
 @interface AGUtil : NSObject
 
 /**
-* Append zeros to the message provided
-* @param n number of zeros
-* @param message
-*/
-+ (NSData *)prependZeros:(NSUInteger)n msg:(NSString *)message;
+ * Append zeros to the message provided
+ *
+ * @param n number of zeros
+ * @param message
+ */
++ (NSMutableData *)prependZeros:(NSUInteger)n msg:(NSData *)message;
 
 /**
-* Initialize an empty buffer filled by zeros
-* @param n number of zeros
+ * Convert the provided data to Hex
+ *
+ * @param data to be converted
 */
-+ (NSData *)prependZeros:(NSUInteger)n;
++ (NSString *)hexString:(NSData *)data;
 
 /**
-* Validate the size of the message, key and digital signature provided
-* @param status value returned by the C library. Ex: 1 and -1
-* @param message error message
-*/
-+ (BOOL) isValid:(NSUInteger)status msg:(NSString *)message;
-
-/**
-* Read a range of bytes from the buffer provided
-* @param buffer provided
-* @param start the initial index of the range
-* @param end the final index of the range
-*/
-+ (NSData *) slice:(NSData *)buffer start:(NSUInteger)start end:(NSUInteger)end;
-
-/**
-* Validate the length of the data provided
-* @param data provided. Ex: public key
-* @param size length expected
-*/
-+ (void) checkLength:(NSData *) data size:(NSUInteger)size;
-
-/**
-* Convert the provided data to Hex
-* @param data to be converted
-*/
-+ (NSString*) hexString:(NSData *)data;
-
-/**
-* Convert the provided hex string to bytes
-* @param hex string to be converted
+ * Convert the provided hex string to bytes
+ *
+ * @param hex string to be converted
 */
 + (NSData *)hexStringToBytes:(NSString *)data;
 
