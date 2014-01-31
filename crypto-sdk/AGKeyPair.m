@@ -15,29 +15,25 @@
  * limitations under the License.
  */
 
-#import <Foundation/Foundation.h>
+#import "AGKeyPair.h"
 
-/**
- * Class that create a message digest using SHA2 hash function
- * (see http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf)
- */
-@interface AGHash : NSObject
+@implementation AGKeyPair {
+    NSMutableData *_privateKey;
+    NSMutableData *_publicKey;
+}
 
-/**
- * Initialize with the Hash function provided
- *
- * @param length of hash function. For example: CC_SHA512_DIGEST_LENGTH
- *
- */
-- (id)init:(char)algorithm;
+- (id)init {
+    self = [super init];
 
-/**
- * Create a message digest based on the string provided
- *
- * @param raw text
- *
- * @return an NSMutableData object containing the message digest
- */
+    if (self) {
+        _publicKey = [NSMutableData dataWithLength:crypto_box_curve25519xsalsa20poly1305_PUBLICKEYBYTES];
+        _privateKey = [NSMutableData dataWithLength:crypto_box_curve25519xsalsa20poly1305_SECRETKEYBYTES];
 
-- (NSData *)digest:(NSString *)str;
+        //Generate the keypair
+        crypto_box_curve25519xsalsa20poly1305_keypair([_publicKey mutableBytes], [_privateKey mutableBytes] );
+    }
+
+    return self;
+}
+
 @end

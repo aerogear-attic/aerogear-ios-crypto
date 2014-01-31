@@ -16,28 +16,33 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <libsodium-ios/sodium/crypto_box_curve25519xsalsa20poly1305.h>
 
 /**
- * Class that create a message digest using SHA2 hash function
- * (see http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf)
+ * Utility class for cryptographic operations
  */
-@interface AGHash : NSObject
+@interface AGUtil : NSObject
 
 /**
- * Initialize with the Hash function provided
+ * Append zeros to the message provided
  *
- * @param length of hash function. For example: CC_SHA512_DIGEST_LENGTH
- *
+ * @param n number of zeros
+ * @param message
  */
-- (id)init:(char)algorithm;
++ (NSMutableData *)prependZeros:(NSUInteger)n msg:(NSData *)message;
 
 /**
- * Create a message digest based on the string provided
+ * Convert the provided data to Hex
  *
- * @param raw text
- *
- * @return an NSMutableData object containing the message digest
- */
+ * @param data to be converted
+*/
++ (NSString *)hexString:(NSData *)data;
 
-- (NSData *)digest:(NSString *)str;
+/**
+ * Convert the provided hex string to bytes
+ *
+ * @param hex string to be converted
+*/
++ (NSData *)hexStringToBytes:(NSString *)data;
+
 @end

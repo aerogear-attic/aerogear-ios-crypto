@@ -16,28 +16,14 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <libsodium-ios/sodium/crypto_box_curve25519xsalsa20poly1305.h>
 
 /**
- * Class that create a message digest using SHA2 hash function
- * (see http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf)
+ * Represents a pair of cryptographic keys (a public and a private key) used for asymmetric encryption
  */
-@interface AGHash : NSObject
+@interface AGKeyPair : NSObject
 
-/**
- * Initialize with the Hash function provided
- *
- * @param length of hash function. For example: CC_SHA512_DIGEST_LENGTH
- *
- */
-- (id)init:(char)algorithm;
+@property(readonly, nonatomic, strong) NSData *privateKey;
+@property(readonly, nonatomic, strong) NSData *publicKey;
 
-/**
- * Create a message digest based on the string provided
- *
- * @param raw text
- *
- * @return an NSMutableData object containing the message digest
- */
-
-- (NSData *)digest:(NSString *)str;
 @end

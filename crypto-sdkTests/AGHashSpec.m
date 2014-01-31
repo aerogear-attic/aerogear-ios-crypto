@@ -24,7 +24,8 @@ SPEC_BEGIN(AGHashSpec)
 describe(@"AGHash", ^{
     context(@"Hash creation", ^{
 
-        NSString * const SHA2_MESSAGE = @"My Bonnie lies over the ocean, my Bonnie lies over the sea";
+        NSString * const SHA2_MESSAGE = @"My Bonnie lies over the ocean, my Bonnie lies over the sea"
+                                    ;
         NSString * const SHA256_DIGEST = @"0oHRApa3veIN8/P0ptG9tRP0qkzLAEjHsvf1eGtLy3c=";
         NSString * const SHA256_DIGEST_EMPTY_STRING = @"47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=";
 
@@ -36,19 +37,19 @@ describe(@"AGHash", ^{
             AGHash *agHash = [[AGHash alloc] init];
 
             it(@"should create a valid Hash with the provided string", ^{
-                NSMutableData *rawPassword = [agHash digest:SHA2_MESSAGE];
+                NSData *rawPassword = [agHash digest:SHA2_MESSAGE];
                 NSString *base64String = [rawPassword base64EncodedStringWithOptions:0];
                 [[base64String should] equal:SHA256_DIGEST];
             });
 
             it(@"should create a valid Hash with the empty provided string", ^{
-                NSMutableData *rawPassword = [agHash digest:@""];
+                NSData *rawPassword = [agHash digest:@""];
                 NSString *base64String = [rawPassword base64EncodedStringWithOptions:0];
                 [[base64String should] equal:SHA256_DIGEST_EMPTY_STRING];
             });
 
             it(@"should not raise any exception on null bytes", ^{
-                NSMutableData *rawPassword = [agHash digest:@"\0"];
+                NSData *rawPassword = [agHash digest:@"\0"];
                 [rawPassword shouldNotBeNil];
             });
         });
@@ -58,19 +59,19 @@ describe(@"AGHash", ^{
             AGHash *agHash = [[AGHash alloc] init:CC_SHA512_DIGEST_LENGTH];
 
             it(@"should create a valid Hash with the provided string", ^{
-                NSMutableData *rawPassword = [agHash digest:SHA2_MESSAGE];
+                NSData *rawPassword = [agHash digest:SHA2_MESSAGE];
                 NSString *base64String = [rawPassword base64EncodedStringWithOptions:0];
                 [[base64String should] equal:SHA512_DIGEST];
             });
 
             it(@"should create a valid Hash with the empty provided string", ^{
-                NSMutableData *rawPassword = [agHash digest:@""];
+                NSData *rawPassword = [agHash digest:@""];
                 NSString *base64String = [rawPassword base64EncodedStringWithOptions:0];
                 [[base64String should] equal:SHA512_DIGEST_EMPTY_STRING];
             });
 
             it(@"should not raise any exception on null bytes", ^{
-                NSMutableData *rawPassword = [agHash digest:@"\0"];
+                NSData *rawPassword = [agHash digest:@"\0"];
                 [rawPassword shouldNotBeNil];
             });
         });

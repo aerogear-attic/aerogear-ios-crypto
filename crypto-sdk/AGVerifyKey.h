@@ -18,26 +18,24 @@
 #import <Foundation/Foundation.h>
 
 /**
- * Class that create a message digest using SHA2 hash function
- * (see http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf)
+ * Verify digital signatures
+ * (see http://ed25519.cr.yp.to)
  */
-@interface AGHash : NSObject
+@interface AGVerifyKey : NSObject
 
 /**
- * Initialize with the Hash function provided
+ * Initialize with the public key provided
  *
- * @param length of hash function. For example: CC_SHA512_DIGEST_LENGTH
- *
+ * @param Public key
  */
-- (id)init:(char)algorithm;
+- (id)initWithKey:(NSData *)key;
 
 /**
- * Create a message digest based on the string provided
+ * Verify the integrity of the message with the signature provided
  *
- * @param raw text
- *
- * @return an NSMutableData object containing the message digest
+ * @param message to be verified
+ * @param signature provided
  */
+- (BOOL) verify:(NSData *)message signature:(NSData *)signature;
 
-- (NSData *)digest:(NSString *)str;
 @end

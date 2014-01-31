@@ -41,8 +41,7 @@
     return self;
 }
 
-- (NSMutableData *)digest:(NSString *)str {
-
+- (NSData *)digest:(NSString *)str {
     NSData *dataIn = [str dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableData *hash = [NSMutableData dataWithLength:_algorithm];
 

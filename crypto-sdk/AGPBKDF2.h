@@ -43,7 +43,7 @@ extern const NSInteger AGPBKDF2MinimumSaltLength;
  * Derive a key from text password/passphrase.
  *
  * @param password The password/passphrase to use for key derivation.
- * @param salt A randomly choosen value used used during key derivation.
+ * @param salt A randomly chosen value used used during key derivation.
  *
  * @return an NSData object containing the derived key.
  */
@@ -53,7 +53,7 @@ extern const NSInteger AGPBKDF2MinimumSaltLength;
  * Derive a key from text password/passphrase.
  *
  * @param password The password/passphrase to use for key derivation.
- * @param salt A randomly choosen value used used during key derivation.
+ * @param salt A randomly chosen value used used during key derivation.
  * @param iterations The number of iterations against the cryptographic hash.
  *
  * @return an NSData object containing the derived key.

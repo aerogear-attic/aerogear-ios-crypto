@@ -23,9 +23,19 @@
 		6FBA76A3180D707500D83DDE /* AGSecretBoxSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA76A2180D707500D83DDE /* AGSecretBoxSpec.m */; };
 		6FBA76A4180D711400D83DDE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B321805683D0097BC5F /* Security.framework */; };
 		6FE41133180D758B008A5A51 /* libcrypto-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B091805632D0097BC5F /* libcrypto-sdk.a */; };
+		81F4131EAB15C8DCAB5257D9 /* AGVerifyKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F41EB58451C7B968DA8A0E /* AGVerifyKey.m */; };
+		81F4167FC6A5B5B502B269BB /* AGCryptoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F418D391141C7012CB05BE /* AGCryptoBox.m */; };
+		81F416EE363EE463124DAED0 /* AGUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F4128E2498CC40BE06C4E6 /* AGUtil.m */; };
+		81F41777045111D4DD68AFAA /* AGUtilSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F4196A05F04961695B186F /* AGUtilSpec.m */; };
 		81F418035F52E24DE43A35A1 /* AGHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F41A7F744D0EFE8190E12C /* AGHash.m */; };
+		81F418CAE3B234638E44B451 /* AGSigningKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F41452BEBCF78A4797AE4D /* AGSigningKey.m */; };
+		81F418E4FDA1BD265213C473 /* AGCryptoBoxSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F41D6B31555BB3B8602A44 /* AGCryptoBoxSpec.m */; };
+		81F41B36B07AE8E58A492615 /* AGKeyPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F417D0E94141B0E825D06E /* AGKeyPair.m */; };
+		81F41C2DED1BC77221AFD930 /* AGKeyPairSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F41DD492904E22CB9DFB61 /* AGKeyPairSpec.m */; };
 		81F41C9948DCE0469BCA535A /* AGHashSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F41AFEA2BEA9251E8A44FA /* AGHashSpec.m */; };
+		81F41E48B9374E7FF89B8696 /* AGSigningKeySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F410FED0790997587DFE7D /* AGSigningKeySpec.m */; };
 		D96ED974C2DB4A5189FEB9FA /* libPods-crypto-sdkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D48B0BF93A48E9A159E810 /* libPods-crypto-sdkTests.a */; };
+		E472854429E748799983729F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6AE8AEE287441D88A80E922 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,10 +87,26 @@
 		6FBA769E180D706700D83DDE /* AGRandomGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGRandomGenerator.h; sourceTree = "<group>"; };
 		6FBA769F180D706700D83DDE /* AGRandomGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRandomGenerator.m; sourceTree = "<group>"; };
 		6FBA76A2180D707500D83DDE /* AGSecretBoxSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSecretBoxSpec.m; sourceTree = "<group>"; };
+		81F410FED0790997587DFE7D /* AGSigningKeySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSigningKeySpec.m; sourceTree = "<group>"; };
+		81F411FB33D774BA75DEC08D /* AGVerifyKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGVerifyKey.h; sourceTree = "<group>"; };
+		81F4128E2498CC40BE06C4E6 /* AGUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGUtil.m; sourceTree = "<group>"; };
+		81F41452BEBCF78A4797AE4D /* AGSigningKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSigningKey.m; sourceTree = "<group>"; };
 		81F414CA0E9E7E6FDDDC0AB6 /* AGHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGHash.h; sourceTree = "<group>"; };
+		81F417D0E94141B0E825D06E /* AGKeyPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGKeyPair.m; sourceTree = "<group>"; };
+		81F418D391141C7012CB05BE /* AGCryptoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCryptoBox.m; sourceTree = "<group>"; };
+		81F4196A05F04961695B186F /* AGUtilSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGUtilSpec.m; sourceTree = "<group>"; };
 		81F41A7F744D0EFE8190E12C /* AGHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGHash.m; sourceTree = "<group>"; };
+		81F41AC0F03D574E3849AC27 /* AGUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGUtil.h; sourceTree = "<group>"; };
 		81F41AFEA2BEA9251E8A44FA /* AGHashSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGHashSpec.m; sourceTree = "<group>"; };
+		81F41B6F7D0F2CA0344C1352 /* AGCryptoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCryptoBox.h; sourceTree = "<group>"; };
+		81F41D6B31555BB3B8602A44 /* AGCryptoBoxSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCryptoBoxSpec.m; sourceTree = "<group>"; };
+		81F41DCD7CF48F4AB6EA8856 /* AGSigningKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSigningKey.h; sourceTree = "<group>"; };
+		81F41DD492904E22CB9DFB61 /* AGKeyPairSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGKeyPairSpec.m; sourceTree = "<group>"; };
+		81F41EB58451C7B968DA8A0E /* AGVerifyKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGVerifyKey.m; sourceTree = "<group>"; };
+		81F41EE42C908C275F179781 /* AGKeyPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGKeyPair.h; sourceTree = "<group>"; };
 		99D48B0BF93A48E9A159E810 /* libPods-crypto-sdkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-crypto-sdkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6AE8AEE287441D88A80E922 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3A1E8AB9CCB41159F482BDC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +116,7 @@
 			files = (
 				6F465B331805683D0097BC5F /* Security.framework in Frameworks */,
 				6F465B0D1805632D0097BC5F /* Foundation.framework in Frameworks */,
+				E472854429E748799983729F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +144,7 @@
 				6F465B0B1805632D0097BC5F /* Frameworks */,
 				6F465B0A1805632D0097BC5F /* Products */,
 				1C0677ED7AA143CCBC2E5F5D /* Pods-crypto-sdkTests.xcconfig */,
+				F3A1E8AB9CCB41159F482BDC /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +166,7 @@
 				6F465B1D1805632E0097BC5F /* UIKit.framework */,
 				99D48B0BF93A48E9A159E810 /* libPods-crypto-sdkTests.a */,
 				6F9BE759180C0B200045D8AE /* SenTestingKit.framework */,
+				E6AE8AEE287441D88A80E922 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -156,8 +185,18 @@
 				6FBA769F180D706700D83DDE /* AGRandomGenerator.m */,
 				6F465B111805632D0097BC5F /* AeroGearCrypto.h */,
 				6F465B0F1805632D0097BC5F /* Supporting Files */,
-				81F41A7F744D0EFE8190E12C /* AGHash.m */,
 				81F414CA0E9E7E6FDDDC0AB6 /* AGHash.h */,
+				81F41A7F744D0EFE8190E12C /* AGHash.m */,
+				81F41AC0F03D574E3849AC27 /* AGUtil.h */,
+				81F4128E2498CC40BE06C4E6 /* AGUtil.m */,
+				81F41DCD7CF48F4AB6EA8856 /* AGSigningKey.h */,
+				81F41452BEBCF78A4797AE4D /* AGSigningKey.m */,
+				81F411FB33D774BA75DEC08D /* AGVerifyKey.h */,
+				81F41EB58451C7B968DA8A0E /* AGVerifyKey.m */,
+				81F41EE42C908C275F179781 /* AGKeyPair.h */,
+				81F417D0E94141B0E825D06E /* AGKeyPair.m */,
+				81F41B6F7D0F2CA0344C1352 /* AGCryptoBox.h */,
+				81F418D391141C7012CB05BE /* AGCryptoBox.m */,
 			);
 			path = "crypto-sdk";
 			sourceTree = "<group>";
@@ -178,6 +217,10 @@
 				6F86F953180FEFA5002B087A /* AGPBKDF2Spec.m */,
 				6F86F955181009B5002B087A /* AGRandomGeneratorSpec.m */,
 				81F41AFEA2BEA9251E8A44FA /* AGHashSpec.m */,
+				81F410FED0790997587DFE7D /* AGSigningKeySpec.m */,
+				81F4196A05F04961695B186F /* AGUtilSpec.m */,
+				81F41DD492904E22CB9DFB61 /* AGKeyPairSpec.m */,
+				81F41D6B31555BB3B8602A44 /* AGCryptoBoxSpec.m */,
 			);
 			path = "crypto-sdkTests";
 			sourceTree = "<group>";
@@ -199,9 +242,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F465B2C1805632E0097BC5F /* Build configuration list for PBXNativeTarget "crypto-sdk" */;
 			buildPhases = (
+				33C1DCFDA68F40928C253FC4 /* Check Pods Manifest.lock */,
 				6F465B051805632D0097BC5F /* Sources */,
 				6F465B061805632D0097BC5F /* Frameworks */,
 				6F465B071805632D0097BC5F /* CopyFiles */,
+				FF2D1A49C5534AF38669529F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -276,6 +321,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		33C1DCFDA68F40928C253FC4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		80D422A121C24C2F926A5B61 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -306,6 +366,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-crypto-sdkTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FF2D1A49C5534AF38669529F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -318,6 +393,9 @@
 				6FBA76A1180D706700D83DDE /* AGRandomGenerator.m in Sources */,
 				6FBA76A0180D706700D83DDE /* AGSecretBox.m in Sources */,
 				81F418035F52E24DE43A35A1 /* AGHash.m in Sources */,
+				81F416EE363EE463124DAED0 /* AGUtil.m in Sources */,
+				81F41B36B07AE8E58A492615 /* AGKeyPair.m in Sources */,
+				81F4167FC6A5B5B502B269BB /* AGCryptoBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +407,12 @@
 				6F86F956181009B5002B087A /* AGRandomGeneratorSpec.m in Sources */,
 				6F86F954180FEFA5002B087A /* AGPBKDF2Spec.m in Sources */,
 				81F41C9948DCE0469BCA535A /* AGHashSpec.m in Sources */,
+				81F41E48B9374E7FF89B8696 /* AGSigningKeySpec.m in Sources */,
+				81F41777045111D4DD68AFAA /* AGUtilSpec.m in Sources */,
+				81F418CAE3B234638E44B451 /* AGSigningKey.m in Sources */,
+				81F4131EAB15C8DCAB5257D9 /* AGVerifyKey.m in Sources */,
+				81F41C2DED1BC77221AFD930 /* AGKeyPairSpec.m in Sources */,
+				81F418E4FDA1BD265213C473 /* AGCryptoBoxSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,7 +470,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv7s";
 			};
@@ -427,6 +511,7 @@
 		};
 		6F465B2D1805632E0097BC5F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3A1E8AB9CCB41159F482BDC /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/crypto_sdk.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -440,6 +525,7 @@
 		};
 		6F465B2E1805632E0097BC5F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3A1E8AB9CCB41159F482BDC /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/crypto_sdk.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -455,7 +541,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C0677ED7AA143CCBC2E5F5D /* Pods-crypto-sdkTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -478,7 +563,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C0677ED7AA143CCBC2E5F5D /* Pods-crypto-sdkTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

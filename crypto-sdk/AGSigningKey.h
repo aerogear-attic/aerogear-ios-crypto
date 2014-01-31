@@ -16,28 +16,24 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <libsodium-ios/sodium/crypto_sign_ed25519.h>
+#import <libsodium-ios/sodium/randombytes.h>
 
 /**
- * Class that create a message digest using SHA2 hash function
- * (see http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf)
+ * Create digital signatures
+ * (see http://ed25519.cr.yp.to)
  */
-@interface AGHash : NSObject
+@interface AGSigningKey : NSObject
+
+@property(readonly, nonatomic, strong) NSData *secretKey;
+@property(readonly, nonatomic, strong) NSData *publicKey;
 
 /**
- * Initialize with the Hash function provided
+ * Digitally sign a message to prevent against tampering and forgery
  *
- * @param length of hash function. For example: CC_SHA512_DIGEST_LENGTH
- *
+ * @param message to be signed
  */
-- (id)init:(char)algorithm;
+- (NSData *)sign:(NSData *)message;
 
-/**
- * Create a message digest based on the string provided
- *
- * @param raw text
- *
- * @return an NSMutableData object containing the message digest
- */
 
-- (NSData *)digest:(NSString *)str;
 @end
