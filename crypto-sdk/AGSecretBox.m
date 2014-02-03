@@ -16,13 +16,15 @@
  */
 
 #import "AGSecretBox.h"
-#import "AGSymmetricCryptoEngine.h"
+#import "AGUtil.h"
 
 @implementation AGSecretBox {
     NSData *_key;
 }
 
 - (id)initWithKey:(NSData *)key {
+    NSParameterAssert(key != nil && [key length] == crypto_secretbox_xsalsa20poly1305_KEYBYTES);
+    
     self = [super init];
     if (self) {
         _key = key;
@@ -31,40 +33,45 @@
     return self;
 }
 
-- (NSData *)encrypt:(NSData *)data IV:(NSData *)IV {
-    NSParameterAssert(data != nil);
-    NSParameterAssert(IV != nil);
-
-    NSError *error;
-    AGSymmetricCryptoEngine *engine = [[AGSymmetricCryptoEngine alloc] initWithOperation:kCCEncrypt
-                                                                                     key:_key
-                                                                                      IV:IV
-                                                                                   error:&error];
-
-    NSMutableData *cipher = [NSMutableData data];
+- (NSData *)encrypt:(NSData *)nonce msg:(NSData *)message {
+    NSParameterAssert(nonce != nil && [nonce length] == crypto_secretbox_xsalsa20poly1305_NONCEBYTES);
+    NSParameterAssert(message != nil);
     
-    [cipher appendData:[engine add:data error:&error]];
-    [cipher appendData:[engine finish:&error]];
+    NSData *msg = [AGUtil prependZeros:crypto_secretbox_xsalsa20poly1305_ZEROBYTES msg:message];
+    NSMutableData *ct = [[NSMutableData alloc] initWithLength:msg.length];
     
-    return cipher;
+    int status = crypto_secretbox_xsalsa20poly1305(
+                                                   [ct mutableBytes],
+                                                   [msg bytes],
+                                                   msg.length,
+                                                   [nonce bytes],
+                                                   [_key bytes]);
+    
+    NSAssert(status == 0, @"failed to encrypt data provided", status);
+    
+    
+    return [ct subdataWithRange:NSMakeRange(crypto_secretbox_xsalsa20poly1305_BOXZEROBYTES,
+                                            ct.length - crypto_secretbox_xsalsa20poly1305_BOXZEROBYTES)];
 }
 
-- (NSData *)decrypt:(NSData *)data IV:(NSData *)IV {
-    NSParameterAssert(data != nil);
-    NSParameterAssert(IV != nil);
-
-    NSError *error;
-    AGSymmetricCryptoEngine *engine = [[AGSymmetricCryptoEngine alloc] initWithOperation:kCCDecrypt
-                                                                                     key:_key
-                                                                                      IV:IV
-                                                                                   error:&error];
+- (NSData *)decrypt:(NSData *)nonce msg:(NSData *)ciphertext {
+    NSParameterAssert(nonce != nil && [nonce length] == crypto_secretbox_xsalsa20poly1305_NONCEBYTES);
+    NSParameterAssert(ciphertext != nil);
     
-    NSMutableData *cipher = [NSMutableData data];
+    NSData *ct = [AGUtil prependZeros:crypto_secretbox_xsalsa20poly1305_BOXZEROBYTES msg:ciphertext];
+    NSMutableData *message = [[NSMutableData alloc] initWithLength:ct.length];
     
-    [cipher appendData:[engine add:data error:&error]];
-    [cipher appendData:[engine finish:&error]];
+    int status = crypto_secretbox_xsalsa20poly1305_open(
+                                                        [message mutableBytes],
+                                                        [ct bytes],
+                                                        message.length,
+                                                        [nonce bytes],
+                                                        [_key bytes]);
     
-    return cipher;
+    NSAssert(status == 0, @"failed to decrypt data provided", status);
+    
+    return [message subdataWithRange:NSMakeRange(crypto_secretbox_xsalsa20poly1305_ZEROBYTES,
+                                                 message.length - crypto_secretbox_xsalsa20poly1305_ZEROBYTES)];
 }
 
 @end

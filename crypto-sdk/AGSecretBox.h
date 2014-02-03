@@ -16,6 +16,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <libsodium-ios/sodium/crypto_secretbox_xsalsa20poly1305.h>
 
 /**
  * Main class for performing encrypt/decrypt operations. Currently it only supports symmetric
@@ -35,21 +36,21 @@
 /**
  * Encrypts the data object passed in.
  *
- * @param data The data object to encrypt.
- * @param IV   A randomly chosen value used as the initialization vector during encrypt.
- *
+ * @param nonce the cryptographically secure pseudorandom number
+ * @param message to be encrypted
+*
  * @return An NSData object that holds the encrypted(cipher) data.
  */
-- (NSData *)encrypt:(NSData *)data IV:(NSData *)IV;
+- (NSData *)encrypt:(NSData *)nonce msg:(NSData *)message;
 
 /**
  * Decrypts the data object(cipher) passed in.
  *
- * @param data The data object(cipher) to decrypt.
- * @param IV   A randomly chosen value used as the initialization vector during decrypt.
+ * @param nonce the cryptographically secure pseudorandom number
+ * @param ciphertext to be decrypted
  *
  * @return An NSData object that holds the decrypted data.
  */
-- (NSData *)decrypt:(NSData *)data IV:(NSData *)IV;
+- (NSData *)decrypt:(NSData *)nonce msg:(NSData *)ciphertext;
 
 @end
