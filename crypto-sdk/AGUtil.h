@@ -24,25 +24,31 @@
 @interface AGUtil : NSObject
 
 /**
- * Append zeros to the message provided
+ * Append zeros to the message provided.
  *
- * @param n number of zeros
- * @param message
+ * @param n Number of zeros.
+ * @param message The provided message.
+ *
+ * @return An NSData object that holds the result.
  */
 + (NSMutableData *)prependZeros:(NSUInteger)n msg:(NSData *)message;
 
 /**
- * Convert the provided data to Hex
+ * Convert the provided data to hex.
  *
- * @param data to be converted
-*/
+ * @param data The NSData to be converted to hex representation.
+ *
+ * @return An NSString object with the result of the conversion.
+ */
 + (NSString *)hexString:(NSData *)data;
 
 /**
- * Convert the provided hex string to bytes
+ * Convert the provided hex string to bytes.
  *
- * @param hex string to be converted
-*/
+ * @param data The hex string to be converted.
+ *
+ * @return An NSData object with the result of the conversion.
+ */
 + (NSData *)hexStringToBytes:(NSString *)data;
 
 @end

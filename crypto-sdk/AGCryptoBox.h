@@ -32,25 +32,31 @@
 /**
  * Crypto box default initialization
  *
- * @param publicKey the public encryption key provided
- * @param privateKey the private encryption key provided
+ * @param publicKey the public encryption key provided.
+ * @param privateKey the private encryption key provided.
  *
+ * @return the AGCryptoBox object.
  */
 - (id)initWithKey:(NSData *)publicKey privateKey:(NSData *)privateKey;
 
 /**
- * Encrypts and authenticates the message provided given a nonce
+ * Encrypts and authenticates the data object provided given a nonce.
  *
- * @param nonce the cryptographically secure pseudorandom number
- * @param message to be encrypted
+ * @param data The data object to encrypt.
+ * @param nonce the cryptographically secure pseudorandom number.
+ *
+ * @return An NSData object that holds the encrypted(cipher) data.
  */
-- (NSData *)encrypt:(NSData *)nonce msg:(NSData *)message;
+- (NSData *)encrypt:(NSData *)data nonce:(NSData *)nonce;
 
 /**
- * Decrypts the message provided given a nonce
- * @param nonce the cryptographically secure pseudorandom number
- * @param ciphertext to be decrypted
+ * Decrypts the data object provided given a nonce.
+ *
+ * @param data The data object(cipher) to decrypt.
+ * @param nonce The cryptographically secure pseudorandom number.
+ *
+ * @return An NSData object that holds the decrypted data.
  */
-- (NSData *)decrypt:(NSData *)nonce msg:(NSData *)ciphertext;
+- (NSData *)decrypt:(NSData *)data nonce:(NSData *)nonce;
 
 @end

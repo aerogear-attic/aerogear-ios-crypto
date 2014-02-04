@@ -24,20 +24,20 @@
 @interface AGHash : NSObject
 
 /**
- * Initialize with the Hash function provided
+ * Initialize with the Hash function provided.
  *
- * @param length of hash function. For example: CC_SHA512_DIGEST_LENGTH
+ * @param algorithm The length of hash function e.g. CC_SHA512_DIGEST_LENGTH or CC_SHA256_DIGEST_LENGTH
  *
+ * @return The AGHash object.
  */
 - (id)init:(char)algorithm;
 
 /**
- * Create a message digest based on the string provided
+ * Create a message digest based on the string provided.
  *
- * @param raw text
+ * @param str The raw text.
  *
- * @return an NSMutableData object containing the message digest
+ * @return an NSData object containing the message digest.
  */
-
 - (NSData *)digest:(NSString *)str;
 @end

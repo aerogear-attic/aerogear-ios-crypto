@@ -86,7 +86,7 @@ SPEC_BEGIN(AGCryptoBoxSpec)
                     NSData *message = [AGUtil hexStringToBytes:BOX_MESSAGE];
 
                     AGCryptoBox *cryptoBox = [[AGCryptoBox alloc] initWithKey:alicePublicKey privateKey:bobPrivateKey];
-                    NSData *cipherText = [cryptoBox encrypt:nonce msg:message];
+                    NSData *cipherText = [cryptoBox encrypt:message nonce:nonce];
                     [[[AGUtil hexString:cipherText] should] equal:BOX_CIPHERTEXT];
                 });
 
@@ -100,11 +100,11 @@ SPEC_BEGIN(AGCryptoBoxSpec)
                     NSData *message = [AGUtil hexStringToBytes:BOX_MESSAGE];
 
                     AGCryptoBox *cryptoBox = [[AGCryptoBox alloc] initWithKey:alicePublicKey privateKey:bobPrivateKey];
-                    NSData *cipherText = [cryptoBox encrypt:nonce msg:message];
+                    NSData *cipherText = [cryptoBox encrypt:message nonce:nonce];
 
                     //Create a new box to test end to end asymmetric encryption
                     AGCryptoBox *pandora = [[AGCryptoBox alloc] initWithKey:bobPublicKey privateKey:alicePrivateKey];
-                    NSData *plainText = [pandora decrypt:nonce msg:cipherText];
+                    NSData *plainText = [pandora decrypt:cipherText nonce:nonce];
                     [[[AGUtil hexString:plainText] should] equal:BOX_MESSAGE];
                 });
             });

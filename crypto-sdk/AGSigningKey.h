@@ -29,11 +29,12 @@
 @property(readonly, nonatomic, strong) NSData *publicKey;
 
 /**
- * Digitally sign a message to prevent against tampering and forgery
+ * Digitally sign a message to prevent against tampering and forgery.
  *
- * @param message to be signed
+ * @param message The message to be signed.
+ *
+ * @return An NSData object that holds the signed message.
  */
 - (NSData *)sign:(NSData *)message;
-
 
 @end

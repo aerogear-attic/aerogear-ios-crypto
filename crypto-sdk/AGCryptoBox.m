@@ -33,11 +33,11 @@
     return self;
 }
 
-- (NSData *)encrypt:(NSData *)nonce msg:(NSData *)message {
+- (NSData *)encrypt:(NSData *)data nonce:(NSData *)nonce {
+    NSParameterAssert(data != nil);
     NSParameterAssert(nonce != nil && [nonce length] == crypto_box_curve25519xsalsa20poly1305_NONCEBYTES);
-    NSParameterAssert(message != nil);
-    
-    NSMutableData *msg = [AGUtil prependZeros:crypto_box_curve25519xsalsa20poly1305_ZEROBYTES msg:message];
+
+    NSMutableData *msg = [AGUtil prependZeros:crypto_box_curve25519xsalsa20poly1305_ZEROBYTES msg:data];
 
     NSMutableData *ct = [[NSMutableData alloc] initWithLength:msg.length];
 
@@ -55,11 +55,11 @@
                                             ct.length - crypto_box_curve25519xsalsa20poly1305_BOXZEROBYTES)];
 }
 
-- (NSData *)decrypt:(NSData *)nonce msg:(NSData *)ciphertext {
+- (NSData *)decrypt:(NSData *)data nonce:(NSData *)nonce {
+    NSParameterAssert(data != nil);
     NSParameterAssert(nonce != nil && [nonce length] == crypto_box_curve25519xsalsa20poly1305_NONCEBYTES);
-    NSParameterAssert(ciphertext != nil);
     
-    NSData *ct = [AGUtil prependZeros:crypto_box_curve25519xsalsa20poly1305_BOXZEROBYTES msg:ciphertext];
+    NSData *ct = [AGUtil prependZeros:crypto_box_curve25519xsalsa20poly1305_BOXZEROBYTES msg:data];
     NSMutableData *message = [[NSMutableData alloc] initWithLength:ct.length];
 
     int status = crypto_box_curve25519xsalsa20poly1305_open(
