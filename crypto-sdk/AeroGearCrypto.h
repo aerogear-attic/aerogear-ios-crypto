@@ -22,5 +22,10 @@
 #import "AGPBKDF2.h"
 #import "AGRandomGenerator.h"
 #import "AGSecretBox.h"
+#import "AGCryptoBox.h"
+#import "AGHash.h"
+#import "AGSigningKey.h"
+#import "AGVerifyKey.h"
+#import "AGKeyPair.h"
 
 #endif /* _AEROGEARCRYPTO_ */
