@@ -41,17 +41,17 @@ The following services are currently provided:
 
 ### Password based key derivation
 
-	AGPBKDF2 *pbkdf2 = [AGPBKDF2 alloc] init];
+	AGPBKDF2 *pbkdf2 = [[AGPBKDF2 alloc] init];
 	NSData *rawKey = [pbkdf2 deriveKey:@"passphrase"];
 
 ### Symmetric encryption
 
  	//Generate the key
-    AGPBKDF2 *pbkdf2 = [AGPBKDF2 alloc] init];
+    AGPBKDF2 *pbkdf2 = [[AGPBKDF2 alloc] init];
 	NSData *privateKey = [pbkdf2 deriveKey:@"passphrase"];
 
     //Initializes the secret box
-    AGSecretBox *secretBox = [AGSecretBox alloc] initWithKey:privateKey];
+    AGSecretBox *secretBox = [[AGSecretBox alloc] initWithKey:privateKey];
 
     //Encryption
     NSData *IV = [AGRandomGenerator randomBytes:32];
@@ -60,17 +60,17 @@ The following services are currently provided:
     NSData *cipherData = [secretBox encrypt:dataToEncrypt IV:IV];
 
     //Decryption
-    AGSecretBox *pandora = [AGSecretBox alloc] initWithKey:privateKey];
+    AGSecretBox *pandora = [[AGSecretBox alloc] initWithKey:privateKey];
 	NSData *message = [secretBox decrypt:cipherData IV:IV];
 
 ### Asymmetric encryption
 
     //Create a new key pair
-    AGKeyPair *keyPairBob = [AGKeyPair alloc] init];
-    AGKeyPair *keyPairAlice = [AGKeyPair alloc] init];
+    AGKeyPair *keyPairBob = [[AGKeyPair alloc] init];
+    AGKeyPair *keyPairAlice = [[AGKeyPair alloc] init];
 
     //Initializes the crypto box
-    AGCryptoBox *cryptoBox = [AGCryptoBox alloc] initWithKey:keyPairAlice.publicKey privateKey:keyPairBob.privateKey];
+    AGCryptoBox *cryptoBox = [[AGCryptoBox alloc] initWithKey:keyPairAlice.publicKey privateKey:keyPairBob.privateKey];
 
     NSData *nonce = [AGRandomGenerator randomBytes:32];
     NSData *dataToEncrypt = [@"My bonnie lies over the ocean" dataUsingEncoding:NSUTF8StringEncoding];
@@ -78,7 +78,7 @@ The following services are currently provided:
     NSData *cipherData = [cryptoBox encrypt:dataToEncrypt nonce:nonce];
 
     //Create a new box to test end to end asymmetric encryption
-	AGCryptoBox *pandora = [AGCryptoBox alloc] initWithKey:keyPairBob.publicKey privateKey:keyPairAlice.privateKey];
+	AGCryptoBox *pandora = [[AGCryptoBox alloc] initWithKey:keyPairBob.publicKey privateKey:keyPairAlice.privateKey];
 
 	NSData *message = [pandora decrypt:cipherData nonce:nonce];
 
@@ -105,6 +105,9 @@ The following services are currently provided:
 	// should detect corrupted signature
 	NSMutableData *corruptedSignature = [NSMutableData dataWithLength:64];
 	BOOL isValid = [verifyKey verify:message signature:signedMessage];
+	// isValid should be YES
+	
+	BOOL isValid = [verifyKey verify:message signature:corruptedSignature];
 	// isValid should be NO
 
 ### Generation of Cryptographically secure Random Numbers
