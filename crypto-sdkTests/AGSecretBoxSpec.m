@@ -80,6 +80,27 @@ describe(@"AGSecretBox", ^{
             NSData *plainText = [pandora decrypt:cipherText nonce:nonce];
             [[[AGUtil hexString:plainText] should] equal:BOX_MESSAGE];
         });
+        
+        it(@"should reject to decrypt corrupted ciphertext", ^{
+            NSData *key = [AGUtil hexStringToBytes:BOB_SECRET_KEY];
+            
+            NSData *nonce = [AGUtil hexStringToBytes:BOX_NONCE];
+            NSData *message = [AGUtil hexStringToBytes:BOX_MESSAGE];
+            
+            secretBox = [[AGSecretBox alloc] initWithKey:key];
+            
+            NSData *cipherText = [secretBox encrypt:message nonce:nonce];
+            
+            // corrupt ciphertext
+            NSMutableData *corupted_cipherText = [NSMutableData dataWithData:cipherText];
+            [corupted_cipherText resetBytesInRange:NSMakeRange(0,5)];
+            
+            AGSecretBox *pandora = [[AGSecretBox alloc] initWithKey:key];
+
+            [[theBlock(^{
+                NSData __unused *plainText = [pandora decrypt:corupted_cipherText nonce:nonce];
+            }) should] raise];
+        });
     });
 });
 
