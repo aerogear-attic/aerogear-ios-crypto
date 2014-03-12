@@ -95,20 +95,19 @@ The following services are currently provided:
 ### Digital Signatures
 
     NSData *message = [@"My bonnie lies over the ocean" dataUsingEncoding:NSUTF8StringEncoding];
-	
+    
     AGSigningKey *signingKey = [[AGSigningKey alloc] init];
     AGVerifyKey *verifyKey = [[AGVerifyKey alloc] initWithKey:signingKey.publicKey];
+    // sign the message
+    NSData *signedMessage = [signingKey sign:message];
 
-   // sign the message
-   NSData *signedMessage = [signingKey sign:message];
-
-   // should detect corrupted signature
-   NSMutableData *corruptedSignature = [NSMutableData dataWithLength:64];
-   BOOL isValid = [verifyKey verify:message signature:signedMessage];
+    // should detect corrupted signature
+    NSMutableData *corruptedSignature = [NSMutableData dataWithLength:64];
+    BOOL isValid = [verifyKey verify:message signature:signedMessage];
    
-   // isValid should be YES
-   BOOL isValid = [verifyKey verify:message signature:corruptedSignature];
-   // isValid should be NO
+    // isValid should be YES
+    BOOL isValid = [verifyKey verify:message signature:corruptedSignature];
+    // isValid should be NO
 
 ### Generation of Cryptographically secure Random Numbers
    NSData *random = [AGRandomGenerator randomBytes:<length>];
