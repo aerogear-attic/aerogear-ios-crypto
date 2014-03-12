@@ -61,7 +61,7 @@ describe(@"AGSecretBox", ^{
             NSData *message = [AGUtil hexStringToBytes:BOX_MESSAGE];
             
             secretBox = [[AGSecretBox alloc] initWithKey:key];
-            NSData *cipherText = [secretBox encrypt:nonce msg:message];
+            NSData *cipherText = [secretBox encrypt:message nonce:nonce];
             [[[AGUtil hexString:cipherText] should] equal:BOX_CIPHERTEXT];
         });
         
@@ -73,10 +73,11 @@ describe(@"AGSecretBox", ^{
             
             secretBox = [[AGSecretBox alloc] initWithKey:key];
             
-            NSData *cipherText = [secretBox encrypt:nonce msg:message];
-            
+            NSData *cipherText = [secretBox encrypt:message nonce:nonce];
+
+            //Create a new box to test end to end symmetric encryption
             AGSecretBox *pandora = [[AGSecretBox alloc] initWithKey:key];
-            NSData *plainText = [pandora decrypt:nonce msg:cipherText];
+            NSData *plainText = [pandora decrypt:cipherText nonce:nonce];
             [[[AGUtil hexString:plainText] should] equal:BOX_MESSAGE];
         });
     });
