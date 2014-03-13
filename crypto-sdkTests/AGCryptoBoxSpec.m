@@ -36,7 +36,15 @@ SPEC_BEGIN(AGCryptoBoxSpec)
                 const NSString *BOX_CIPHERTEXT = @"F3FFC7703F9400E52A7DFB4B3D3305D98E993B9F48681273C29650BA32FC76CE48332EA7164D96A4476FB8C531A1186AC0DFC17C98DCE87B4DA7F011EC48C97271D2C20F9B928FE2270D6FB863D51738B48EEEE314A7CC8AB932164548E526AE90224368517ACFEABD6BB3732BC0E9DA99832B61CA01B6DE56244A9E88D5F9B37973F622A43D14A6599B1F654CB45A74E355A5";
                 
                 __block AGCryptoBox *cryptoBox;
-
+                
+                it(@"should accept the keys provided with AGKeyPair", ^{
+                    NSData *alicePublicKey = [AGUtil hexStringToBytes:ALICE_PUBLIC_KEY];
+                    NSData *bobPrivateKey = [AGUtil hexStringToBytes:BOB_PRIVATE_KEY];
+                    AGKeyPair* keyPair = [[AGKeyPair alloc] initWithPrivateKey:bobPrivateKey publicKey:alicePublicKey];
+                    
+                    cryptoBox = [[AGCryptoBox alloc] initWithKeyPair:keyPair];
+                });
+                
                 it(@"should accept the key provided", ^{
                     NSData *alicePublicKey = [AGUtil hexStringToBytes:ALICE_PUBLIC_KEY];
                     NSData *bobPrivateKey = [AGUtil hexStringToBytes:BOB_PRIVATE_KEY];

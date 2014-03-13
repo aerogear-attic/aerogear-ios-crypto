@@ -17,7 +17,7 @@
 
 #import <Foundation/Foundation.h>
 #import <libsodium-ios/sodium/crypto_box_curve25519xsalsa20poly1305.h>
-
+#import "AGKeyPair.h"
 
 /**
  * Provide public key authenticated encryption via curve25519xsalsa20poly1305
@@ -28,9 +28,17 @@
 @property(readonly, nonatomic, strong) NSData *privateKey;
 @property(readonly, nonatomic, strong) NSData *publicKey;
 
-
 /**
  * Crypto box default initialization
+ *
+ * @param keyPair containig public and private keys provided.
+ *
+ * @return the AGCryptoBox object.
+ */
+- (id)initWithKeyPair:(AGKeyPair *)keyPair;
+
+/**
+ * Crypto box initialization
  *
  * @param publicKey the public encryption key provided.
  * @param privateKey the private encryption key provided.

@@ -20,6 +20,10 @@
 
 @implementation AGCryptoBox
 
+- (id)initWithKeyPair:(AGKeyPair *)keyPair {
+    return [self initWithKey:keyPair.publicKey privateKey:keyPair.privateKey];
+}
+
 - (id)initWithKey:(NSData *)publicKey privateKey:(NSData *)privateKey {
     NSParameterAssert(privateKey != nil && [privateKey length] == crypto_box_curve25519xsalsa20poly1305_SECRETKEYBYTES);
     NSParameterAssert(publicKey != nil && [publicKey length] == crypto_box_curve25519xsalsa20poly1305_PUBLICKEYBYTES);

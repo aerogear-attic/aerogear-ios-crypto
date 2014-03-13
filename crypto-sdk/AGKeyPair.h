@@ -26,4 +26,5 @@
 @property(readonly, nonatomic, strong) NSData *privateKey;
 @property(readonly, nonatomic, strong) NSData *publicKey;
 
+- (id)initWithPrivateKey:(NSData *)privateKey publicKey:(NSData *)publicKey;
 @end

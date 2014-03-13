@@ -17,23 +17,24 @@
 
 #import "AGKeyPair.h"
 
-@implementation AGKeyPair {
-    NSMutableData *_privateKey;
-    NSMutableData *_publicKey;
-}
+@implementation AGKeyPair
 
-- (id)init {
-    self = [super init];
-
-    if (self) {
-        _publicKey = [NSMutableData dataWithLength:crypto_box_curve25519xsalsa20poly1305_PUBLICKEYBYTES];
-        _privateKey = [NSMutableData dataWithLength:crypto_box_curve25519xsalsa20poly1305_SECRETKEYBYTES];
-
-        //Generate the keypair
-        crypto_box_curve25519xsalsa20poly1305_keypair([_publicKey mutableBytes], [_privateKey mutableBytes] );
+- (id)initWithPrivateKey:(NSData *)privateKey publicKey:(NSData *)publicKey {
+    if ([super init]) {
+        _publicKey = publicKey;
+        _privateKey = privateKey;
     }
-
+    
     return self;
 }
 
+- (id)init {
+    NSMutableData *publicKey = [NSMutableData dataWithLength:crypto_box_curve25519xsalsa20poly1305_PUBLICKEYBYTES];
+    NSMutableData *privateKey = [NSMutableData dataWithLength:crypto_box_curve25519xsalsa20poly1305_SECRETKEYBYTES];
+    
+    //Generate the keypair
+    crypto_box_curve25519xsalsa20poly1305_keypair([publicKey mutableBytes], [privateKey mutableBytes]);
+    
+    return [self initWithPrivateKey:privateKey publicKey:publicKey];
+}
 @end
