@@ -23,7 +23,7 @@
 
 const NSInteger AGPBKDF2Iterations = 20000;
 const NSInteger AGPBKDF2MinimumIterations = 10000;
-const NSInteger AGPBKDF2DerivedKeyLength = 160;
+const NSInteger AGPBKDF2DerivedKeyLength = 32;
 const NSInteger AGPBKDF2MinimumSaltLength = 16;
 
 @implementation AGPBKDF2 {
