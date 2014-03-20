@@ -18,6 +18,8 @@
 #import <Kiwi/Kiwi.h>
 #import "AGSecretBox.h"
 #import "AGUtil.h"
+#import "AGPBKDF2.h"
+#import "AGRandomGenerator.h"
 
 SPEC_BEGIN(AGSecretBoxSpec)
 
@@ -52,6 +54,26 @@ describe(@"AGSecretBox", ^{
             [[theBlock(^{
                 secretBox = [[AGSecretBox alloc] initWithKey:invalidKey];
             }) should] raise];
+        });
+
+        it(@"should accept KDF keys", ^{
+            
+            AGPBKDF2 *pbkdf2 = [[AGPBKDF2 alloc] init];
+            NSString *PASSWORD = @"My Bonnie lies over the ocean, my Bonnie lies over the sea";
+            NSData *salt = [AGRandomGenerator randomBytes];
+            NSData *key = [pbkdf2 deriveKey:PASSWORD salt:salt];
+            
+            NSData *nonce = [AGUtil hexStringToBytes:BOX_NONCE];
+            NSData *message = [AGUtil hexStringToBytes:BOX_MESSAGE];
+            
+            secretBox = [[AGSecretBox alloc] initWithKey:key];
+            
+            NSData *cipherText = [secretBox encrypt:message nonce:nonce];
+            
+            //Create a new box to test end to end symmetric encryption
+            AGSecretBox *pandora = [[AGSecretBox alloc] initWithKey:key];
+            NSData *plainText = [pandora decrypt:cipherText nonce:nonce];
+            [[[AGUtil hexString:plainText] should] equal:BOX_MESSAGE];
         });
         
         it(@"should properly encrypt the raw bytes provided", ^{
