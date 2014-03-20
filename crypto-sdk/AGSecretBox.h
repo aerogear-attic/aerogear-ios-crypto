@@ -16,40 +16,41 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <libsodium-ios/sodium/crypto_secretbox_xsalsa20poly1305.h>
 
 /**
- * Main class for performing encrypt/decrypt operations. Currently it only supports symmetric
- * key encryption but asymmetric support is currently in the works.
+ * Provide symmetric key authenticated encryption via xsalsa20poly1305
+ * (see http://nacl.cr.yp.to/secretbox.html)
  */
 @interface AGSecretBox : NSObject
 
 /**
- * Default initializer.
+ * Secret box default initialization
  *
- * @param key The encryption key to use for the encryption/decryption.
+ * @param key the private encryption key provided.
  *
  * @return the AGSecretBox object.
  */
 - (id)initWithKey:(NSData *)key;
 
 /**
- * Encrypts the data object passed in.
+ * Encrypts and authenticates the data object provided given a nonce.
  *
  * @param data The data object to encrypt.
- * @param IV   A randomly chosen value used as the initialization vector during encrypt.
+ * @param nonce the cryptographically secure pseudorandom number.
  *
  * @return An NSData object that holds the encrypted(cipher) data.
  */
-- (NSData *)encrypt:(NSData *)data IV:(NSData *)IV;
+- (NSData *)encrypt:(NSData *)data nonce:(NSData *)nonce;
 
 /**
- * Decrypts the data object(cipher) passed in.
+ * Decrypts the data object provided given a nonce.
  *
  * @param data The data object(cipher) to decrypt.
- * @param IV   A randomly chosen value used as the initialization vector during decrypt.
+ * @param nonce The cryptographically secure pseudorandom number.
  *
  * @return An NSData object that holds the decrypted data.
  */
-- (NSData *)decrypt:(NSData *)data IV:(NSData *)IV;
+- (NSData *)decrypt:(NSData *)data nonce:(NSData *)nonce;
 
 @end

@@ -30,7 +30,7 @@ pod "AeroGear-Crypto", '0.2.0'
 ## Project Status
 The following services are currently provided:
 
-* A [Symmetric encryption](http://en.wikipedia.org/wiki/Symmetric-key_algorithm) interface
+* A [Symmetric encryption](http://nacl.cr.yp.to/secretbox.html) interface
 * An [Asymmetric encryption interface](http://nacl.cr.yp.to/box.html)
 * Password based key generation using [PBKDF2](http://en.wikipedia.org/wiki/PBKDF2)
 * Generation of Cryptographically secure [random numbers](http://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator).
@@ -41,27 +41,27 @@ The following services are currently provided:
 
 ### Password based key derivation
 
-	AGPBKDF2 *pbkdf2 = [[AGPBKDF2 alloc] init];
-	NSData *rawKey = [pbkdf2 deriveKey:@"passphrase"];
+    AGPBKDF2 *pbkdf2 = [[AGPBKDF2 alloc] init];
+    NSData *rawKey = [pbkdf2 deriveKey:@"passphrase"];
 
 ### Symmetric encryption
 
- 	//Generate the key
+    //Generate the key
     AGPBKDF2 *pbkdf2 = [[AGPBKDF2 alloc] init];
-	NSData *privateKey = [pbkdf2 deriveKey:@"passphrase"];
+    NSData *privateKey = [pbkdf2 deriveKey:@"passphrase"];
 
     //Initializes the secret box
     AGSecretBox *secretBox = [[AGSecretBox alloc] initWithKey:privateKey];
 
     //Encryption
-    NSData *IV = [AGRandomGenerator randomBytes:32];
+    NSData *nonce = [AGRandomGenerator randomBytes:32];
     NSData *dataToEncrypt = [@"My bonnie lies over the ocean" dataUsingEncoding:NSUTF8StringEncoding];
 
-    NSData *cipherData = [secretBox encrypt:dataToEncrypt IV:IV];
+    NSData *cipherData = [secretBox encrypt:dataToEncrypt nonce:nonce];
 
     //Decryption
     AGSecretBox *pandora = [[AGSecretBox alloc] initWithKey:privateKey];
-	NSData *message = [secretBox decrypt:cipherData IV:IV];
+    NSData *message = [secretBox decrypt:cipherData nonce:nonce];
 
 ### Asymmetric encryption
 
@@ -78,40 +78,39 @@ The following services are currently provided:
     NSData *cipherData = [cryptoBox encrypt:dataToEncrypt nonce:nonce];
 
     //Create a new box to test end to end asymmetric encryption
-	AGCryptoBox *pandora = [[AGCryptoBox alloc] initWithKey:keyPairBob.publicKey privateKey:keyPairAlice.privateKey];
+    AGCryptoBox *pandora = [[AGCryptoBox alloc] initWithKey:keyPairBob.publicKey privateKey:keyPairAlice.privateKey];
 
-	NSData *message = [pandora decrypt:cipherData nonce:nonce];
+    NSData *message = [pandora decrypt:cipherData nonce:nonce];
 
 ### Hashing functions
 
-	// create an SHA256 hash
-	AGHash *agHash = [[AGHash alloc] init:CC_SHA256_DIGEST_LENGTH];
-	NSData *rawPassword = [agHash digest:@"My bonnie lies over the ocean"];
+    // create an SHA256 hash
+    AGHash *agHash = [[AGHash alloc] init:CC_SHA256_DIGEST_LENGTH];
+    NSData *rawPassword = [agHash digest:@"My bonnie lies over the ocean"];
 
-	// create an SHA512 hash
-	AGHash *agHash = [[AGHash alloc] init:CC_SHA512_DIGEST_LENGTH];
-	NSData *rawPassword = [agHash digest:@"My bonnie lies over the ocean"];
+    // create an SHA512 hash
+    AGHash *agHash = [[AGHash alloc] init:CC_SHA512_DIGEST_LENGTH];
+    NSData *rawPassword = [agHash digest:@"My bonnie lies over the ocean"];
 
 ### Digital Signatures
 
-	NSData *message = [@"My bonnie lies over the ocean" dataUsingEncoding:NSUTF8StringEncoding];
-	
-	AGSigningKey *signingKey = [[AGSigningKey alloc] init];
-	AGVerifyKey *verifyKey = [[AGVerifyKey alloc] initWithKey:signingKey.publicKey];
+    NSData *message = [@"My bonnie lies over the ocean" dataUsingEncoding:NSUTF8StringEncoding];
+    
+    AGSigningKey *signingKey = [[AGSigningKey alloc] init];
+    AGVerifyKey *verifyKey = [[AGVerifyKey alloc] initWithKey:signingKey.publicKey];
+    // sign the message
+    NSData *signedMessage = [signingKey sign:message];
 
-	// sign the message
-	NSData *signedMessage = [signingKey sign:message];
-
-	// should detect corrupted signature
-	NSMutableData *corruptedSignature = [NSMutableData dataWithLength:64];
-	BOOL isValid = [verifyKey verify:message signature:signedMessage];
-	// isValid should be YES
-	
-	BOOL isValid = [verifyKey verify:message signature:corruptedSignature];
-	// isValid should be NO
+    // should detect corrupted signature
+    NSMutableData *corruptedSignature = [NSMutableData dataWithLength:64];
+    BOOL isValid = [verifyKey verify:message signature:signedMessage];
+   
+    // isValid should be YES
+    BOOL isValid = [verifyKey verify:message signature:corruptedSignature];
+    // isValid should be NO
 
 ### Generation of Cryptographically secure Random Numbers
-	NSData *random = [AGRandomGenerator randomBytes:<length>];
+   NSData *random = [AGRandomGenerator randomBytes:<length>];
 	
 
 ## Join us

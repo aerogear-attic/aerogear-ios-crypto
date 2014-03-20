@@ -10,7 +10,6 @@
 		6F465B0D1805632D0097BC5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B0C1805632D0097BC5F /* Foundation.framework */; };
 		6F465B121805632D0097BC5F /* AeroGearCrypto.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F465B111805632D0097BC5F /* AeroGearCrypto.h */; };
 		6F465B331805683D0097BC5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B321805683D0097BC5F /* Security.framework */; };
-		6F6AB2E1180EE581006AD5EC /* AGSymmetricCryptoEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6AB2E0180EE581006AD5EC /* AGSymmetricCryptoEngine.m */; };
 		6F6AB2E4180EE83F006AD5EC /* AGPBKDF2.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6AB2E3180EE83F006AD5EC /* AGPBKDF2.m */; };
 		6F86F954180FEFA5002B087A /* AGPBKDF2Spec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F86F953180FEFA5002B087A /* AGPBKDF2Spec.m */; };
 		6F86F956181009B5002B087A /* AGRandomGeneratorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F86F955181009B5002B087A /* AGRandomGeneratorSpec.m */; };
@@ -70,8 +69,6 @@
 		6F465B1A1805632E0097BC5F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6F465B1D1805632E0097BC5F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		6F465B321805683D0097BC5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		6F6AB2DF180EE581006AD5EC /* AGSymmetricCryptoEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSymmetricCryptoEngine.h; sourceTree = "<group>"; };
-		6F6AB2E0180EE581006AD5EC /* AGSymmetricCryptoEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSymmetricCryptoEngine.m; sourceTree = "<group>"; };
 		6F6AB2E2180EE83F006AD5EC /* AGPBKDF2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPBKDF2.h; sourceTree = "<group>"; };
 		6F6AB2E3180EE83F006AD5EC /* AGPBKDF2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPBKDF2.m; sourceTree = "<group>"; };
 		6F86F953180FEFA5002B087A /* AGPBKDF2Spec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPBKDF2Spec.m; sourceTree = "<group>"; };
@@ -140,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				6F465B0E1805632D0097BC5F /* crypto-sdk */,
+				6F465B0F1805632D0097BC5F /* Supporting Files */,
 				6F9BE75D180C0B200045D8AE /* crypto-sdkTests */,
 				6F465B0B1805632D0097BC5F /* Frameworks */,
 				6F465B0A1805632D0097BC5F /* Products */,
@@ -177,14 +175,11 @@
 				6FBA769B180D706700D83DDE /* AeroGearCrypto.h */,
 				6F6AB2E2180EE83F006AD5EC /* AGPBKDF2.h */,
 				6F6AB2E3180EE83F006AD5EC /* AGPBKDF2.m */,
-				6F6AB2DF180EE581006AD5EC /* AGSymmetricCryptoEngine.h */,
-				6F6AB2E0180EE581006AD5EC /* AGSymmetricCryptoEngine.m */,
 				6FBA769C180D706700D83DDE /* AGSecretBox.h */,
 				6FBA769D180D706700D83DDE /* AGSecretBox.m */,
 				6FBA769E180D706700D83DDE /* AGRandomGenerator.h */,
 				6FBA769F180D706700D83DDE /* AGRandomGenerator.m */,
 				6F465B111805632D0097BC5F /* AeroGearCrypto.h */,
-				6F465B0F1805632D0097BC5F /* Supporting Files */,
 				81F414CA0E9E7E6FDDDC0AB6 /* AGHash.h */,
 				81F41A7F744D0EFE8190E12C /* AGHash.m */,
 				81F41AC0F03D574E3849AC27 /* AGUtil.h */,
@@ -207,6 +202,7 @@
 				6F465B101805632D0097BC5F /* crypto-sdk-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = "crypto-sdk";
 			sourceTree = "<group>";
 		};
 		6F9BE75D180C0B200045D8AE /* crypto-sdkTests */ = {
@@ -214,13 +210,13 @@
 			children = (
 				6F9BE75E180C0B200045D8AE /* Supporting Files */,
 				6FBA76A2180D707500D83DDE /* AGSecretBoxSpec.m */,
+				81F41D6B31555BB3B8602A44 /* AGCryptoBoxSpec.m */,
 				6F86F953180FEFA5002B087A /* AGPBKDF2Spec.m */,
 				6F86F955181009B5002B087A /* AGRandomGeneratorSpec.m */,
 				81F41AFEA2BEA9251E8A44FA /* AGHashSpec.m */,
 				81F410FED0790997587DFE7D /* AGSigningKeySpec.m */,
 				81F4196A05F04961695B186F /* AGUtilSpec.m */,
 				81F41DD492904E22CB9DFB61 /* AGKeyPairSpec.m */,
-				81F41D6B31555BB3B8602A44 /* AGCryptoBoxSpec.m */,
 			);
 			path = "crypto-sdkTests";
 			sourceTree = "<group>";
@@ -283,7 +279,8 @@
 		6F465B011805632D0097BC5F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastTestingUpgradeCheck = 0510;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = AeroGear;
 				TargetAttributes = {
 					6F9BE757180C0B200045D8AE = {
@@ -389,7 +386,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F6AB2E4180EE83F006AD5EC /* AGPBKDF2.m in Sources */,
-				6F6AB2E1180EE581006AD5EC /* AGSymmetricCryptoEngine.m in Sources */,
 				6FBA76A1180D706700D83DDE /* AGRandomGenerator.m in Sources */,
 				6FBA76A0180D706700D83DDE /* AGSecretBox.m in Sources */,
 				81F418035F52E24DE43A35A1 /* AGHash.m in Sources */,
@@ -472,7 +468,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -505,7 +501,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};
@@ -516,7 +512,7 @@
 				DSTROOT = /tmp/crypto_sdk.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "crypto-sdk/crypto-sdk-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -530,7 +526,7 @@
 				DSTROOT = /tmp/crypto_sdk.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "crypto-sdk/crypto-sdk-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -553,7 +549,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "crypto-sdkTests/crypto-sdkTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -571,7 +567,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "crypto-sdkTests/crypto-sdkTests-Prefix.pch";
 				INFOPLIST_FILE = "crypto-sdkTests/crypto-sdkTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};

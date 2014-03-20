@@ -17,115 +17,111 @@
 
 #import <Kiwi/Kiwi.h>
 #import "AGSecretBox.h"
-#import "AGRandomGenerator.h"
+#import "AGUtil.h"
 #import "AGPBKDF2.h"
+#import "AGRandomGenerator.h"
 
 SPEC_BEGIN(AGSecretBoxSpec)
 
 describe(@"AGSecretBox", ^{
-    context(@"when newly created", ^{
-        __block AGSecretBox * cryptoBox = nil;
-        __block NSData *encryptionSalt = nil;
+    
+    context(@"Symmetric encryption", ^{
         
-        beforeEach(^{
-            AGPBKDF2 *keyGenerator = [[AGPBKDF2 alloc] init];
-            
-            encryptionSalt = [AGRandomGenerator randomBytes:16];
-            cryptoBox = [[AGSecretBox alloc] initWithKey:[keyGenerator deriveKey:@"123456" salt:encryptionSalt]];
+        NSString * const BOB_SECRET_KEY = @"5DAB087E624A8A4B79E17F8B83800EE66F3BB1292618B6FD1C2F8B27FF88E0EB";
+        
+        NSString * const BOX_NONCE = @"69696EE955B62B73CD62BDA875FC73D68219E0036B7A0B37";
+        
+        NSString * const BOX_MESSAGE = @"BE075FC53C81F2D5CF141316EBEB0C7B5228C52A4C62CBD44B66849B64244FFCE5ECBAAF33BD751A1AC728D45E6C61296CDC3C01233561F41DB66CCE314ADB310E3BE8250C46F06DCEEA3A7FA1348057E2F6556AD6B1318A024A838F21AF1FDE048977EB48F59FFD4924CA1C60902E52F0A089BC76897040E082F937763848645E0705";
+        
+        const NSString *BOX_CIPHERTEXT = @"FF3E9EDA8A2CAE2BD500805C39B3B0453C4085503EAADC170CEAD52C6DFFAAA3E31CADF835C65530C0DA6D2EFA79A94C47DC3397D8F6999C1B7D768E681E5B528EE048B7652E2756E4EC011213D2D5C8EB8D1BE454C18EC319D363E79EE493F1C146E9D27C7A14BD5A5B82DA7B30CA9D4A706CD7C77F4491A41504F6B8814AA9CD28224966571A9E45FD1FD029B73CF43EA382";
+
+        __block AGSecretBox *secretBox;
+        
+        it(@"should accept the key provided", ^{
+            NSData *key = [AGUtil hexStringToBytes:BOB_SECRET_KEY];
+            secretBox = [[AGSecretBox alloc] initWithKey:key];
         });
         
-        it(@"it should not be nil", ^{
-            [[cryptoBox shouldNot] beNil];
+        it(@"should reject nil secret key", ^{
+            [[theBlock(^{
+                secretBox = [[AGSecretBox alloc] initWithKey:nil];
+            }) should] raise];
         });
         
-        context(@"should correctly encrypt/decrypt honouring kCCOptionPKCS7Padding" , ^{
-            it(@"should return identical encrypted/decrypted data when 16 characters", ^{
-                NSString* stringToEncrypt = @"0123456789abcdef";
-                NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
-                
-                // encrypt
-                NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
-                [encryptedData shouldNotBeNil];
-                
-                // decrypt
-                NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:encryptionSalt];
-                [decryptedData shouldNotBeNil];
-                
-                // should match
-                NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
-                [[@"0123456789abcdef" should] equal:decryptedString];
-            });
-            
-            it(@"should return identical encrypted/decrypted data when less than 16 chars", ^{
-                NSString* stringToEncrypt = @"0123456789abcde";
-                NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
-                
-                // encrypt
-                NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
-                [encryptedData shouldNotBeNil];
-                
-                // decrypt
-                NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:encryptionSalt];
-                [decryptedData shouldNotBeNil];
-                
-                // should match
-                NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
-                [[@"0123456789abcde" should] equal:decryptedString];
-            });
-            
-            it(@"should return identical encrypted/decrypted data when data to encrypt is more than 16 chars", ^{
-                NSString* stringToEncrypt = @"0123456789abcdef1234";
-                NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
+        it(@"should reject invalid secret key", ^{
+            NSData *invalidKey = [AGUtil hexStringToBytes:@"000000"];
 
-                // encrypt
-                NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
-                [encryptedData shouldNotBeNil];
-                
-                // decrypt
-                NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:encryptionSalt];
-                [decryptedData shouldNotBeNil];
-                
-                // should match
-                NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
-                [[@"0123456789abcdef1234" should] equal:decryptedString];
-            });
+            [[theBlock(^{
+                secretBox = [[AGSecretBox alloc] initWithKey:invalidKey];
+            }) should] raise];
+        });
+
+        it(@"should accept KDF keys", ^{
+            
+            AGPBKDF2 *pbkdf2 = [[AGPBKDF2 alloc] init];
+            NSString *PASSWORD = @"My Bonnie lies over the ocean, my Bonnie lies over the sea";
+            NSData *salt = [AGRandomGenerator randomBytes];
+            NSData *key = [pbkdf2 deriveKey:PASSWORD salt:salt];
+            
+            NSData *nonce = [AGUtil hexStringToBytes:BOX_NONCE];
+            NSData *message = [AGUtil hexStringToBytes:BOX_MESSAGE];
+            
+            secretBox = [[AGSecretBox alloc] initWithKey:key];
+            
+            NSData *cipherText = [secretBox encrypt:message nonce:nonce];
+            
+            //Create a new box to test end to end symmetric encryption
+            AGSecretBox *pandora = [[AGSecretBox alloc] initWithKey:key];
+            NSData *plainText = [pandora decrypt:cipherText nonce:nonce];
+            [[[AGUtil hexString:plainText] should] equal:BOX_MESSAGE];
         });
         
-        context(@"should fail with corrupted crypto params", ^{
-            it(@"should fail to decrypt with corrupted IV", ^{
-                NSString* stringToEncrypt = @"0123456789abcdef1234";
-                NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
-                
-                NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
-                // corrupt IV
-                NSMutableData *mutEncryptionSalt = [encryptionSalt mutableCopy];
-                [mutEncryptionSalt replaceBytesInRange:NSMakeRange(1, 1)
-                                             withBytes:[[@" " dataUsingEncoding:NSUTF8StringEncoding] bytes]];
-
-                // try to decrypt
-                NSData* decryptedData = [cryptoBox decrypt:encryptedData IV:mutEncryptionSalt];
-                NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
-
-                // should fail
-                [[@"0123456789abcdef1234" shouldNot] equal:decryptedString];
-            });
+        it(@"should properly encrypt the raw bytes provided", ^{
+            NSData *key = [AGUtil hexStringToBytes:BOB_SECRET_KEY];
             
-            it(@"should fail to decrypt with corrupted ciphertext", ^{
-                NSString* stringToEncrypt = @"0123456789abcdef1234";
-                NSData* dataToEncrypt = [stringToEncrypt dataUsingEncoding:NSUTF8StringEncoding];
-                
-                NSData* encryptedData = [cryptoBox encrypt:dataToEncrypt IV:encryptionSalt];
-                // corrupt cipher
-                NSMutableData *mutEncryptedData = [encryptedData mutableCopy];
-                [mutEncryptedData replaceBytesInRange:NSMakeRange(1, 1)
-                                            withBytes:[[@" " dataUsingEncoding:NSUTF8StringEncoding] bytes]];
-                // try to decrypt
-                NSData* decryptedData = [cryptoBox decrypt:mutEncryptedData IV:encryptionSalt];
-                NSString* decryptedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
-                
-                // should fail
-                [decryptedString shouldBeNil];
-            });
+            NSData *nonce = [AGUtil hexStringToBytes:BOX_NONCE];
+            NSData *message = [AGUtil hexStringToBytes:BOX_MESSAGE];
+            
+            secretBox = [[AGSecretBox alloc] initWithKey:key];
+            NSData *cipherText = [secretBox encrypt:message nonce:nonce];
+            [[[AGUtil hexString:cipherText] should] equal:BOX_CIPHERTEXT];
+        });
+        
+        it(@"should properly decrypt the raw bytes provided", ^{
+            NSData *key = [AGUtil hexStringToBytes:BOB_SECRET_KEY];
+            
+            NSData *nonce = [AGUtil hexStringToBytes:BOX_NONCE];
+            NSData *message = [AGUtil hexStringToBytes:BOX_MESSAGE];
+            
+            secretBox = [[AGSecretBox alloc] initWithKey:key];
+            
+            NSData *cipherText = [secretBox encrypt:message nonce:nonce];
+
+            //Create a new box to test end to end symmetric encryption
+            AGSecretBox *pandora = [[AGSecretBox alloc] initWithKey:key];
+            NSData *plainText = [pandora decrypt:cipherText nonce:nonce];
+            [[[AGUtil hexString:plainText] should] equal:BOX_MESSAGE];
+        });
+        
+        it(@"should reject to decrypt corrupted ciphertext", ^{
+            NSData *key = [AGUtil hexStringToBytes:BOB_SECRET_KEY];
+            
+            NSData *nonce = [AGUtil hexStringToBytes:BOX_NONCE];
+            NSData *message = [AGUtil hexStringToBytes:BOX_MESSAGE];
+            
+            secretBox = [[AGSecretBox alloc] initWithKey:key];
+            
+            NSData *cipherText = [secretBox encrypt:message nonce:nonce];
+            
+            // corrupt ciphertext
+            NSMutableData *corupted_cipherText = [NSMutableData dataWithData:cipherText];
+            [corupted_cipherText resetBytesInRange:NSMakeRange(0,5)];
+            
+            AGSecretBox *pandora = [[AGSecretBox alloc] initWithKey:key];
+
+            [[theBlock(^{
+                NSData __unused *plainText = [pandora decrypt:corupted_cipherText nonce:nonce];
+            }) should] raise];
         });
     });
 });

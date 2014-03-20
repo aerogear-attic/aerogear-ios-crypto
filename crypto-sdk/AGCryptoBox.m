@@ -37,8 +37,7 @@
     NSParameterAssert(data != nil);
     NSParameterAssert(nonce != nil && [nonce length] == crypto_box_curve25519xsalsa20poly1305_NONCEBYTES);
 
-    NSMutableData *msg = [AGUtil prependZeros:crypto_box_curve25519xsalsa20poly1305_ZEROBYTES msg:data];
-
+    NSData *msg = [AGUtil prependZeros:crypto_box_curve25519xsalsa20poly1305_ZEROBYTES msg:data];
     NSMutableData *ct = [[NSMutableData alloc] initWithLength:msg.length];
 
     int status = crypto_box_curve25519xsalsa20poly1305(
