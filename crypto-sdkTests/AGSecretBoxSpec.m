@@ -28,6 +28,7 @@ describe(@"AGSecretBox", ^{
     context(@"Symmetric encryption", ^{
         
         NSString * const BOB_SECRET_KEY = @"5DAB087E624A8A4B79E17F8B83800EE66F3BB1292618B6FD1C2F8B27FF88E0EB";
+        NSString * const BOB_CORRUPTED_SECRET_KEY = @"1FAC087E124A8A4B79E17F8B83800EE66F3BB1292618B6FD1C2F8B27FF88E0EB";
         
         NSString * const BOX_NONCE = @"69696EE955B62B73CD62BDA875FC73D68219E0036B7A0B37";
         
@@ -67,12 +68,12 @@ describe(@"AGSecretBox", ^{
             NSData *message = [AGUtil hexStringToBytes:BOX_MESSAGE];
             
             secretBox = [[AGSecretBox alloc] initWithKey:key];
-            
-            NSData *cipherText = [secretBox encrypt:message nonce:nonce];
-            
+
+            NSData *cipherText = [secretBox encrypt:message nonce:nonce error:nil];
+
             //Create a new box to test end to end symmetric encryption
             AGSecretBox *pandora = [[AGSecretBox alloc] initWithKey:key];
-            NSData *plainText = [pandora decrypt:cipherText nonce:nonce];
+            NSData *plainText = [pandora decrypt:cipherText nonce:nonce error:nil];
             [[[AGUtil hexString:plainText] should] equal:BOX_MESSAGE];
         });
         
@@ -83,7 +84,7 @@ describe(@"AGSecretBox", ^{
             NSData *message = [AGUtil hexStringToBytes:BOX_MESSAGE];
             
             secretBox = [[AGSecretBox alloc] initWithKey:key];
-            NSData *cipherText = [secretBox encrypt:message nonce:nonce];
+            NSData *cipherText = [secretBox encrypt:message nonce:nonce error:nil];
             [[[AGUtil hexString:cipherText] should] equal:BOX_CIPHERTEXT];
         });
         
@@ -95,11 +96,11 @@ describe(@"AGSecretBox", ^{
             
             secretBox = [[AGSecretBox alloc] initWithKey:key];
             
-            NSData *cipherText = [secretBox encrypt:message nonce:nonce];
+            NSData *cipherText = [secretBox encrypt:message nonce:nonce error:nil];
 
             //Create a new box to test end to end symmetric encryption
             AGSecretBox *pandora = [[AGSecretBox alloc] initWithKey:key];
-            NSData *plainText = [pandora decrypt:cipherText nonce:nonce];
+            NSData *plainText = [pandora decrypt:cipherText nonce:nonce error:nil];
             [[[AGUtil hexString:plainText] should] equal:BOX_MESSAGE];
         });
         
@@ -111,17 +112,40 @@ describe(@"AGSecretBox", ^{
             
             secretBox = [[AGSecretBox alloc] initWithKey:key];
             
-            NSData *cipherText = [secretBox encrypt:message nonce:nonce];
+            NSData *cipherText = [secretBox encrypt:message nonce:nonce error:nil];
             
             // corrupt ciphertext
             NSMutableData *corupted_cipherText = [NSMutableData dataWithData:cipherText];
             [corupted_cipherText resetBytesInRange:NSMakeRange(0,5)];
             
             AGSecretBox *pandora = [[AGSecretBox alloc] initWithKey:key];
+            
+            NSError *error;
+            NSData __unused *plainText = [pandora decrypt:corupted_cipherText nonce:nonce error:&error];
+            
+            [error shouldNotBeNil];
+            [[theValue(error.code) should] equal:theValue(AGCryptoFailedToDecryptError)];
+        });
 
-            [[theBlock(^{
-                NSData __unused *plainText = [pandora decrypt:corupted_cipherText nonce:nonce];
-            }) should] raise];
+        it(@"should reject to decrypt corrupted key", ^{
+            NSData *key = [AGUtil hexStringToBytes:BOB_SECRET_KEY];
+            
+            NSData *nonce = [AGUtil hexStringToBytes:BOX_NONCE];
+            NSData *message = [AGUtil hexStringToBytes:BOX_MESSAGE];
+            
+            secretBox = [[AGSecretBox alloc] initWithKey:key];
+            
+            NSData *cipherText = [secretBox encrypt:message nonce:nonce error:nil];
+            
+            // initialize with corrupted key
+            NSData *corruptedkey = [AGUtil hexStringToBytes:BOB_CORRUPTED_SECRET_KEY];
+            AGSecretBox *pandora = [[AGSecretBox alloc] initWithKey:corruptedkey];
+
+            NSError *error;
+            NSData __unused *plainText = [pandora decrypt:cipherText nonce:nonce error:&error];
+
+            [error shouldNotBeNil];
+            [[theValue(error.code) should] equal:theValue(AGCryptoFailedToDecryptError)];
         });
     });
 });

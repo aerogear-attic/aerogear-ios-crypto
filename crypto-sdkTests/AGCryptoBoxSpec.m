@@ -27,6 +27,7 @@ SPEC_BEGIN(AGCryptoBoxSpec)
 
                 NSString * const ALICE_PUBLIC_KEY = @"8520F0098930A754748B7DDCB43EF75A0DBF3A0D26381AF4EBA4A98EAA9B4E6A";
                 NSString * const ALICE_PRIVATE_KEY = @"77076D0A7318A57D3C16C17251B26645DF4C2F87EBC0992AB177FBA51DB92C2A";
+                NSString * const ALICE_CORRUPTED_PRIVATE_KEY = @"1207640A7318B57D3C16C17251B26645DF4C2F87EBC0992AB177FBA51DB92C2A";
 
                 NSString * const BOB_PRIVATE_KEY = @"5DAB087E624A8A4B79E17F8B83800EE66F3BB1292618B6FD1C2F8B27FF88E0EB";
                 NSString * const BOB_PUBLIC_KEY = @"DE9EDB7D7B7DC1B4D35B61C2ECE435373F8343C85B78674DADFC7E146F882B4F";
@@ -94,7 +95,7 @@ SPEC_BEGIN(AGCryptoBoxSpec)
                     NSData *message = [AGUtil hexStringToBytes:BOX_MESSAGE];
 
                     AGCryptoBox *cryptoBox = [[AGCryptoBox alloc] initWithKey:alicePublicKey privateKey:bobPrivateKey];
-                    NSData *cipherText = [cryptoBox encrypt:message nonce:nonce];
+                    NSData *cipherText = [cryptoBox encrypt:message nonce:nonce error:nil];
                     [[[AGUtil hexString:cipherText] should] equal:BOX_CIPHERTEXT];
                 });
 
@@ -108,12 +109,34 @@ SPEC_BEGIN(AGCryptoBoxSpec)
                     NSData *message = [AGUtil hexStringToBytes:BOX_MESSAGE];
 
                     AGCryptoBox *cryptoBox = [[AGCryptoBox alloc] initWithKey:alicePublicKey privateKey:bobPrivateKey];
-                    NSData *cipherText = [cryptoBox encrypt:message nonce:nonce];
+                    NSData *cipherText = [cryptoBox encrypt:message nonce:nonce error:nil];
 
                     //Create a new box to test end to end asymmetric encryption
                     AGCryptoBox *pandora = [[AGCryptoBox alloc] initWithKey:bobPublicKey privateKey:alicePrivateKey];
-                    NSData *plainText = [pandora decrypt:cipherText nonce:nonce];
+                    NSData *plainText = [pandora decrypt:cipherText nonce:nonce error:nil];
                     [[[AGUtil hexString:plainText] should] equal:BOX_MESSAGE];
+                });
+
+                it(@"should reject to decrypt with corrupted key", ^{
+                    NSData *alicePublicKey = [AGUtil hexStringToBytes:ALICE_PUBLIC_KEY];
+                    NSData *alicePrivateKey = [AGUtil hexStringToBytes:ALICE_CORRUPTED_PRIVATE_KEY]; // corrupted key
+                    NSData *bobPrivateKey = [AGUtil hexStringToBytes:BOB_PRIVATE_KEY];
+                    NSData *bobPublicKey = [AGUtil hexStringToBytes:BOB_PUBLIC_KEY];
+
+                    NSData *nonce = [AGUtil hexStringToBytes:BOX_NONCE];
+                    NSData *message = [AGUtil hexStringToBytes:BOX_MESSAGE];
+
+                    AGCryptoBox *cryptoBox = [[AGCryptoBox alloc] initWithKey:alicePublicKey privateKey:bobPrivateKey];
+                    NSData *cipherText = [cryptoBox encrypt:message nonce:nonce error:nil];
+
+                    //Create a new box to test end to end asymmetric encryption
+                    AGCryptoBox *pandora = [[AGCryptoBox alloc] initWithKey:bobPublicKey privateKey:alicePrivateKey];
+                    
+                    NSError *error;
+                    NSData __unused *plainText = [pandora decrypt:cipherText nonce:nonce error:&error];
+                    
+                    [error shouldNotBeNil];
+                    [[theValue(error.code) should] equal:theValue(AGCryptoFailedToDecryptError)];
                 });
             });
         });
