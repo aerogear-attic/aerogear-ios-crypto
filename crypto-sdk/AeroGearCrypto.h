@@ -27,5 +27,6 @@
 #import "AGSigningKey.h"
 #import "AGVerifyKey.h"
 #import "AGKeyPair.h"
+#import "AGUtil.h"
 
 #endif /* _AEROGEARCRYPTO_ */

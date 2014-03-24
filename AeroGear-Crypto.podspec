@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => 'https://github.com/aerogear/aerogear-crypto-ios.git', :tag => '0.2.2' }
   s.platform     = :ios, 7.0
   s.source_files = 'crypto-sdk/**/*.{h,m}'
-  s.public_header_files = 'crypto-sdk/AeroGearCrypto.h', 'crypto-sdk/AGPBKDF2.h', 'crypto-sdk/AGRandomGenerator.h', 'crypto-sdk/AGSecretBox.h', 'crypto-sdk/AGCryptoBox.h', 'crypto-sdk/AGHash.h', 'crypto-sdk/AGSigningKey.h', 'crypto-sdk/AGVerifyKey.h', 'crypto-sdk/AGVerifyKey.h', 'crypto-sdk/AGKeyPair.h'
+  s.public_header_files = 'crypto-sdk/AeroGearCrypto.h', 'crypto-sdk/AGPBKDF2.h', 'crypto-sdk/AGRandomGenerator.h', 'crypto-sdk/AGSecretBox.h', 'crypto-sdk/AGCryptoBox.h', 'crypto-sdk/AGHash.h', 'crypto-sdk/AGSigningKey.h', 'crypto-sdk/AGVerifyKey.h', 'crypto-sdk/AGVerifyKey.h', 'crypto-sdk/AGKeyPair.h', 'crypto-sdk/AGUtil.h'
   s.requires_arc = true
   s.dependency 'libsodium-ios', '~> 0.4.5'
 end
