@@ -21,10 +21,10 @@
 #import <CommonCrypto/CommonCryptor.h>
 #import <CommonCrypto/CommonKeyDerivation.h>
 
-const NSInteger AGPBKDF2Iterations = 20000;
-const NSInteger AGPBKDF2MinimumIterations = 10000;
-const NSInteger AGPBKDF2DerivedKeyLength = 32;
-const NSInteger AGPBKDF2MinimumSaltLength = 16;
+const NSUInteger AGPBKDF2Iterations = 20000;
+const NSUInteger AGPBKDF2MinimumIterations = 10000;
+const NSUInteger AGPBKDF2DerivedKeyLength = 32;
+const NSUInteger AGPBKDF2MinimumSaltLength = 16;
 
 @implementation AGPBKDF2 {
     NSData *_salt;
@@ -38,7 +38,7 @@ const NSInteger AGPBKDF2MinimumSaltLength = 16;
     return [self deriveKey:password salt:salt iterations:AGPBKDF2Iterations];
 }
 
-- (NSData *)deriveKey:(NSString *)password salt:(NSData *)salt iterations:(NSInteger)iterations {
+- (NSData *)deriveKey:(NSString *)password salt:(NSData *)salt iterations:(NSUInteger)iterations {
     NSParameterAssert(password != nil);
     NSParameterAssert(salt != nil && [salt length] >= AGPBKDF2MinimumSaltLength);
     NSParameterAssert(iterations >= AGPBKDF2MinimumIterations);
@@ -53,7 +53,7 @@ const NSInteger AGPBKDF2MinimumSaltLength = 16;
                                       [salt bytes],
                                       [salt length],
                                       kCCPRFHmacAlgSHA1,
-                                      iterations,
+                                      (uint)iterations,
                                       [key mutableBytes],
                                       AGPBKDF2DerivedKeyLength);
     if (result == kCCParamError) {

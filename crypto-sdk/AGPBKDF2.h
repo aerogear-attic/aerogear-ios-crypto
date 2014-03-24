@@ -18,10 +18,10 @@
 #import <Foundation/Foundation.h>
 
 // constants used by PBKDF2 algorithm.
-extern const NSInteger AGPBKDF2Iterations;
-extern const NSInteger AGPBKDF2MinimumIterations;
-extern const NSInteger AGPBKDF2DerivedKeyLength;
-extern const NSInteger AGPBKDF2MinimumSaltLength;
+extern const NSUInteger AGPBKDF2Iterations;
+extern const NSUInteger AGPBKDF2MinimumIterations;
+extern const NSUInteger AGPBKDF2DerivedKeyLength;
+extern const NSUInteger AGPBKDF2MinimumSaltLength;
 
 /**
  * Class that derives a key from a text password/passphrase using
@@ -58,7 +58,7 @@ extern const NSInteger AGPBKDF2MinimumSaltLength;
  *
  * @return an NSData object containing the derived key.
  */
-- (NSData *)deriveKey:(NSString *)password salt:(NSData *)salt iterations:(NSInteger)iterations;
+- (NSData *)deriveKey:(NSString *)password salt:(NSData *)salt iterations:(NSUInteger)iterations;
 
 - (BOOL)validate:(NSString *)password encryptedPassword:(NSData *)encryptedPassword salt:(NSData *)salt;
 

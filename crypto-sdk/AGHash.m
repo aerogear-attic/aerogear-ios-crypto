@@ -46,9 +46,9 @@
     NSMutableData *hash = [NSMutableData dataWithLength:_algorithm];
 
     if (_algorithm == CC_SHA512_DIGEST_LENGTH ) {
-        CC_SHA512(dataIn.bytes, dataIn.length, hash.mutableBytes);
+        CC_SHA512(dataIn.bytes, (CC_LONG)dataIn.length, hash.mutableBytes);
     } else {
-        CC_SHA256(dataIn.bytes, dataIn.length, hash.mutableBytes);
+        CC_SHA256(dataIn.bytes, (CC_LONG)dataIn.length, hash.mutableBytes);
     }
 
     return hash;
