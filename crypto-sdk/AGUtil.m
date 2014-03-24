@@ -17,6 +17,7 @@
 
 #import "AGUtil.h"
 
+NSString * const AGCryptoErrorDomain = @"AGCryptoErrorDomain";
 
 @implementation AGUtil
 

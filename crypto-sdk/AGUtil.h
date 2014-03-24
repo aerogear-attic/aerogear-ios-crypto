@@ -18,6 +18,13 @@
 #import <Foundation/Foundation.h>
 #import <libsodium-ios/sodium/crypto_box_curve25519xsalsa20poly1305.h>
 
+typedef NS_ENUM(NSInteger, AGCryptoErrorCodes) {
+    AGCryptoFailedToEncryptError = -101,
+    AGCryptoFailedToDecryptError = -102
+};
+
+extern NSString * const AGCryptoErrorDomain;
+
 /**
  * Utility class for cryptographic operations
  */

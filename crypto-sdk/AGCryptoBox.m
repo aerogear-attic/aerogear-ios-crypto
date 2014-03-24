@@ -37,7 +37,7 @@
     return self;
 }
 
-- (NSData *)encrypt:(NSData *)data nonce:(NSData *)nonce {
+- (NSData *)encrypt:(NSData *)data nonce:(NSData *)nonce error:(NSError * __autoreleasing *)error {
     NSParameterAssert(data != nil);
     NSParameterAssert(nonce != nil && [nonce length] == crypto_box_curve25519xsalsa20poly1305_NONCEBYTES);
 
@@ -52,13 +52,20 @@
                                                [_publicKey bytes],
                                                [_privateKey bytes]);
 
-    NSAssert(status == 0, @"failed to encrypt data provided", status);
-    
+    if (status != 0) {
+        if (error) {
+            NSDictionary *userInfo = @{NSLocalizedDescriptionKey:
+                    [NSString stringWithFormat:@"failed to encrypt data provided, NaCl error: %d", status]};
+            *error = [NSError errorWithDomain:AGCryptoErrorDomain code:AGCryptoFailedToEncryptError userInfo:userInfo];
+        }
+        return nil;
+    }
+
     return [ct subdataWithRange:NSMakeRange(crypto_box_curve25519xsalsa20poly1305_BOXZEROBYTES,
                                             ct.length - crypto_box_curve25519xsalsa20poly1305_BOXZEROBYTES)];
 }
 
-- (NSData *)decrypt:(NSData *)data nonce:(NSData *)nonce {
+- (NSData *)decrypt:(NSData *)data nonce:(NSData *)nonce error:(NSError * __autoreleasing *)error {
     NSParameterAssert(data != nil);
     NSParameterAssert(nonce != nil && [nonce length] == crypto_box_curve25519xsalsa20poly1305_NONCEBYTES);
     
@@ -72,9 +79,16 @@
                                                     [nonce bytes],
                                                     [_publicKey bytes],
                                                     [_privateKey bytes]);
-    
-    NSAssert(status == 0, @"failed to decrypt data provided", status);
-    
+
+    if (status != 0) {
+        if (error) {
+            NSDictionary *userInfo = @{NSLocalizedDescriptionKey:
+                    [NSString stringWithFormat:@"failed to decrypt data provided, NaCl error: %d", status]};
+            *error = [NSError errorWithDomain:AGCryptoErrorDomain code:AGCryptoFailedToDecryptError userInfo:userInfo];
+        }
+        return nil;
+    }
+
     return [message subdataWithRange:NSMakeRange(crypto_box_curve25519xsalsa20poly1305_ZEROBYTES,
                                                  message.length - crypto_box_curve25519xsalsa20poly1305_ZEROBYTES)];
 }
