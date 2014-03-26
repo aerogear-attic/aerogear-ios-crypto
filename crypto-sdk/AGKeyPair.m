@@ -20,7 +20,9 @@
 @implementation AGKeyPair
 
 - (id)initWithPrivateKey:(NSData *)privateKey publicKey:(NSData *)publicKey {
-    if ([super init]) {
+    self = [super init];
+    
+    if (self) {
         _publicKey = publicKey;
         _privateKey = privateKey;
     }
