@@ -24,7 +24,7 @@ The project is also the base for providing cryptographic services to [AeroGear-I
 #### Podfile
 
 ```
-pod "AeroGear-Crypto", '0.2.0'
+pod "AeroGear-Crypto", '0.2.3'
 ```
 
 ## Project Status
