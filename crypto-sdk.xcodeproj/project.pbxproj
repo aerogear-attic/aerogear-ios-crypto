@@ -271,7 +271,7 @@
 			name = "crypto-sdkTests";
 			productName = "crypto-sdkTests";
 			productReference = 6F9BE758180C0B200045D8AE /* crypto-sdkTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -541,6 +541,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"\"$(PLATFORM_DIR)/Developer/Library/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "crypto-sdkTests/crypto-sdkTests-Prefix.pch";
@@ -563,6 +564,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"\"$(PLATFORM_DIR)/Developer/Library/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "crypto-sdkTests/crypto-sdkTests-Prefix.pch";
