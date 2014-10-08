@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F2D12AC19E523EB00A3370A /* libPods-libsodium-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F2D12AB19E523EB00A3370A /* libPods-libsodium-ios.a */; };
 		6F465B0D1805632D0097BC5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B0C1805632D0097BC5F /* Foundation.framework */; };
 		6F465B121805632D0097BC5F /* AeroGearCrypto.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F465B111805632D0097BC5F /* AeroGearCrypto.h */; };
 		6F465B331805683D0097BC5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B321805683D0097BC5F /* Security.framework */; };
@@ -61,7 +62,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1C0677ED7AA143CCBC2E5F5D /* Pods-crypto-sdkTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto-sdkTests.xcconfig"; path = "Pods/Pods-crypto-sdkTests.xcconfig"; sourceTree = "<group>"; };
+		2D1C57F95CC44D8C36786827 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		5053BDA68FB709E0DA8CFD58 /* Pods-crypto-sdkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto-sdkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-crypto-sdkTests/Pods-crypto-sdkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5DCA34BB439795CBADFFA64E /* Pods-crypto-sdkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto-sdkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-crypto-sdkTests/Pods-crypto-sdkTests.release.xcconfig"; sourceTree = "<group>"; };
+		6F2D12A919E5231800A3370A /* libPods-libsodium-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libsodium-ios.a"; path = "Pods/build/Debug-iphoneos/libPods-libsodium-ios.a"; sourceTree = "<group>"; };
+		6F2D12AB19E523EB00A3370A /* libPods-libsodium-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libsodium-ios.a"; path = "Pods/build/Debug-iphoneos/libPods-libsodium-ios.a"; sourceTree = "<group>"; };
 		6F465B091805632D0097BC5F /* libcrypto-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libcrypto-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F465B0C1805632D0097BC5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6F465B101805632D0097BC5F /* crypto-sdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "crypto-sdk-Prefix.pch"; sourceTree = "<group>"; };
@@ -102,8 +107,8 @@
 		81F41EB58451C7B968DA8A0E /* AGVerifyKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGVerifyKey.m; sourceTree = "<group>"; };
 		81F41EE42C908C275F179781 /* AGKeyPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGKeyPair.h; sourceTree = "<group>"; };
 		99D48B0BF93A48E9A159E810 /* libPods-crypto-sdkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-crypto-sdkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCEF428C77C008749A6C0A1B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E6AE8AEE287441D88A80E922 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3A1E8AB9CCB41159F482BDC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F2D12AC19E523EB00A3370A /* libPods-libsodium-ios.a in Frameworks */,
 				6FE41133180D758B008A5A51 /* libcrypto-sdk.a in Frameworks */,
 				6FBA76A4180D711400D83DDE /* Security.framework in Frameworks */,
 				6F9BE75A180C0B200045D8AE /* SenTestingKit.framework in Frameworks */,
@@ -141,8 +147,7 @@
 				6F9BE75D180C0B200045D8AE /* crypto-sdkTests */,
 				6F465B0B1805632D0097BC5F /* Frameworks */,
 				6F465B0A1805632D0097BC5F /* Products */,
-				1C0677ED7AA143CCBC2E5F5D /* Pods-crypto-sdkTests.xcconfig */,
-				F3A1E8AB9CCB41159F482BDC /* Pods.xcconfig */,
+				D23A62AEB0AC81A1E4362F06 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -158,6 +163,8 @@
 		6F465B0B1805632D0097BC5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6F2D12AB19E523EB00A3370A /* libPods-libsodium-ios.a */,
+				6F2D12A919E5231800A3370A /* libPods-libsodium-ios.a */,
 				6F465B321805683D0097BC5F /* Security.framework */,
 				6F465B0C1805632D0097BC5F /* Foundation.framework */,
 				6F465B1A1805632E0097BC5F /* XCTest.framework */,
@@ -229,6 +236,17 @@
 				6F9BE765180C0B200045D8AE /* crypto-sdkTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D23A62AEB0AC81A1E4362F06 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2D1C57F95CC44D8C36786827 /* Pods.debug.xcconfig */,
+				DCEF428C77C008749A6C0A1B /* Pods.release.xcconfig */,
+				5053BDA68FB709E0DA8CFD58 /* Pods-crypto-sdkTests.debug.xcconfig */,
+				5DCA34BB439795CBADFFA64E /* Pods-crypto-sdkTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,7 +378,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-crypto-sdkTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-crypto-sdkTests/Pods-crypto-sdkTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FF2D1A49C5534AF38669529F /* Copy Pods Resources */ = {
@@ -375,7 +393,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -507,7 +525,7 @@
 		};
 		6F465B2D1805632E0097BC5F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3A1E8AB9CCB41159F482BDC /* Pods.xcconfig */;
+			baseConfigurationReference = 2D1C57F95CC44D8C36786827 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/crypto_sdk.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -521,7 +539,7 @@
 		};
 		6F465B2E1805632E0097BC5F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3A1E8AB9CCB41159F482BDC /* Pods.xcconfig */;
+			baseConfigurationReference = DCEF428C77C008749A6C0A1B /* Pods.release.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/crypto_sdk.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -535,7 +553,7 @@
 		};
 		6F9BE769180C0B200045D8AE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C0677ED7AA143CCBC2E5F5D /* Pods-crypto-sdkTests.xcconfig */;
+			baseConfigurationReference = 5053BDA68FB709E0DA8CFD58 /* Pods-crypto-sdkTests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -551,6 +569,10 @@
 				);
 				INFOPLIST_FILE = "crypto-sdkTests/crypto-sdkTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -558,7 +580,7 @@
 		};
 		6F9BE76A180C0B200045D8AE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C0677ED7AA143CCBC2E5F5D /* Pods-crypto-sdkTests.xcconfig */;
+			baseConfigurationReference = 5DCA34BB439795CBADFFA64E /* Pods-crypto-sdkTests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -570,6 +592,10 @@
 				GCC_PREFIX_HEADER = "crypto-sdkTests/crypto-sdkTests-Prefix.pch";
 				INFOPLIST_FILE = "crypto-sdkTests/crypto-sdkTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
