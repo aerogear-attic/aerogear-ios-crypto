@@ -1,7 +1,7 @@
 language: objective-c
 
 before_install:
-    - gem install cocoapods -v 0.33.1 --no-rdoc --no-ri --no-document --quiet
+    - gem install cocoapods -v 0.34.2 --no-rdoc --no-ri --no-document --quiet
     - gem install xcpretty -v 0.1.6 --no-rdoc --no-ri --no-document --quiet
 
 script:
