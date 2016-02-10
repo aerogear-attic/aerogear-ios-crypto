@@ -28,7 +28,7 @@ The project is also the base for providing cryptographic services to [AeroGear-I
 
 ### Installation with CocoaPods
 
-[CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C, which eases the pain of installing third-party libraries in your programs. The project is already published in the Cocoapods repository, so just add the following line in your _'Podfile'_ :
+[CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C, which eases the pain of installing third-party libraries in your programs. The project is already published in the CocoaPods repository, so just add the following line in your _'Podfile'_ :
 
 #### Podfile
 
