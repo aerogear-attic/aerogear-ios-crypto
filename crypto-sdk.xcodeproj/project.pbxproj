@@ -81,7 +81,7 @@
 		6F6AB2E3180EE83F006AD5EC /* AGPBKDF2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPBKDF2.m; sourceTree = "<group>"; };
 		6F86F953180FEFA5002B087A /* AGPBKDF2Spec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPBKDF2Spec.m; sourceTree = "<group>"; };
 		6F86F955181009B5002B087A /* AGRandomGeneratorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRandomGeneratorSpec.m; sourceTree = "<group>"; };
-		6F9BE758180C0B200045D8AE /* crypto-sdkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "crypto-sdkTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F9BE758180C0B200045D8AE /* crypto-sdkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "crypto-sdkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F9BE759180C0B200045D8AE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		6F9BE75F180C0B200045D8AE /* crypto-sdkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "crypto-sdkTests-Info.plist"; sourceTree = "<group>"; };
 		6F9BE761180C0B200045D8AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				6F465B091805632D0097BC5F /* libcrypto-sdk.a */,
-				6F9BE758180C0B200045D8AE /* crypto-sdkTests.octest */,
+				6F9BE758180C0B200045D8AE /* crypto-sdkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -296,7 +296,7 @@
 			);
 			name = "crypto-sdkTests";
 			productName = "crypto-sdkTests";
-			productReference = 6F9BE758180C0B200045D8AE /* crypto-sdkTests.octest */;
+			productReference = 6F9BE758180C0B200045D8AE /* crypto-sdkTests.xctest */;
 			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
@@ -588,7 +588,7 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
 		};
@@ -611,7 +611,7 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
