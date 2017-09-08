@@ -7,11 +7,6 @@ machine:
     SIMULATOR: "iPhone 7"
     OS: "11.0"
 
-general:
-  branches:
-    ignore:
-      - /FH-v.*/ # Ignore release branches
-
 test:
   override:
     - set -o pipefail &&
