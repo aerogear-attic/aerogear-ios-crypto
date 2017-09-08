@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6F9BE757180C0B200045D8AE"
-               BuildableName = "crypto-sdkTests.octest"
+               BuildableName = "crypto-sdkTests.xctest"
                BlueprintName = "crypto-sdkTests"
                ReferencedContainer = "container:crypto-sdk.xcodeproj">
             </BuildableReference>

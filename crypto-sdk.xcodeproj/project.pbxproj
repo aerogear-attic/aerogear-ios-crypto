@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D6BE91773A08C88C6E290B1 /* libPods-crypto-sdk-crypto-sdkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF839E389354C806DC4A64 /* libPods-crypto-sdk-crypto-sdkTests.a */; };
 		6F465B0D1805632D0097BC5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B0C1805632D0097BC5F /* Foundation.framework */; };
 		6F465B121805632D0097BC5F /* AeroGearCrypto.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F465B111805632D0097BC5F /* AeroGearCrypto.h */; };
 		6F465B331805683D0097BC5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B321805683D0097BC5F /* Security.framework */; };
@@ -20,6 +21,7 @@
 		6FBA76A3180D707500D83DDE /* AGSecretBoxSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA76A2180D707500D83DDE /* AGSecretBoxSpec.m */; };
 		6FBA76A4180D711400D83DDE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B321805683D0097BC5F /* Security.framework */; };
 		6FE41133180D758B008A5A51 /* libcrypto-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B091805632D0097BC5F /* libcrypto-sdk.a */; };
+		78E5347713E1FE77D0D59578 /* libPods-crypto-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9CA5C6EC05BB2917CEE8404 /* libPods-crypto-sdk.a */; };
 		81F4131EAB15C8DCAB5257D9 /* AGVerifyKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F41EB58451C7B968DA8A0E /* AGVerifyKey.m */; };
 		81F4167FC6A5B5B502B269BB /* AGCryptoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F418D391141C7012CB05BE /* AGCryptoBox.m */; };
 		81F416EE363EE463124DAED0 /* AGUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F4128E2498CC40BE06C4E6 /* AGUtil.m */; };
@@ -96,6 +98,8 @@
 		81F41EB58451C7B968DA8A0E /* AGVerifyKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGVerifyKey.m; sourceTree = "<group>"; };
 		81F41EE42C908C275F179781 /* AGKeyPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGKeyPair.h; sourceTree = "<group>"; };
 		86F58650C048D974EAFB49CB /* Pods-crypto-sdk-crypto-sdkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto-sdk-crypto-sdkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-crypto-sdk-crypto-sdkTests/Pods-crypto-sdk-crypto-sdkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D2AF839E389354C806DC4A64 /* libPods-crypto-sdk-crypto-sdkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-crypto-sdk-crypto-sdkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9CA5C6EC05BB2917CEE8404 /* libPods-crypto-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-crypto-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23B60FC0ECD38426FD26B99 /* Pods-crypto-sdk-crypto-sdkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto-sdk-crypto-sdkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-crypto-sdk-crypto-sdkTests/Pods-crypto-sdk-crypto-sdkTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +110,7 @@
 			files = (
 				6F465B331805683D0097BC5F /* Security.framework in Frameworks */,
 				6F465B0D1805632D0097BC5F /* Foundation.framework in Frameworks */,
+				78E5347713E1FE77D0D59578 /* libPods-crypto-sdk.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +121,7 @@
 				6FE41133180D758B008A5A51 /* libcrypto-sdk.a in Frameworks */,
 				6FBA76A4180D711400D83DDE /* Security.framework in Frameworks */,
 				6F9BE75B180C0B200045D8AE /* Foundation.framework in Frameworks */,
+				3D6BE91773A08C88C6E290B1 /* libPods-crypto-sdk-crypto-sdkTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +154,8 @@
 			children = (
 				6F465B321805683D0097BC5F /* Security.framework */,
 				6F465B0C1805632D0097BC5F /* Foundation.framework */,
+				D9CA5C6EC05BB2917CEE8404 /* libPods-crypto-sdk.a */,
+				D2AF839E389354C806DC4A64 /* libPods-crypto-sdk-crypto-sdkTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -471,7 +479,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -508,7 +516,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

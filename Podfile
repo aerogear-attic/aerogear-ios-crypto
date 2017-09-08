@@ -1,7 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 project 'crypto-sdk.xcodeproj'
-platform :ios, '7.0'
+platform :ios, '9.0'
 
 target 'crypto-sdk' do
     pod 'libsodium-ios', '~> 0.4.5'
