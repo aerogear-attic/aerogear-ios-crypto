@@ -2,10 +2,10 @@ machine:
   xcode:
     version: 9.0
   environment:
-    XCODE_WORKSPACE: "crypto-sdk.xcworkspace"
-    XCODE_SCHEME: "crypto-sdk"
+    XCODE_WORKSPACE: "AeroGearCrypto.xcworkspace"
+    XCODE_SCHEME: "AeroGearCrypto"
     SIMULATOR: "iPhone 7"
-    OS: "11.0"
+    OS: "11.0.1"
 
 test:
   override:

@@ -1,11 +1,11 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-project 'crypto-sdk.xcodeproj'
+project 'AeroGearCrypto.xcodeproj'
 platform :ios, '9.0'
 
-target 'crypto-sdk' do
+target 'AeroGearCrypto' do
     pod 'libsodium-ios', '~> 0.4.5'
-    target 'crypto-sdkTests' do
+    target 'AeroGearCryptoTests' do
         pod 'Kiwi', '2.3.0'
     end
 end

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6F465B081805632D0097BC5F"
-               BuildableName = "libcrypto-sdk.a"
-               BlueprintName = "crypto-sdk"
-               ReferencedContainer = "container:crypto-sdk.xcodeproj">
+               BuildableName = "libAeroGearCrypto.a"
+               BlueprintName = "AeroGearCrypto"
+               ReferencedContainer = "container:AeroGearCrypto.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -27,19 +27,29 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       language = ""
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6F9BE757180C0B200045D8AE"
-               BuildableName = "crypto-sdkTests.xctest"
-               BlueprintName = "crypto-sdkTests"
-               ReferencedContainer = "container:crypto-sdk.xcodeproj">
+               BuildableName = "AeroGearCryptoTests.xctest"
+               BlueprintName = "AeroGearCryptoTests"
+               ReferencedContainer = "container:AeroGearCrypto.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "6F465B081805632D0097BC5F"
+            BuildableName = "libAeroGearCrypto.a"
+            BlueprintName = "AeroGearCrypto"
+            ReferencedContainer = "container:AeroGearCrypto.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -58,9 +68,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6F465B081805632D0097BC5F"
-            BuildableName = "libcrypto-sdk.a"
-            BlueprintName = "crypto-sdk"
-            ReferencedContainer = "container:crypto-sdk.xcodeproj">
+            BuildableName = "libAeroGearCrypto.a"
+            BlueprintName = "AeroGearCrypto"
+            ReferencedContainer = "container:AeroGearCrypto.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -72,6 +82,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "6F465B081805632D0097BC5F"
+            BuildableName = "libAeroGearCrypto.a"
+            BlueprintName = "AeroGearCrypto"
+            ReferencedContainer = "container:AeroGearCrypto.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

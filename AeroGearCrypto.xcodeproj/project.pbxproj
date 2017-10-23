@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D6BE91773A08C88C6E290B1 /* libPods-crypto-sdk-crypto-sdkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF839E389354C806DC4A64 /* libPods-crypto-sdk-crypto-sdkTests.a */; };
+		290FFF9298205AE7EC77C9BC /* libPods-AeroGearCrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B349820F4456A1815697F0C4 /* libPods-AeroGearCrypto.a */; };
+		3D6BE91773A08C88C6E290B1 /* libPods-AeroGearCrypto-AeroGearCryptoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF839E389354C806DC4A64 /* libPods-AeroGearCrypto-AeroGearCryptoTests.a */; };
+		4AA59A00B1D751D1A8381750 /* libPods-AeroGearCrypto-AeroGearCryptoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BBE9D294488F13E4DF30738 /* libPods-AeroGearCrypto-AeroGearCryptoTests.a */; };
 		6F465B0D1805632D0097BC5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B0C1805632D0097BC5F /* Foundation.framework */; };
 		6F465B121805632D0097BC5F /* AeroGearCrypto.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F465B111805632D0097BC5F /* AeroGearCrypto.h */; };
 		6F465B331805683D0097BC5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B321805683D0097BC5F /* Security.framework */; };
@@ -20,8 +22,8 @@
 		6FBA76A1180D706700D83DDE /* AGRandomGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA769F180D706700D83DDE /* AGRandomGenerator.m */; };
 		6FBA76A3180D707500D83DDE /* AGSecretBoxSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA76A2180D707500D83DDE /* AGSecretBoxSpec.m */; };
 		6FBA76A4180D711400D83DDE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B321805683D0097BC5F /* Security.framework */; };
-		6FE41133180D758B008A5A51 /* libcrypto-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B091805632D0097BC5F /* libcrypto-sdk.a */; };
-		78E5347713E1FE77D0D59578 /* libPods-crypto-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9CA5C6EC05BB2917CEE8404 /* libPods-crypto-sdk.a */; };
+		6FE41133180D758B008A5A51 /* libAeroGearCrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F465B091805632D0097BC5F /* libAeroGearCrypto.a */; };
+		78E5347713E1FE77D0D59578 /* libPods-AeroGearCrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9CA5C6EC05BB2917CEE8404 /* libPods-AeroGearCrypto.a */; };
 		81F4131EAB15C8DCAB5257D9 /* AGVerifyKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F41EB58451C7B968DA8A0E /* AGVerifyKey.m */; };
 		81F4167FC6A5B5B502B269BB /* AGCryptoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F418D391141C7012CB05BE /* AGCryptoBox.m */; };
 		81F416EE363EE463124DAED0 /* AGUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F4128E2498CC40BE06C4E6 /* AGUtil.m */; };
@@ -41,7 +43,7 @@
 			containerPortal = 6F465B011805632D0097BC5F /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6F465B081805632D0097BC5F;
-			remoteInfo = "crypto-sdk";
+			remoteInfo = "AeroGearCrypto";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -59,27 +61,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0DFC341ABD5181B88D7E4DFD /* Pods-crypto-sdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto-sdk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-crypto-sdk/Pods-crypto-sdk.debug.xcconfig"; sourceTree = "<group>"; };
-		4EAC63E46172153376C608AB /* Pods-crypto-sdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto-sdk.release.xcconfig"; path = "Pods/Target Support Files/Pods-crypto-sdk/Pods-crypto-sdk.release.xcconfig"; sourceTree = "<group>"; };
-		6F465B091805632D0097BC5F /* libcrypto-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libcrypto-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DFC341ABD5181B88D7E4DFD /* Pods-AeroGearCrypto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroGearCrypto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AeroGearCrypto/Pods-AeroGearCrypto.debug.xcconfig"; sourceTree = "<group>"; };
+		3DCD49703737AC7AD431B1DF /* Pods-AeroGearCrypto-AeroGearCryptoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroGearCrypto-AeroGearCryptoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AeroGearCrypto-AeroGearCryptoTests/Pods-AeroGearCrypto-AeroGearCryptoTests.release.xcconfig"; sourceTree = "<group>"; };
+		4EAC63E46172153376C608AB /* Pods-AeroGearCrypto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroGearCrypto.release.xcconfig"; path = "Pods/Target Support Files/Pods-AeroGearCrypto/Pods-AeroGearCrypto.release.xcconfig"; sourceTree = "<group>"; };
+		6F465B091805632D0097BC5F /* libAeroGearCrypto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAeroGearCrypto.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F465B0C1805632D0097BC5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		6F465B101805632D0097BC5F /* crypto-sdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "crypto-sdk-Prefix.pch"; sourceTree = "<group>"; };
+		6F465B101805632D0097BC5F /* AeroGearCrypto-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AeroGearCrypto-Prefix.pch"; sourceTree = "<group>"; };
 		6F465B111805632D0097BC5F /* AeroGearCrypto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AeroGearCrypto.h; sourceTree = "<group>"; };
 		6F465B321805683D0097BC5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6F6AB2E2180EE83F006AD5EC /* AGPBKDF2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPBKDF2.h; sourceTree = "<group>"; };
 		6F6AB2E3180EE83F006AD5EC /* AGPBKDF2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPBKDF2.m; sourceTree = "<group>"; };
 		6F86F953180FEFA5002B087A /* AGPBKDF2Spec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPBKDF2Spec.m; sourceTree = "<group>"; };
 		6F86F955181009B5002B087A /* AGRandomGeneratorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRandomGeneratorSpec.m; sourceTree = "<group>"; };
-		6F9BE758180C0B200045D8AE /* crypto-sdkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "crypto-sdkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F9BE75F180C0B200045D8AE /* crypto-sdkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "crypto-sdkTests-Info.plist"; sourceTree = "<group>"; };
+		6F9BE758180C0B200045D8AE /* AeroGearCryptoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AeroGearCryptoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F9BE75F180C0B200045D8AE /* AeroGearCryptoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AeroGearCryptoTests-Info.plist"; sourceTree = "<group>"; };
 		6F9BE761180C0B200045D8AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6F9BE765180C0B200045D8AE /* crypto-sdkTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "crypto-sdkTests-Prefix.pch"; sourceTree = "<group>"; };
+		6F9BE765180C0B200045D8AE /* AeroGearCryptoTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AeroGearCryptoTests-Prefix.pch"; sourceTree = "<group>"; };
 		6FBA769B180D706700D83DDE /* AeroGearCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AeroGearCrypto.h; sourceTree = "<group>"; };
 		6FBA769C180D706700D83DDE /* AGSecretBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSecretBox.h; sourceTree = "<group>"; };
 		6FBA769D180D706700D83DDE /* AGSecretBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSecretBox.m; sourceTree = "<group>"; };
 		6FBA769E180D706700D83DDE /* AGRandomGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGRandomGenerator.h; sourceTree = "<group>"; };
 		6FBA769F180D706700D83DDE /* AGRandomGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRandomGenerator.m; sourceTree = "<group>"; };
 		6FBA76A2180D707500D83DDE /* AGSecretBoxSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSecretBoxSpec.m; sourceTree = "<group>"; };
+		7BBE9D294488F13E4DF30738 /* libPods-AeroGearCrypto-AeroGearCryptoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AeroGearCrypto-AeroGearCryptoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81F410FED0790997587DFE7D /* AGSigningKeySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSigningKeySpec.m; sourceTree = "<group>"; };
 		81F411FB33D774BA75DEC08D /* AGVerifyKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGVerifyKey.h; sourceTree = "<group>"; };
 		81F4128E2498CC40BE06C4E6 /* AGUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGUtil.m; sourceTree = "<group>"; };
@@ -97,10 +101,14 @@
 		81F41DD492904E22CB9DFB61 /* AGKeyPairSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGKeyPairSpec.m; sourceTree = "<group>"; };
 		81F41EB58451C7B968DA8A0E /* AGVerifyKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGVerifyKey.m; sourceTree = "<group>"; };
 		81F41EE42C908C275F179781 /* AGKeyPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGKeyPair.h; sourceTree = "<group>"; };
-		86F58650C048D974EAFB49CB /* Pods-crypto-sdk-crypto-sdkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto-sdk-crypto-sdkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-crypto-sdk-crypto-sdkTests/Pods-crypto-sdk-crypto-sdkTests.debug.xcconfig"; sourceTree = "<group>"; };
-		D2AF839E389354C806DC4A64 /* libPods-crypto-sdk-crypto-sdkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-crypto-sdk-crypto-sdkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9CA5C6EC05BB2917CEE8404 /* libPods-crypto-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-crypto-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E23B60FC0ECD38426FD26B99 /* Pods-crypto-sdk-crypto-sdkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto-sdk-crypto-sdkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-crypto-sdk-crypto-sdkTests/Pods-crypto-sdk-crypto-sdkTests.release.xcconfig"; sourceTree = "<group>"; };
+		86F58650C048D974EAFB49CB /* Pods-AeroGearCrypto-AeroGearCryptoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroGearCrypto-AeroGearCryptoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AeroGearCrypto-AeroGearCryptoTests/Pods-AeroGearCrypto-AeroGearCryptoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8A1B4931C730F9184F1D25A3 /* Pods-AeroGearCrypto-AeroGearCryptoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroGearCrypto-AeroGearCryptoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AeroGearCrypto-AeroGearCryptoTests/Pods-AeroGearCrypto-AeroGearCryptoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B349820F4456A1815697F0C4 /* libPods-AeroGearCrypto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AeroGearCrypto.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFADA724FFF4A6134F0D34C0 /* Pods-AeroGearCrypto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroGearCrypto.release.xcconfig"; path = "Pods/Target Support Files/Pods-AeroGearCrypto/Pods-AeroGearCrypto.release.xcconfig"; sourceTree = "<group>"; };
+		D00FAA14BDF9772D44CB4373 /* Pods-AeroGearCrypto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroGearCrypto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AeroGearCrypto/Pods-AeroGearCrypto.debug.xcconfig"; sourceTree = "<group>"; };
+		D2AF839E389354C806DC4A64 /* libPods-AeroGearCrypto-AeroGearCryptoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AeroGearCrypto-AeroGearCryptoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9CA5C6EC05BB2917CEE8404 /* libPods-AeroGearCrypto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AeroGearCrypto.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E23B60FC0ECD38426FD26B99 /* Pods-AeroGearCrypto-AeroGearCryptoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroGearCrypto-AeroGearCryptoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AeroGearCrypto-AeroGearCryptoTests/Pods-AeroGearCrypto-AeroGearCryptoTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +118,8 @@
 			files = (
 				6F465B331805683D0097BC5F /* Security.framework in Frameworks */,
 				6F465B0D1805632D0097BC5F /* Foundation.framework in Frameworks */,
-				78E5347713E1FE77D0D59578 /* libPods-crypto-sdk.a in Frameworks */,
+				78E5347713E1FE77D0D59578 /* libPods-AeroGearCrypto.a in Frameworks */,
+				290FFF9298205AE7EC77C9BC /* libPods-AeroGearCrypto.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,10 +127,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FE41133180D758B008A5A51 /* libcrypto-sdk.a in Frameworks */,
+				6FE41133180D758B008A5A51 /* libAeroGearCrypto.a in Frameworks */,
 				6FBA76A4180D711400D83DDE /* Security.framework in Frameworks */,
 				6F9BE75B180C0B200045D8AE /* Foundation.framework in Frameworks */,
-				3D6BE91773A08C88C6E290B1 /* libPods-crypto-sdk-crypto-sdkTests.a in Frameworks */,
+				3D6BE91773A08C88C6E290B1 /* libPods-AeroGearCrypto-AeroGearCryptoTests.a in Frameworks */,
+				4AA59A00B1D751D1A8381750 /* libPods-AeroGearCrypto-AeroGearCryptoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,9 +141,9 @@
 		6F465B001805632D0097BC5F = {
 			isa = PBXGroup;
 			children = (
-				6F465B0E1805632D0097BC5F /* crypto-sdk */,
+				6F465B0E1805632D0097BC5F /* AeroGearCrypto */,
 				6F465B0F1805632D0097BC5F /* Supporting Files */,
-				6F9BE75D180C0B200045D8AE /* crypto-sdkTests */,
+				6F9BE75D180C0B200045D8AE /* AeroGearCryptoTests */,
 				6F465B0B1805632D0097BC5F /* Frameworks */,
 				6F465B0A1805632D0097BC5F /* Products */,
 				D23A62AEB0AC81A1E4362F06 /* Pods */,
@@ -143,8 +153,8 @@
 		6F465B0A1805632D0097BC5F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6F465B091805632D0097BC5F /* libcrypto-sdk.a */,
-				6F9BE758180C0B200045D8AE /* crypto-sdkTests.xctest */,
+				6F465B091805632D0097BC5F /* libAeroGearCrypto.a */,
+				6F9BE758180C0B200045D8AE /* AeroGearCryptoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,13 +164,15 @@
 			children = (
 				6F465B321805683D0097BC5F /* Security.framework */,
 				6F465B0C1805632D0097BC5F /* Foundation.framework */,
-				D9CA5C6EC05BB2917CEE8404 /* libPods-crypto-sdk.a */,
-				D2AF839E389354C806DC4A64 /* libPods-crypto-sdk-crypto-sdkTests.a */,
+				D9CA5C6EC05BB2917CEE8404 /* libPods-AeroGearCrypto.a */,
+				D2AF839E389354C806DC4A64 /* libPods-AeroGearCrypto-AeroGearCryptoTests.a */,
+				B349820F4456A1815697F0C4 /* libPods-AeroGearCrypto.a */,
+				7BBE9D294488F13E4DF30738 /* libPods-AeroGearCrypto-AeroGearCryptoTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6F465B0E1805632D0097BC5F /* crypto-sdk */ = {
+		6F465B0E1805632D0097BC5F /* AeroGearCrypto */ = {
 			isa = PBXGroup;
 			children = (
 				6FBA769B180D706700D83DDE /* AeroGearCrypto.h */,
@@ -184,19 +196,19 @@
 				81F41B6F7D0F2CA0344C1352 /* AGCryptoBox.h */,
 				81F418D391141C7012CB05BE /* AGCryptoBox.m */,
 			);
-			path = "crypto-sdk";
+			path = AeroGearCrypto;
 			sourceTree = "<group>";
 		};
 		6F465B0F1805632D0097BC5F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6F465B101805632D0097BC5F /* crypto-sdk-Prefix.pch */,
+				6F465B101805632D0097BC5F /* AeroGearCrypto-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			path = "crypto-sdk";
+			path = "AeroGearCrypto";
 			sourceTree = "<group>";
 		};
-		6F9BE75D180C0B200045D8AE /* crypto-sdkTests */ = {
+		6F9BE75D180C0B200045D8AE /* AeroGearCryptoTests */ = {
 			isa = PBXGroup;
 			children = (
 				6F9BE75E180C0B200045D8AE /* Supporting Files */,
@@ -209,15 +221,15 @@
 				81F4196A05F04961695B186F /* AGUtilSpec.m */,
 				81F41DD492904E22CB9DFB61 /* AGKeyPairSpec.m */,
 			);
-			path = "crypto-sdkTests";
+			path = AeroGearCryptoTests;
 			sourceTree = "<group>";
 		};
 		6F9BE75E180C0B200045D8AE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6F9BE75F180C0B200045D8AE /* crypto-sdkTests-Info.plist */,
+				6F9BE75F180C0B200045D8AE /* AeroGearCryptoTests-Info.plist */,
 				6F9BE760180C0B200045D8AE /* InfoPlist.strings */,
-				6F9BE765180C0B200045D8AE /* crypto-sdkTests-Prefix.pch */,
+				6F9BE765180C0B200045D8AE /* AeroGearCryptoTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -225,10 +237,14 @@
 		D23A62AEB0AC81A1E4362F06 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0DFC341ABD5181B88D7E4DFD /* Pods-crypto-sdk.debug.xcconfig */,
-				4EAC63E46172153376C608AB /* Pods-crypto-sdk.release.xcconfig */,
-				86F58650C048D974EAFB49CB /* Pods-crypto-sdk-crypto-sdkTests.debug.xcconfig */,
-				E23B60FC0ECD38426FD26B99 /* Pods-crypto-sdk-crypto-sdkTests.release.xcconfig */,
+				0DFC341ABD5181B88D7E4DFD /* Pods-AeroGearCrypto.debug.xcconfig */,
+				4EAC63E46172153376C608AB /* Pods-AeroGearCrypto.release.xcconfig */,
+				86F58650C048D974EAFB49CB /* Pods-AeroGearCrypto-AeroGearCryptoTests.debug.xcconfig */,
+				E23B60FC0ECD38426FD26B99 /* Pods-AeroGearCrypto-AeroGearCryptoTests.release.xcconfig */,
+				D00FAA14BDF9772D44CB4373 /* Pods-AeroGearCrypto.debug.xcconfig */,
+				BFADA724FFF4A6134F0D34C0 /* Pods-AeroGearCrypto.release.xcconfig */,
+				8A1B4931C730F9184F1D25A3 /* Pods-AeroGearCrypto-AeroGearCryptoTests.debug.xcconfig */,
+				3DCD49703737AC7AD431B1DF /* Pods-AeroGearCrypto-AeroGearCryptoTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -236,9 +252,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6F465B081805632D0097BC5F /* crypto-sdk */ = {
+		6F465B081805632D0097BC5F /* AeroGearCrypto */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6F465B2C1805632E0097BC5F /* Build configuration list for PBXNativeTarget "crypto-sdk" */;
+			buildConfigurationList = 6F465B2C1805632E0097BC5F /* Build configuration list for PBXNativeTarget "AeroGearCrypto" */;
 			buildPhases = (
 				33C1DCFDA68F40928C253FC4 /* [CP] Check Pods Manifest.lock */,
 				6F465B051805632D0097BC5F /* Sources */,
@@ -250,14 +266,14 @@
 			);
 			dependencies = (
 			);
-			name = "crypto-sdk";
-			productName = "crypto-sdk";
-			productReference = 6F465B091805632D0097BC5F /* libcrypto-sdk.a */;
+			name = AeroGearCrypto;
+			productName = "AeroGearCrypto";
+			productReference = 6F465B091805632D0097BC5F /* libAeroGearCrypto.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		6F9BE757180C0B200045D8AE /* crypto-sdkTests */ = {
+		6F9BE757180C0B200045D8AE /* AeroGearCryptoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6F9BE768180C0B200045D8AE /* Build configuration list for PBXNativeTarget "crypto-sdkTests" */;
+			buildConfigurationList = 6F9BE768180C0B200045D8AE /* Build configuration list for PBXNativeTarget "AeroGearCryptoTests" */;
 			buildPhases = (
 				80D422A121C24C2F926A5B61 /* [CP] Check Pods Manifest.lock */,
 				6F9BE754180C0B200045D8AE /* Sources */,
@@ -270,9 +286,9 @@
 			dependencies = (
 				6FE41132180D7543008A5A51 /* PBXTargetDependency */,
 			);
-			name = "crypto-sdkTests";
-			productName = "crypto-sdkTests";
-			productReference = 6F9BE758180C0B200045D8AE /* crypto-sdkTests.xctest */;
+			name = AeroGearCryptoTests;
+			productName = "AeroGearCryptoTests";
+			productReference = 6F9BE758180C0B200045D8AE /* AeroGearCryptoTests.xctest */;
 			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
@@ -290,7 +306,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6F465B041805632D0097BC5F /* Build configuration list for PBXProject "crypto-sdk" */;
+			buildConfigurationList = 6F465B041805632D0097BC5F /* Build configuration list for PBXProject "AeroGearCrypto" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -302,8 +318,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6F465B081805632D0097BC5F /* crypto-sdk */,
-				6F9BE757180C0B200045D8AE /* crypto-sdkTests */,
+				6F465B081805632D0097BC5F /* AeroGearCrypto */,
+				6F9BE757180C0B200045D8AE /* AeroGearCryptoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -331,7 +347,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-crypto-sdk-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AeroGearCrypto-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -349,7 +365,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-crypto-sdk-crypto-sdkTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AeroGearCrypto-AeroGearCryptoTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -368,7 +384,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-crypto-sdk-crypto-sdkTests/Pods-crypto-sdk-crypto-sdkTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AeroGearCrypto-AeroGearCryptoTests/Pods-AeroGearCrypto-AeroGearCryptoTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FF2D1A49C5534AF38669529F /* [CP] Copy Pods Resources */ = {
@@ -383,7 +399,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-crypto-sdk/Pods-crypto-sdk-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AeroGearCrypto/Pods-AeroGearCrypto-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -425,7 +441,7 @@
 /* Begin PBXTargetDependency section */
 		6FE41132180D7543008A5A51 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6F465B081805632D0097BC5F /* crypto-sdk */;
+			target = 6F465B081805632D0097BC5F /* AeroGearCrypto */;
 			targetProxy = 6FE41131180D7543008A5A51 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -538,11 +554,11 @@
 		};
 		6F465B2D1805632E0097BC5F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0DFC341ABD5181B88D7E4DFD /* Pods-crypto-sdk.debug.xcconfig */;
+			baseConfigurationReference = D00FAA14BDF9772D44CB4373 /* Pods-AeroGearCrypto.debug.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/crypto_sdk.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "crypto-sdk/crypto-sdk-Prefix.pch";
+				GCC_PREFIX_HEADER = "AeroGearCrypto/AeroGearCrypto-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -552,11 +568,11 @@
 		};
 		6F465B2E1805632E0097BC5F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4EAC63E46172153376C608AB /* Pods-crypto-sdk.release.xcconfig */;
+			baseConfigurationReference = BFADA724FFF4A6134F0D34C0 /* Pods-AeroGearCrypto.release.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/crypto_sdk.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "crypto-sdk/crypto-sdk-Prefix.pch";
+				GCC_PREFIX_HEADER = "AeroGearCrypto/AeroGearCrypto-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -566,7 +582,7 @@
 		};
 		6F9BE769180C0B200045D8AE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 86F58650C048D974EAFB49CB /* Pods-crypto-sdk-crypto-sdkTests.debug.xcconfig */;
+			baseConfigurationReference = 8A1B4931C730F9184F1D25A3 /* Pods-AeroGearCrypto-AeroGearCryptoTests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -575,12 +591,12 @@
 					"\"$(PLATFORM_DIR)/Developer/Library/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "crypto-sdkTests/crypto-sdkTests-Prefix.pch";
+				GCC_PREFIX_HEADER = "AeroGearCryptoTests/AeroGearCryptoTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "crypto-sdkTests/crypto-sdkTests-Info.plist";
+				INFOPLIST_FILE = "AeroGearCryptoTests/AeroGearCryptoTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -594,7 +610,7 @@
 		};
 		6F9BE76A180C0B200045D8AE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E23B60FC0ECD38426FD26B99 /* Pods-crypto-sdk-crypto-sdkTests.release.xcconfig */;
+			baseConfigurationReference = 3DCD49703737AC7AD431B1DF /* Pods-AeroGearCrypto-AeroGearCryptoTests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -603,8 +619,8 @@
 					"\"$(PLATFORM_DIR)/Developer/Library/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "crypto-sdkTests/crypto-sdkTests-Prefix.pch";
-				INFOPLIST_FILE = "crypto-sdkTests/crypto-sdkTests-Info.plist";
+				GCC_PREFIX_HEADER = "AeroGearCryptoTests/AeroGearCryptoTests-Prefix.pch";
+				INFOPLIST_FILE = "AeroGearCryptoTests/AeroGearCryptoTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -619,7 +635,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6F465B041805632D0097BC5F /* Build configuration list for PBXProject "crypto-sdk" */ = {
+		6F465B041805632D0097BC5F /* Build configuration list for PBXProject "AeroGearCrypto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F465B2A1805632E0097BC5F /* Debug */,
@@ -628,7 +644,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6F465B2C1805632E0097BC5F /* Build configuration list for PBXNativeTarget "crypto-sdk" */ = {
+		6F465B2C1805632E0097BC5F /* Build configuration list for PBXNativeTarget "AeroGearCrypto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F465B2D1805632E0097BC5F /* Debug */,
@@ -637,7 +653,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6F9BE768180C0B200045D8AE /* Build configuration list for PBXNativeTarget "crypto-sdkTests" */ = {
+		6F9BE768180C0B200045D8AE /* Build configuration list for PBXNativeTarget "AeroGearCryptoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F9BE769180C0B200045D8AE /* Debug */,

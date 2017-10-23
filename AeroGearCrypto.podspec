@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "AeroGear-Crypto"
+  s.name         = "AeroGearCrypto"
   s.version      = "0.2.3"
   s.summary      = "Provides encryption utilities."
   s.homepage     = "https://github.com/aerogear/aerogear-ios-crypto"
@@ -7,8 +7,8 @@ Pod::Spec.new do |s|
   s.author       = "Red Hat, Inc."
   s.source       = { :git => 'https://github.com/aerogear/aerogear-ios-crypto.git', :tag => '0.2.3' }
   s.platform     = :ios, 9.0
-  s.source_files = 'crypto-sdk/**/*.{h,m}'
-  s.public_header_files = 'crypto-sdk/AeroGearCrypto.h', 'crypto-sdk/AGPBKDF2.h', 'crypto-sdk/AGRandomGenerator.h', 'crypto-sdk/AGSecretBox.h', 'crypto-sdk/AGCryptoBox.h', 'crypto-sdk/AGHash.h', 'crypto-sdk/AGSigningKey.h', 'crypto-sdk/AGVerifyKey.h', 'crypto-sdk/AGVerifyKey.h', 'crypto-sdk/AGKeyPair.h', 'crypto-sdk/AGUtil.h'
+  s.source_files = 'AeroGearCrypto/**/*.{h,m}'
+  s.public_header_files = 'AeroGearCrypto/AeroGearCrypto.h', 'AeroGearCrypto/AGPBKDF2.h', 'AeroGearCrypto/AGRandomGenerator.h', 'AeroGearCrypto/AGSecretBox.h', 'AeroGearCrypto/AGCryptoBox.h', 'AeroGearCrypto/AGHash.h', 'AeroGearCrypto/AGSigningKey.h', 'AeroGearCrypto/AGVerifyKey.h', 'AeroGearCrypto/AGVerifyKey.h', 'AeroGearCrypto/AGKeyPair.h', 'AeroGearCrypto/AGUtil.h'
   s.requires_arc = true
   s.dependency 'libsodium-ios', '~> 0.4.5'
 end
