@@ -18,4 +18,4 @@
 echo "Generating the API doc"
 rm -rf ./Docset
 ## Run appledoc
-appledoc --project-name AeroGear-Crypto --project-company "Red Hat" --company-id org.jboss.aerogear --output ~/help --index-desc README.md --docset-install-path ./Docset ./crypto-sdk
+appledoc --project-name AeroGearCrypto --project-company "Red Hat" --company-id org.jboss.aerogear --output ~/help --index-desc README.md --docset-install-path ./Docset ./AeroGearCrypto

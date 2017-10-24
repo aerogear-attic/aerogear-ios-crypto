@@ -1,43 +1,27 @@
-# aerogear-crypto-ios [![Build Status](https://travis-ci.org/aerogear/aerogear-crypto-ios.png)](https://travis-ci.org/aerogear/aerogear-crypto-ios)
+# aerogear-ios-crypto
 
-|                 | Project Info  |
-| --------------- | ------------- |
-| License:        | Apache License, Version 2.0  |
-| Build:          | CocoaPods  |
-| Documentation:  | http://aerogear.org/ios/  |
-| Issue tracker:  | https://issues.jboss.org/browse/AGIOS  |
-| Mailing lists:  | [aerogear-users](http://aerogear-users.1116366.n5.nabble.com/) ([subscribe](https://lists.jboss.org/mailman/listinfo/aerogear-users))  |
-|                 | [aerogear-dev](http://aerogear-dev.1069024.n5.nabble.com/) ([subscribe](https://lists.jboss.org/mailman/listinfo/aerogear-dev))  |
+![Maintenance](https://img.shields.io/maintenance/yes/2017.svg)
+[![circle-ci](https://img.shields.io/circleci/project/github/aerogear/aerogear-ios-crypto/master.svg)](https://circleci.com/gh/aerogear/aerogear-ios-crypto)
+[![License](https://img.shields.io/badge/-Apache%202.0-blue.svg)](https://opensource.org/s/Apache-2.0)
+[![GitHub release](https://img.shields.io/github/release/aerogear/aerogear-ios-crypto.svg)](https://github.com/aerogear/aerogear-ios-crypto/releases)
+[![CocoaPods](https://img.shields.io/cocoapods/v/AeroGearCrypto.svg)](https://cocoapods.org/pods/AeroGearCrypto)
+[![Platform](https://img.shields.io/cocoapods/p/AeroGearCrypto.svg)](https://cocoapods.org/pods/AeroGearCrypto)
 
-## Project Aim
-_"Crypto for Humans"_
+Cryptographic services library
 
-The aim of the project is to provide useful and easy to use API interfaces for performing advanced cryptographic techniques in the iOS platform. Anyone who has tried to use the underlying crypto functionality APIs provided by the iOS, or to integrate with external crypto libraries like OpenSSL, can understand how frustrated the experience can be. The reasons for this are twofold. Firstly, all crypto libraries offer a variety of cryptographic primitives and you need to make a lot of decisions about which specific pieces to use. And if your decisions are wrong, the end-result will be an insecure system. Secondly, most libraries are written using the C language (and for a good reason), but this results in cumbersome usage for an obj-c developer (with potentially adverse and dangerous consequences for the unfamiliar). 
+|                 | Project Info                                 |
+| --------------- | -------------------------------------------- |
+| License:        | Apache License, Version 2.0                  |
+| Build:          | CocoaPods                                    |
+| Languague:      | Objective-C                                  |
+| Documentation:  | http://aerogear.org/ios/                     |
+| Issue tracker:  | https://issues.jboss.org/browse/AGIOS        |
+| Mailing lists:  | [aerogear-users](http://aerogear-users.1116366.n5.nabble.com/) ([subscribe](https://lists.jboss.org/mailman/listinfo/aerogear-users))                            |
+|                 | [aerogear-dev](http://aerogear-dev.1069024.n5.nabble.com/) ([subscribe](https://lists.jboss.org/mailman/listinfo/aerogear-dev))     
 
-By leveraging the state-of-the-art [NaCl](http://nacl.cr.yp.to) encryption library, which provides extremely powerful cryptographic primitives so the developer doesn't need to worry on choosing the "right" one and offering an easy-to-use interfaces around the platform's build-in Security and CommonCrypto services, we believe Crypto can be transformed from a frustrating experience to an enjoyable one.
+## Table of Content
 
-We understand that applying good cryptographic techniques is not an easy task and requires deep knowledge of the underlying concepts. But we strongly believe a "friendlier" developer interface can ease that pain.
-
-The project shares the same vision with our sibling AeroGear project [AeroGear-Crypto-Java](https://github.com/aerogear/aerogear-crypto-java). If you are a Java developer, we strongly recommend to look at the project. 
-
-The project is also the base for providing cryptographic services to [AeroGear-IOS](http://www.aerogear.org) library project.
-
-## Requirements
-
-* iOS 7 or higher
-
-### Installation with CocoaPods
-
-[CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C, which eases the pain of installing third-party libraries in your programs. The project is already published in the CocoaPods repository, so just add the following line in your _'Podfile'_ :
-
-#### Podfile
-
-```
-pod "AeroGear-Crypto", '0.2.3'
-```
-
-## Project Status
-The following services are currently provided:
+## Features
 
 * A [Symmetric encryption](http://nacl.cr.yp.to/secretbox.html) interface
 * An [Asymmetric encryption interface](http://nacl.cr.yp.to/box.html)
@@ -46,84 +30,116 @@ The following services are currently provided:
 * [Digital signatures](http://ed25519.cr.yp.to) support interface 
 * [Hashing functions](http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf) interface
 
-## Getting started
+## Requirements
+
+## Installation
+
+### CocoaPods
+
+In your `Podfile` add:
+
+```bash
+pod 'AeroGearCrypto'
+```
+
+and then:
+
+```bash
+pod install
+```
+
+to install your dependencies
+
+## Usage
 
 ### Password based key derivation
 
-    AGPBKDF2 *pbkdf2 = [[AGPBKDF2 alloc] init];
-    NSData *rawKey = [pbkdf2 deriveKey:@"passphrase"];
+```ObjC
+AGPBKDF2 *pbkdf2 = [[AGPBKDF2 alloc] init];
+NSData *rawKey = [pbkdf2 deriveKey:@"passphrase"];
+```
 
 ### Symmetric encryption
 
-    //Generate the key
-    AGPBKDF2 *pbkdf2 = [[AGPBKDF2 alloc] init];
-    NSData *privateKey = [pbkdf2 deriveKey:@"passphrase"];
+```ObjC
+//Generate the key
+AGPBKDF2 *pbkdf2 = [[AGPBKDF2 alloc] init];
+NSData *privateKey = [pbkdf2 deriveKey:@"passphrase"];
 
-    //Initializes the secret box
-    AGSecretBox *secretBox = [[AGSecretBox alloc] initWithKey:privateKey];
+//Initializes the secret box
+AGSecretBox *secretBox = [[AGSecretBox alloc] initWithKey:privateKey];
 
-    //Encryption
-    NSData *nonce = [AGRandomGenerator randomBytes:32];
-    NSData *dataToEncrypt = [@"My bonnie lies over the ocean" dataUsingEncoding:NSUTF8StringEncoding];
+//Encryption
+NSData *nonce = [AGRandomGenerator randomBytes:32];
+NSData *dataToEncrypt = [@"My bonnie lies over the ocean" dataUsingEncoding:NSUTF8StringEncoding];
 
-    NSData *cipherData = [secretBox encrypt:dataToEncrypt nonce:nonce];
+NSData *cipherData = [secretBox encrypt:dataToEncrypt nonce:nonce];
 
-    //Decryption
-    AGSecretBox *pandora = [[AGSecretBox alloc] initWithKey:privateKey];
-    NSData *message = [secretBox decrypt:cipherData nonce:nonce];
+//Decryption
+AGSecretBox *pandora = [[AGSecretBox alloc] initWithKey:privateKey];
+NSData *message = [secretBox decrypt:cipherData nonce:nonce];
+```
 
 ### Asymmetric encryption
 
-    //Create a new key pair
-    AGKeyPair *keyPairBob = [[AGKeyPair alloc] init];
-    AGKeyPair *keyPairAlice = [[AGKeyPair alloc] init];
+```ObjC
+//Create a new key pair
+AGKeyPair *keyPairBob = [[AGKeyPair alloc] init];
+AGKeyPair *keyPairAlice = [[AGKeyPair alloc] init];
 
-    //Initializes the crypto box
-    AGCryptoBox *cryptoBox = [[AGCryptoBox alloc] initWithKey:keyPairAlice.publicKey privateKey:keyPairBob.privateKey];
+//Initializes the crypto box
+AGCryptoBox *cryptoBox = [[AGCryptoBox alloc] initWithKey:keyPairAlice.publicKey privateKey:keyPairBob.privateKey];
 
-    NSData *nonce = [AGRandomGenerator randomBytes:32];
-    NSData *dataToEncrypt = [@"My bonnie lies over the ocean" dataUsingEncoding:NSUTF8StringEncoding];
+NSData *nonce = [AGRandomGenerator randomBytes:32];
+NSData *dataToEncrypt = [@"My bonnie lies over the ocean" dataUsingEncoding:NSUTF8StringEncoding];
 
-    NSData *cipherData = [cryptoBox encrypt:dataToEncrypt nonce:nonce];
+NSData *cipherData = [cryptoBox encrypt:dataToEncrypt nonce:nonce];
 
-    //Create a new box to test end to end asymmetric encryption
-    AGCryptoBox *pandora = [[AGCryptoBox alloc] initWithKey:keyPairBob.publicKey privateKey:keyPairAlice.privateKey];
+//Create a new box to test end to end asymmetric encryption
+AGCryptoBox *pandora = [[AGCryptoBox alloc] initWithKey:keyPairBob.publicKey privateKey:keyPairAlice.privateKey];
 
-    NSData *message = [pandora decrypt:cipherData nonce:nonce];
+NSData *message = [pandora decrypt:cipherData nonce:nonce];
+```
 
 ### Hashing functions
 
-    // create an SHA256 hash
-    AGHash *agHash = [[AGHash alloc] init:CC_SHA256_DIGEST_LENGTH];
-    NSData *rawPassword = [agHash digest:@"My bonnie lies over the ocean"];
+```ObjC
+// create an SHA256 hash
+AGHash *agHash = [[AGHash alloc] init:CC_SHA256_DIGEST_LENGTH];
+NSData *rawPassword = [agHash digest:@"My bonnie lies over the ocean"];
 
-    // create an SHA512 hash
-    AGHash *agHash = [[AGHash alloc] init:CC_SHA512_DIGEST_LENGTH];
-    NSData *rawPassword = [agHash digest:@"My bonnie lies over the ocean"];
+// create an SHA512 hash
+AGHash *agHash = [[AGHash alloc] init:CC_SHA512_DIGEST_LENGTH];
+NSData *rawPassword = [agHash digest:@"My bonnie lies over the ocean"];
+```
 
 ### Digital Signatures
 
-    NSData *message = [@"My bonnie lies over the ocean" dataUsingEncoding:NSUTF8StringEncoding];
+```ObjC
+NSData *message = [@"My bonnie lies over the ocean" dataUsingEncoding:NSUTF8StringEncoding];
     
-    AGSigningKey *signingKey = [[AGSigningKey alloc] init];
-    AGVerifyKey *verifyKey = [[AGVerifyKey alloc] initWithKey:signingKey.publicKey];
-    // sign the message
-    NSData *signedMessage = [signingKey sign:message];
+AGSigningKey *signingKey = [[AGSigningKey alloc] init];
+AGVerifyKey *verifyKey = [[AGVerifyKey alloc] initWithKey:signingKey.publicKey];
+// sign the message
+NSData *signedMessage = [signingKey sign:message];
 
-    // should detect corrupted signature
-    NSMutableData *corruptedSignature = [NSMutableData dataWithLength:64];
-    BOOL isValid = [verifyKey verify:message signature:signedMessage];
+// should detect corrupted signature
+NSMutableData *corruptedSignature = [NSMutableData dataWithLength:64];
+BOOL isValid = [verifyKey verify:message signature:signedMessage];
    
-    // isValid should be YES
-    BOOL isValid = [verifyKey verify:message signature:corruptedSignature];
-    // isValid should be NO
+// isValid should be YES
+BOOL isValid = [verifyKey verify:message signature:corruptedSignature];
+// isValid should be NO
+```
 
 ### Generation of Cryptographically secure Random Numbers
-   NSData *random = [AGRandomGenerator randomBytes:<length>];
+```ObjC
+NSData *random = [AGRandomGenerator randomBytes:<length>];
+```
 	
 ## Documentation
 
-For more details about the current release, please consult [our documentation](http://aerogear.org/ios/).
+For more details about that please consult [our documentation](http://aerogear.org/ios/).
 
 ## Development
 
