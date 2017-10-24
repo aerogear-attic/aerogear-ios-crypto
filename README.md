@@ -21,6 +21,23 @@ Cryptographic services library
 
 ## Table of Content
 
+* [Features](#features)
+* [Installation](#installation)
+  * [CocoaPods](#cocoapods)
+* [Usage](#usage)
+  * [Password based key derivation](#password-based-key-derivation)
+  * [Symmetric encryption](#symmetric-encryption)
+  * [Asymmetric encryption](#asymmetric-encryption)
+  * [Hashing functions](#hashing-functions)
+  * [Digital Signatures](#digital-signatures)
+  * [Generation of Cryptographically secure Random Numbers](#generation-of-cryptographically-secure-random-numbers)
+* [Documentation](#documentation)
+* [Demo apps](#demo-apps)
+* [Development](#development)
+* [Questions?](#questions)
+* [Found a bug?](#found-a-bug)
+
+
 ## Features
 
 * A [Symmetric encryption](http://nacl.cr.yp.to/secretbox.html) interface
@@ -29,8 +46,6 @@ Cryptographic services library
 * Generation of Cryptographically secure [random numbers](http://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator).
 * [Digital signatures](http://ed25519.cr.yp.to) support interface 
 * [Hashing functions](http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf) interface
-
-## Requirements
 
 ## Installation
 
@@ -140,6 +155,12 @@ NSData *random = [AGRandomGenerator randomBytes:<length>];
 ## Documentation
 
 For more details about that please consult [our documentation](http://aerogear.org/ios/).
+
+## Demo apps
+
+Take a look in our demo apps:
+
+* [CryptoPassword](https://github.com/aerogear/aerogear-ios-cookbook/tree/master/CryptoPassword)
 
 ## Development
 
