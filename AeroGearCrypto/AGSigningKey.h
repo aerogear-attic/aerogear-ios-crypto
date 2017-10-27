@@ -16,8 +16,8 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <libsodium-ios/sodium/crypto_sign_ed25519.h>
-#import <libsodium-ios/sodium/randombytes.h>
+#import <libsodium/crypto_sign_ed25519.h>
+#import <libsodium/randombytes.h>
 
 /**
  * Create digital signatures

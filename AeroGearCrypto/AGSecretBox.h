@@ -16,7 +16,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <libsodium-ios/sodium/crypto_secretbox_xsalsa20poly1305.h>
+#import <libsodium/crypto_secretbox_xsalsa20poly1305.h>
 
 /**
  * Provide symmetric key authenticated encryption via xsalsa20poly1305

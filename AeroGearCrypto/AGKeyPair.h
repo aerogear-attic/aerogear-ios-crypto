@@ -16,7 +16,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <libsodium-ios/sodium/crypto_box_curve25519xsalsa20poly1305.h>
+#import <libsodium/crypto_box_curve25519xsalsa20poly1305.h>
 
 /**
  * Represents a pair of cryptographic keys (a public and a private key) used for asymmetric encryption
