@@ -4,8 +4,8 @@ project 'AeroGearCrypto.xcodeproj'
 platform :ios, '9.0'
 
 target 'AeroGearCrypto' do
-    pod 'libsodium-ios', '~> 0.4.5'
+    pod 'libsodium', '~> 1.0'
     target 'AeroGearCryptoTests' do
-        pod 'Kiwi', '2.3.0'
+        pod 'Kiwi', '2.4.0'
     end
 end

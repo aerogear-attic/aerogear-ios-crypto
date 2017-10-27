@@ -10,5 +10,5 @@ Pod::Spec.new do |s|
   s.source_files = 'AeroGearCrypto/**/*.{h,m}'
   s.public_header_files = 'AeroGearCrypto/AeroGearCrypto.h', 'AeroGearCrypto/AGPBKDF2.h', 'AeroGearCrypto/AGRandomGenerator.h', 'AeroGearCrypto/AGSecretBox.h', 'AeroGearCrypto/AGCryptoBox.h', 'AeroGearCrypto/AGHash.h', 'AeroGearCrypto/AGSigningKey.h', 'AeroGearCrypto/AGVerifyKey.h', 'AeroGearCrypto/AGVerifyKey.h', 'AeroGearCrypto/AGKeyPair.h', 'AeroGearCrypto/AGUtil.h'
   s.requires_arc = true
-  s.dependency 'libsodium-ios', '~> 0.4.5'
+  s.dependency 'libsodium', '~> 1.0'
 end
